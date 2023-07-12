@@ -65,7 +65,7 @@
 				<div class="flex flex-col gap-2">
 					<dt class="flex flex-row gap-3 font-semibold text-gray-900 justify-start items-center">
 						<div
-							class="shadow-inner shadow-neutral-300 inline-block w-8 h-8 p-1 border border-brand-700/70 rounded-md stroke-brand-700/70 stroke-[1.5]"
+							class="shadow-inner shadow-emerald-100 inline-block w-10 h-10 p-1 border ring-1 ring-offset-2 ring-emerald-700/70 border-emerald-700/70 rounded-md stroke-emerald-700/70 stroke-[1.5]"
 						>
 							<svelte:component this={feature.icon} />
 						</div>

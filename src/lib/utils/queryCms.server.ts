@@ -463,7 +463,7 @@ export const getCompanyDetail = async (
 		const response = (await request.json()) as CompanyDetailResponse;
 		return response;
 	} catch (error) {
-		console.error('error loading company detail', error);
+		console.error('error loading company detail', error, queryUrl);
 		return null;
 	}
 };
@@ -473,15 +473,20 @@ export const getAuthors = async (
 	locale = 'de'
 ) => {
 	const queryUrl = `${PUBLIC_CMS}/api/authors?locale=${locale}&populate[0]=thumbnail`;
-	const request = await customFetch(queryUrl, {
-		method: 'GET',
-		headers
-	});
-	const response = (await request.json()) as ListAuthorsResponse;
-	response.data = response.data.sort(
-		(a, b) => (a.attributes?.order ?? 0) - (b.attributes?.order ?? 1)
-	);
-	return response;
+	try {
+		const request = await customFetch(queryUrl, {
+			method: 'GET',
+			headers
+		});
+		const response = (await request.json()) as ListAuthorsResponse;
+		response.data = response.data.sort(
+			(a, b) => (a.attributes?.order ?? 0) - (b.attributes?.order ?? 1)
+		);
+		return response;
+	} catch (error) {
+		console.error('error loading authors', error, queryUrl);
+		return null;
+	}
 };
 
 export const getDepartmentByRoute = async (

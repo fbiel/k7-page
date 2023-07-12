@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
+	import Pagination from '$lib/components/pagination.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -78,6 +80,9 @@
 					</article>
 				{/each}
 			</div>
+			{#if posts?.meta}
+				<Pagination meta={posts?.meta} href={$page.url.href} />
+			{/if}
 		</div>
 	</div>
 {/await}

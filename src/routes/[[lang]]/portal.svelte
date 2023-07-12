@@ -8,7 +8,7 @@
 
 <div id="portal-container">
 	<div
-		class="flex pb-20 flex-col gap-5 lg:gap-0 lg:flex-row justify-between my-10 mx-8 border-t border-slate-400/25 pt-10"
+		class="flex pb-40 lg:pb-20 flex-col gap-5 lg:gap-0 lg:flex-row justify-between my-10 mx-8 border-t border-slate-400/25 pt-10"
 	>
 		<div class="flex flex-col justify-start items-start">
 			<img
@@ -60,7 +60,7 @@
 
 <style>
 	#portal-container {
-		background-size: auto 100%;
+		background-size: cover;
 		background-image: url('./layered-waves.svg');
 	}
 </style>
