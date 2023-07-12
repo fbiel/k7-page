@@ -1,5 +1,6 @@
 import { PRIVATE_CMS_BEARER } from '$env/static/private';
 import { PUBLIC_CMS } from '$env/static/public';
+import { marked } from 'marked';
 
 export const headers = {
 	accept: 'application/json',
@@ -329,6 +330,32 @@ export interface ListJobsResponse {
 	meta: Meta;
 }
 
+/* 
+{"data":{"id":2,"attributes":{"name":"K7 - Koncept Karlsruhe","street":"Roonstr.","housenumber":"23","zip":"76137","city":"Karlsruhe","country":null,"phone":null,"fax":null,"mobile":null,"email":"info@k-7.eu","opening_from":"08:00:00.000","opening_to":"17:00:00.000","createdAt":"2023-01-10T13:45:41.980Z","updatedAt":"2023-01-10T13:45:41.980Z","locale":"en"}},"meta":{}}*/
+export interface CompanyDetailResponse {
+	data: {
+		id: number;
+		attributes: CompanyDetailAttributes;
+	};
+}
+export interface CompanyDetailAttributes {
+	name?: string;
+	street?: string;
+	housenumber?: string;
+	zip?: string;
+	city?: string;
+	country?: string;
+	phone?: string;
+	fax?: string;
+	mobile?: string;
+	email?: string;
+	opening_from?: string;
+	opening_to?: string;
+	createdAt?: string;
+	updatedAt?: string;
+	locale?: string;
+}
+
 type PopulateArticleWith = 'departments' | 'content' | 'author' | 'cover' | 'technologies';
 export type CollectionQueryType = 'projects' | 'blogs';
 export const queryArticles = async (
@@ -380,12 +407,13 @@ export const queryArticles = async (
 };
 
 export const getArticleEntry = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
 	queryType: CollectionQueryType,
 	id: string,
 	locale = 'de'
 ) => {
 	const queryUrl = `${PUBLIC_CMS}/api/${queryType}/${id}?locale=${locale}&populate[0]=author,cover,departments,technologies,content,article_collection&populate[1]=content.image,author.thumbnail,article_collection.blogs&populate[2]=content.image.image`;
-	const request = await fetch(queryUrl, {
+	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers
 	});
@@ -393,17 +421,28 @@ export const getArticleEntry = async (
 	return response.data.attributes;
 };
 
-export const getProject = async (id: string, locale = 'de') => {
-	return await getArticleEntry('projects', id, locale);
+export const getProject = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	id: string,
+	locale = 'de'
+) => {
+	return await getArticleEntry(customFetch, 'projects', id, locale);
 };
 
-export const getBlog = async (id: string, locale = 'de') => {
-	return await getArticleEntry('blogs', id, locale);
+export const getBlog = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	id: string,
+	locale = 'de'
+) => {
+	return await getArticleEntry(customFetch, 'blogs', id, locale);
 };
 
-export const getDepartment = async (id: string) => {
+export const getDepartment = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	id: string
+) => {
 	const queryUrl = `${PUBLIC_CMS}/api/departments/${id}?populate[0]=cover,icon&populate[1]=blogs,projects,body`;
-	const request = await fetch(queryUrl, {
+	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers
 	});
@@ -411,19 +450,47 @@ export const getDepartment = async (id: string) => {
 	return response.data.attributes;
 };
 
-export const getAuthors = async (locale = 'de') => {
+export const getCompanyDetail = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	locale = 'de'
+) => {
+	const queryUrl = `${PUBLIC_CMS}/api/companydetail?locale=${locale}`;
+	try {
+		const request = await customFetch(queryUrl, {
+			method: 'GET',
+			headers
+		});
+		const response = (await request.json()) as CompanyDetailResponse;
+		return response;
+	} catch (error) {
+		console.error('error loading company detail', error);
+		return null;
+	}
+};
+
+export const getAuthors = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	locale = 'de'
+) => {
 	const queryUrl = `${PUBLIC_CMS}/api/authors?locale=${locale}&populate[0]=thumbnail`;
-	const request = await fetch(queryUrl, {
+	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers
 	});
 	const response = (await request.json()) as ListAuthorsResponse;
+	response.data = response.data.sort(
+		(a, b) => (a.attributes?.order ?? 0) - (b.attributes?.order ?? 1)
+	);
 	return response;
 };
 
-export const getDepartmentByRoute = async (route: string, locale = 'de') => {
+export const getDepartmentByRoute = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	route: string,
+	locale = 'de'
+) => {
 	const queryUrl = `${PUBLIC_CMS}/api/departments?locale=${locale}&populate[0]=cover,skills,icon,projects&populate[1]=skills.technologies,skills.icon,projects.author,projects.cover,projects.departments&populate[2]=body.image,projects.author.thumbnail,body.items&filters[route][$eqi]=${route}`;
-	const request = await fetch(queryUrl, {
+	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers
 	});
@@ -432,9 +499,13 @@ export const getDepartmentByRoute = async (route: string, locale = 'de') => {
 	return undefined;
 };
 
-export const getArticleCollection = async (series: string, locale = 'de') => {
+export const getArticleCollection = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	series: string,
+	locale = 'de'
+) => {
 	const queryUrl = `${PUBLIC_CMS}/api/blogs?locale=${locale}&filters[series][$eqi]=${series}`;
-	const request = await fetch(queryUrl, {
+	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers
 	});
@@ -461,9 +532,8 @@ export const getReferences = async (
 		const response = (await request.json()) as ListReferencesResponse;
 		return response;
 	} catch (error) {
-		const errorResponse = { status: 500, message: 'unknown', url: queryUrl } as ErrorResponse;
-		console.error('error loading references', errorResponse, error);
-		return errorResponse;
+		console.error('error loading references', error);
+		return null;
 	}
 };
 
@@ -512,17 +582,27 @@ export const getJob = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
 	id: string
 ) => {
-	const queryUrl = `${PUBLIC_CMS}/api/job-ads/${id}?populate[0]=Beispielbild`;
+	const queryUrl = `${PUBLIC_CMS}/api/job-ads/${id}?populate[0]=Beispielbild,Ansprechpartner`;
 	console.log('querying cms for job with id ' + id, queryUrl);
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',
 			headers
 		});
-		const response = (await request.json()) as ListJobsResponseItem;
+		const response = (await request.json()) as {
+			data: { id: number; attributes: ListJobsResponseItem };
+		};
+
+		if (response.data.attributes.Profil && response.data.attributes.Profil.trim().length > 0) {
+			response.data.attributes.Profil = marked(response.data.attributes.Profil);
+		}
+		if (response.data.attributes.Aufgaben && response.data.attributes.Aufgaben.trim().length > 0) {
+			response.data.attributes.Aufgaben = marked(response.data.attributes.Aufgaben);
+		}
 		console.log('GET job response', response);
 		return response;
 	} catch (error) {
+		console.error('error loading job', error);
 		return null;
 	}
 };

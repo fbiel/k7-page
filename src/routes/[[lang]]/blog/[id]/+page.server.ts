@@ -1,16 +1,16 @@
-import { getJob } from '$lib/utils/queryCms.server';
+import { getArticleEntry, getJob } from '$lib/utils/queryCms.server';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
-	const jobId = params.id;
+	const blogId = params.id;
 	try {
 		return {
 			lazy: {
-				job: getJob(fetch, jobId)
+				post: getArticleEntry(fetch, 'blogs', blogId, params.lang ?? 'de')
 			}
 		};
 	} catch (error) {
 		console.error(error);
-		return null;
+		return { lazy: { post: null } };
 	}
 };

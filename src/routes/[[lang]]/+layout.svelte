@@ -3,7 +3,7 @@
 	import '@fontsource-variable/kufam/wght-italic.css';
 	import '@fontsource-variable/karla';
 	import '@fontsource-variable/karla/wght-italic.css';
-	import '../app.css';
+	import '../../app.css';
 	import PageHeader from './page-header.svelte';
 	import Portal from './portal.svelte';
 </script>

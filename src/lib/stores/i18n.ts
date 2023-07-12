@@ -43,7 +43,8 @@ export const de = {
 	team: {
 		missing:
 			'Sorry, bei der Vorstellung unseres Teams sind wir noch nicht ganz so weit. Wir arbeiten aber mit Hochdruck daran. Schau doch in den nächsten Tagen nochmal vorbei!',
-		team: 'Team'
+		team: 'Unser Team',
+		teamDescription: ''
 	},
 	aboutUs: 'Über uns',
 	imprint: 'Impressum',
@@ -77,6 +78,7 @@ export const de = {
 	contact: {
 		nameNecessary: 'Name ist erforderlich',
 		betterWriteSomething: 'Sie müssen schon was schreiben',
+		talkAboutProject: 'Lassen Sie uns über Ihr Projekt reden!',
 		whatIsItAbout: "Worum geht's denn?",
 		invalidEmail: 'Ungültige Email',
 		sendUsAMessage: 'Schreiben Sie uns eine Nachricht',
@@ -84,6 +86,8 @@ export const de = {
 		thanksForMessage: 'Danke für Ihre Nachricht',
 		replySoon: 'Wir werden uns schnellstmöglich bei Ihnen melden!',
 		yourName: 'Ihr Name',
+		name: 'Vorname',
+		surname: 'Nachname',
 		yourEmail: 'Ihre Email',
 		subject: 'Thema',
 		yourMessage: 'Ihre Nachricht',
@@ -178,6 +182,9 @@ export const en: TranslationFile = {
 		betterWriteSomething: 'You should at least write something',
 		email: 'E-mail',
 		hours: 'working hours',
+		talkAboutProject: 'Let’s talk about your project',
+		name: 'First name',
+		surname: 'Last name',
 		information: 'Information',
 		invalidEmail: 'Invalid E-mail',
 		nameNecessary: 'Name is required',

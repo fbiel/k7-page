@@ -5,9 +5,10 @@
 
 	let media = [
 		`${PUBLIC_IMAGE_SERVER}/uploads/simon_kadula_8gr6b_Ob_QLOI_unsplash_0639f0da6c.jpg`,
-		`${PUBLIC_IMAGE_SERVER}/uploads/mech_mind_1tr_Hd2s_CKV_4_unsplash_54b519235e.jpg`
+		`${PUBLIC_IMAGE_SERVER}/uploads/mech_mind_1tr_Hd2s_CKV_4_unsplash_54b519235e.jpg`,
+		`${PUBLIC_IMAGE_SERVER}/uploads/large_lenny_kuhne_j_HZ_70n_Rk7_Ns_unsplash_8a0f93f95e.jpg`
 	];
-	let current = media[1];
+	let current = media[2];
 </script>
 
 <div class="relative isolate overflow-hidden bg-transparent">
@@ -34,7 +35,7 @@
 			fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
 		/>
 	</svg>
-	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8 lg:pt-32">
+	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8 lg:pt-32 pb-16">
 		<div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
 			<div
 				class="m-0 rounded-xl w-24 shadow-inner shadow-neutral-300 bg-neutral-700/5 p-2 ring-1
@@ -50,7 +51,7 @@
 				{#if jobCount > 0}
 					<a href="career" class="inline-flex space-x-6">
 						<span
-							class="rounded-full bg-indigo-600/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10"
+							class="rounded-full bg-brand-600/10 px-3 py-1 text-sm font-semibold leading-6 text-brand-600 ring-1 ring-inset ring-brand-600/10"
 							>{$t.news}</span
 						>
 						<span
@@ -73,7 +74,7 @@
 					</a>
 				{/if}
 			</div>
-			<h1 class="mt-10 !text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+			<h1 class="mt-10 gradient">
 				{$t.home.claim}
 			</h1>
 			<p class="mt-6 text-lg leading-8 text-gray-600">
@@ -82,7 +83,7 @@
 			<div class="mt-10 flex items-center gap-x-6">
 				<a
 					href="/contact"
-					class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					class="rounded-md bg-brand-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
 					>{$t.home.contactUs}</a
 				>
 				<a href="/services" class="text-sm font-semibold leading-6 text-gray-900"

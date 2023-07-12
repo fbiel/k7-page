@@ -2,13 +2,29 @@
 	import { t } from '$lib/stores/i18n';
 	import IconBrandGithub from '$lib/icons/icon-brand-github.svelte';
 	import IconBrandLinkedin from '$lib/icons/icon-brand-linkedin.svelte';
+	import { page } from '$app/stores';
 	export let menuOpen = false;
+
+	export let navBarItems = [
+		{
+			href: 'projects',
+			label: $t.projects.projects
+		},
+		{
+			href: 'blog',
+			label: $t.news
+		},
+		{
+			href: 'services',
+			label: $t.services.services
+		}
+	];
 </script>
 
 <header class="bg-transparent">
 	<nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
 		<div class="flex lg:flex-1">
-			<a href="/" class="-m-1.5 px-1.5">
+			<a href={$page.data.lang === 'de' ? '/' : '/en'} class="-m-1.5 px-1.5">
 				<span class="sr-only">{$t.company}</span>
 				<img
 					class="h-10 w-auto"
@@ -41,13 +57,14 @@
 			</button>
 		</div>
 		<div class="hidden lg:flex lg:gap-x-12">
-			<a href="projects" class="text-sm font-semibold leading-6 text-gray-900"
-				>{$t.projects.projects}</a
-			>
-			<a href="news" class="text-sm font-semibold leading-6 text-gray-900">{$t.news}</a>
-			<a href="services" class="text-sm font-semibold leading-6 text-gray-900"
-				>{$t.services.services}</a
-			>
+			{#each navBarItems as navBarItem}
+				<a
+					href={navBarItem.href}
+					class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700"
+				>
+					{navBarItem.label}
+				</a>
+			{/each}
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 			<div class="flex gap-3 stroke-[1.5] stroke-black">
@@ -62,14 +79,14 @@
 		<!-- Background backdrop, show/hide based on slide-over state. -->
 		<div class="fixed inset-0 z-10" />
 		<div
-			class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+			class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
 		>
 			<div class="flex items-center justify-between">
-				<a href="#" class="-m-1.5 p-1.5">
-					<span class="sr-only">Your Company</span>
+				<a href={$page.data.lang === 'de' ? '/' : '/en'} class="-m-1.5 p-1.5">
+					<span class="sr-only">{$t.company}</span>
 					<img
 						class="h-8 w-auto"
-						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+						src="https://cms.k-7.eu/uploads/logo_transparent_7774819042.svg"
 						alt=""
 					/>
 				</a>
@@ -94,33 +111,14 @@
 			<div class="mt-6 flow-root">
 				<div class="-my-6 divide-y divide-gray-500/10">
 					<div class="space-y-2 py-6">
-						<a
-							href="#"
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Product</a
-						>
-						<a
-							href="#"
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Features</a
-						>
-						<a
-							href="#"
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Marketplace</a
-						>
-						<a
-							href="#"
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Company</a
-						>
-					</div>
-					<div class="py-6">
-						<a
-							href="#"
-							class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-							>Log in</a
-						>
+						{#each navBarItems as navBarItem}
+							<a
+								href={$page.data.lang === 'de' ? '/' : '/en/' + navBarItem.href}
+								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>
+								{navBarItem.label}
+							</a>
+						{/each}
 					</div>
 				</div>
 			</div>
