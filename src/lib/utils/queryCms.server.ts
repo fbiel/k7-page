@@ -1,7 +1,11 @@
 import { PRIVATE_CMS_BEARER } from '$env/static/private';
 import { PUBLIC_CMS } from '$env/static/public';
 import { marked } from 'marked';
+import pkg from 'prismjs';
+const { languages, highlight } = pkg;
+import loadLanguages from 'prismjs/components/';
 
+//import loadLanguages from 'prismjs/components';
 export const headers = {
 	accept: 'application/json',
 	Authorization: 'Bearer ' + PRIVATE_CMS_BEARER
@@ -209,6 +213,17 @@ export interface SkillListResponseDataItem {
 	id?: number;
 	attributes?: Skill;
 }
+
+export type BodyItem =
+	| ContentFragmentsCodeblock
+	| ContentComponentsImage
+	| ContentFragmentsParagraph
+	| ContentFragmentsQuote
+	| ContentFragmentsIlluminatingSection
+	| ContentFragmentsDidYouKnow
+	| ContentFragmentsFeatureCard
+	| ContentFragmentsSplitCard;
+
 export interface DepartmentResponseItem {
 	id: number;
 	attributes: {
@@ -217,16 +232,7 @@ export interface DepartmentResponseItem {
 		cover: MediaItem;
 		hidden: boolean;
 		icon: MediaItem;
-		body?: (
-			| ContentFragmentsCodeblock
-			| ContentComponentsImage
-			| ContentFragmentsParagraph
-			| ContentFragmentsQuote
-			| ContentFragmentsIlluminatingSection
-			| ContentFragmentsDidYouKnow
-			| ContentFragmentsFeatureCard
-			| ContentFragmentsSplitCard
-		)[];
+		body?: BodyItem[];
 		tags: string;
 		color: string;
 		skills?: SkillListResponse;
@@ -271,16 +277,7 @@ export interface ListArticleResponseItem {
 	status?: Status;
 	hours?: number;
 	article_collection?: { data: ArticleCollectionItem };
-	content?: (
-		| ContentFragmentsCodeblock
-		| ContentComponentsImage
-		| ContentFragmentsParagraph
-		| ContentFragmentsQuote
-		| ContentFragmentsIlluminatingSection
-		| ContentFragmentsDidYouKnow
-		| ContentFragmentsFeatureCard
-		| ContentFragmentsSplitCard
-	)[];
+	content?: BodyItem[];
 }
 
 export interface ListArticleResponse {
@@ -311,16 +308,8 @@ export interface ListJobsResponseItem {
 	Einleitung: string;
 	BeispielBild: MediaItem;
 	Aufgaben: string;
-	Profil: string;
-	Sonstiges:
-		| ContentFragmentsCodeblock
-		| ContentComponentsImage
-		| ContentFragmentsParagraph
-		| ContentFragmentsQuote
-		| ContentFragmentsIlluminatingSection
-		| ContentFragmentsDidYouKnow
-		| ContentFragmentsFeatureCard
-		| ContentFragmentsSplitCard;
+	Profil: string; // rich text
+	Sonstiges: BodyItem;
 }
 export interface ListJobsResponse {
 	data: {
@@ -330,8 +319,6 @@ export interface ListJobsResponse {
 	meta: Meta;
 }
 
-/* 
-{"data":{"id":2,"attributes":{"name":"K7 - Koncept Karlsruhe","street":"Roonstr.","housenumber":"23","zip":"76137","city":"Karlsruhe","country":null,"phone":null,"fax":null,"mobile":null,"email":"info@k-7.eu","opening_from":"08:00:00.000","opening_to":"17:00:00.000","createdAt":"2023-01-10T13:45:41.980Z","updatedAt":"2023-01-10T13:45:41.980Z","locale":"en"}},"meta":{}}*/
 export interface CompanyDetailResponse {
 	data: {
 		id: number;
@@ -370,9 +357,10 @@ export const queryArticles = async (
 	],
 	locale = 'de',
 	department: string | undefined = undefined,
-	page = 1
+	page = 1,
+	limit = 9
 ) => {
-	let queryUrl = `${PUBLIC_CMS}/api/${queryType}?locale=${locale}&populate[0]=${populate.join(
+	let queryUrl = `${PUBLIC_CMS}/api/${queryType}?locale=${locale}&sort[0]=updatedAt&pagination[pageSize]=${limit}&pagination[page]=${page}&populate[0]=${populate.join(
 		'%2C'
 	)}`;
 	console.log('querying articles', queryUrl);
@@ -399,6 +387,12 @@ export const queryArticles = async (
 		});
 		const data = await request.json();
 		const casted = data as ListArticleResponse;
+		casted.data = casted.data.map((d) => {
+			return {
+				id: d.id,
+				attributes: { ...d.attributes, content: d.attributes.content?.map((c) => parseMarkDown(c)) }
+			};
+		});
 		return casted;
 	} catch (error) {
 		console.error('error loading articles', error);
@@ -412,13 +406,18 @@ export const getArticleEntry = async (
 	id: string,
 	locale = 'de'
 ) => {
-	const queryUrl = `${PUBLIC_CMS}/api/${queryType}/${id}?locale=${locale}&populate[0]=author,cover,departments,technologies,content,article_collection&populate[1]=content.image,author.thumbnail,article_collection.blogs&populate[2]=content.image.image`;
+	const queryUrl = `${PUBLIC_CMS}/api/${queryType}/${id}?locale=${locale}&populate[0]=author,cover,departments,technologies,content,article_collection&populate[1]=content.image,author.thumbnail,article_collection.blogs,content.image&populate[2]=content.image.image`;
 	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers
 	});
 	const response = (await request.json()) as { data: { attributes: ListArticleResponseItem } };
-	return response.data.attributes;
+	console.log('article response+\n' + JSON.stringify(response.data.attributes.content), 2);
+	if (response.data?.attributes?.content)
+		response.data.attributes.content = response.data?.attributes?.content?.map((c) =>
+			parseMarkDown(c)
+		);
+	return response.data?.attributes;
 };
 
 export const getProject = async (
@@ -500,7 +499,13 @@ export const getDepartmentByRoute = async (
 		headers
 	});
 	const response = (await request.json()) as DepartmentListResponse;
-	if (response.data.length !== 0) return response.data[0];
+
+	if (response.data.length !== 0) {
+		const department = response.data[0];
+		if (department.attributes?.body)
+			department.attributes.body = department.attributes?.body.map((c) => parseMarkDown(c));
+		return department;
+	}
 	return undefined;
 };
 
@@ -610,4 +615,25 @@ export const getJob = async (
 		console.error('error loading job', error);
 		return null;
 	}
+};
+
+const parseMarkDown = (body: BodyItem) => {
+	if (body.__component === 'content-fragments.section') {
+		const p = body as ContentFragmentsParagraph;
+		p.content = marked(p.content ?? '');
+	}
+	if (body.__component === 'content-fragments.image-paragraph') {
+		const p = body as ContentFragmentsImageParagraph;
+		p.content = marked(p.content ?? '');
+	}
+	if (body.__component === 'content-fragments.codeblock') {
+		const p = body as ContentFragmentsCodeblock;
+		const lang = p.lang ?? 'javascript';
+		loadLanguages([lang]);
+		p.code = languages[lang]
+			? highlight(p.code ?? '', languages[lang], p.lang ?? 'javascript')
+			: p.code;
+		console.log(p.code);
+	}
+	return body;
 };

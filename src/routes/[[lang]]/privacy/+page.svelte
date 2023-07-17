@@ -1,7 +1,3 @@
-<script lang="ts">
-	export const prerender = true;
-</script>
-
 <div class="my-10 container mx-auto max-w-5xl prose prose-slate">
 	<h1>Datenschutz&shy;erkl&auml;rung</h1>
 	<h2>1. Datenschutz auf einen Blick</h2>

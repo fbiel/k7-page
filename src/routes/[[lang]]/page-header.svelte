@@ -59,7 +59,7 @@
 		<div class="hidden lg:flex lg:gap-x-12">
 			{#each navBarItems as navBarItem}
 				<a
-					href={navBarItem.href}
+					href={$page.data.lang === 'en' ? '/en' : '/' + navBarItem.href}
 					class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700"
 				>
 					{navBarItem.label}

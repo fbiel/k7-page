@@ -81,6 +81,7 @@
 				{/each}
 			</div>
 			{#if posts?.meta}
+				<div class="mt-16" />
 				<Pagination meta={posts?.meta} href={$page.url.href} />
 			{/if}
 		</div>

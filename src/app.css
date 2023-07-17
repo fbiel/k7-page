@@ -17,7 +17,7 @@ h6 {
 	@apply text-slate-900/90;
 }
 h1 {
-	@apply leading-loose text-5xl font-bold tracking-tight my-6 sm:text-6xl;
+	@apply leading-loose text-2xl lg:text-5xl font-bold tracking-tight my-6 sm:text-6xl;
 }
 h1.gradient,
 h2.gradient,
@@ -25,7 +25,7 @@ h3.gradient {
 	@apply font-extrabold tracking-tight py-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-teal-500;
 }
 h2 {
-	@apply leading-loose text-3xl font-semibold tracking-tight my-4;
+	@apply leading-loose text-xl lg:text-3xl font-semibold tracking-tight my-4;
 }
 h3 {
 	@apply leading-loose text-2xl font-semibold tracking-tight my-3;
@@ -37,10 +37,370 @@ h4 {
 p,
 dt,
 dd {
-	@apply leading-6 my-3 font-light text-gray-600;
+	@apply my-3 font-light text-gray-600;
 }
 
 ul,
 li {
 	@apply list-disc list-inside leading-8 gap-4 pl-3 font-light text-gray-600;
+}
+
+/*
+dark
+gray
+red
+pink
+grape
+violet
+indigo
+blue
+cyan
+teal
+green
+lime
+yellow
+orange
+*/
+.standard-text-dark {
+	@apply text-gray-900;
+}
+.standard-text-gray {
+	@apply text-gray-700;
+}
+.standard-text-red {
+	@apply text-red-700;
+}
+.standard-text-pink {
+	@apply text-pink-700;
+}
+.standard-text-grape {
+	@apply text-purple-700;
+}
+.standard-text-violet {
+	@apply text-indigo-700;
+}
+.standard-text-indigo {
+	@apply text-indigo-700;
+}
+.standard-text-blue {
+	@apply text-blue-700;
+}
+.standard-text-cyan {
+	@apply text-cyan-700;
+}
+.standard-text-teal {
+	@apply text-teal-700;
+}
+.standard-text-green {
+	@apply text-green-700;
+}
+.standard-text-lime {
+	@apply text-lime-700;
+}
+.standard-text-yellow {
+	@apply text-yellow-700;
+}
+.standard-text-orange {
+	@apply text-orange-700;
+}
+
+.standard-bg-dark {
+	@apply bg-gray-900;
+}
+.standard-bg-gray {
+	@apply bg-gray-700;
+}
+.standard-bg-red {
+	@apply bg-red-700;
+}
+.standard-bg-pink {
+	@apply bg-pink-700;
+}
+.standard-bg-grape {
+	@apply bg-purple-700;
+}
+.standard-bg-violet {
+	@apply bg-indigo-700;
+}
+.standard-bg-indigo {
+	@apply bg-indigo-700;
+}
+.standard-bg-blue {
+	@apply bg-blue-700;
+}
+.standard-bg-cyan {
+	@apply bg-cyan-700;
+}
+.standard-bg-teal {
+	@apply bg-teal-700;
+}
+.standard-bg-green {
+	@apply bg-green-700;
+}
+.standard-bg-lime {
+	@apply bg-lime-700;
+}
+.standard-bg-yellow {
+	@apply bg-yellow-700;
+}
+.standard-bg-orange {
+	@apply bg-orange-700;
+}
+
+.standard-from-dark {
+	@apply from-gray-900;
+}
+.standard-from-gray {
+	@apply from-gray-700;
+}
+.standard-from-red {
+	@apply from-red-700;
+}
+.standard-from-pink {
+	@apply from-pink-700;
+}
+.standard-from-grape {
+	@apply from-purple-700;
+}
+.standard-from-violet {
+	@apply from-indigo-700;
+}
+.standard-from-indigo {
+	@apply from-indigo-700;
+}
+.standard-from-blue {
+	@apply from-blue-700;
+}
+.standard-from-cyan {
+	@apply from-cyan-700;
+}
+.standard-from-teal {
+	@apply from-teal-700;
+}
+.standard-from-green {
+	@apply from-green-700;
+}
+.standard-from-lime {
+	@apply from-lime-700;
+}
+.standard-from-yellow {
+	@apply from-yellow-700;
+}
+.standard-from-orange {
+	@apply from-orange-700;
+}
+
+.standard-to-dark {
+	@apply to-gray-900;
+}
+.standard-to-gray {
+	@apply to-gray-700;
+}
+.standard-to-red {
+	@apply to-red-700;
+}
+.standard-to-pink {
+	@apply to-pink-700;
+}
+.standard-to-grape {
+	@apply to-purple-700;
+}
+.standard-to-violet {
+	@apply to-indigo-700;
+}
+.standard-to-indigo {
+	@apply to-indigo-700;
+}
+.standard-to-blue {
+	@apply to-blue-700;
+}
+.standard-to-cyan {
+	@apply to-cyan-700;
+}
+.standard-to-teal {
+	@apply to-teal-700;
+}
+.standard-to-green {
+	@apply to-green-700;
+}
+.standard-to-lime {
+	@apply to-lime-700;
+}
+.standard-to-yellow {
+	@apply to-yellow-700;
+}
+.standard-to-orange {
+	@apply to-orange-700;
+}
+
+.standard-text-dark-medium {
+	@apply text-gray-500;
+}
+.standard-text-gray-medium {
+	@apply text-gray-500;
+}
+.standard-text-red-medium {
+	@apply text-red-500;
+}
+.standard-text-pink-medium {
+	@apply text-pink-500;
+}
+.standard-text-grape-lmedium {
+	@apply text-purple-500;
+}
+.standard-text-violet-medium {
+	@apply text-indigo-500;
+}
+.standard-text-indigo-medium {
+	@apply text-indigo-500;
+}
+.standard-text-blue-medium {
+	@apply text-blue-500;
+}
+.standard-text-cyan-medium {
+	@apply text-cyan-500;
+}
+.standard-text-teal-medium {
+	@apply text-teal-500;
+}
+.standard-text-green-medium {
+	@apply text-green-500;
+}
+.standard-text-lime-medium {
+	@apply text-lime-500;
+}
+.standard-text-yellow-medium {
+	@apply text-yellow-500;
+}
+.standard-text-orange-medium {
+	@apply text-orange-500;
+}
+
+.standard-bg-dark-medium {
+	@apply bg-gray-500;
+}
+.standard-bg-gray-medium {
+	@apply bg-gray-500;
+}
+.standard-bg-red-medium {
+	@apply bg-red-500;
+}
+.standard-bg-pink-medium {
+	@apply bg-pink-500;
+}
+.standard-bg-grape-lmedium {
+	@apply bg-purple-500;
+}
+.standard-bg-violet-medium {
+	@apply bg-indigo-500;
+}
+.standard-bg-indigo-medium {
+	@apply bg-indigo-500;
+}
+.standard-bg-blue-medium {
+	@apply bg-blue-500;
+}
+.standard-bg-cyan-medium {
+	@apply bg-cyan-500;
+}
+.standard-bg-teal-medium {
+	@apply bg-teal-500;
+}
+.standard-bg-green-medium {
+	@apply bg-green-500;
+}
+.standard-bg-lime-medium {
+	@apply bg-lime-500;
+}
+.standard-bg-yellow-medium {
+	@apply bg-yellow-500;
+}
+.standard-bg-orange-medium {
+	@apply bg-orange-500;
+}
+
+.standard-from-dark-medium {
+	@apply from-gray-500;
+}
+.standard-from-gray-medium {
+	@apply from-gray-500;
+}
+.standard-from-red-medium {
+	@apply from-red-500;
+}
+.standard-from-pink-medium {
+	@apply from-pink-500;
+}
+.standard-from-grape-medium {
+	@apply from-purple-500;
+}
+.standard-from-violet-medium {
+	@apply from-indigo-500;
+}
+.standard-from-indigo-medium {
+	@apply from-indigo-500;
+}
+.standard-from-blue-medium {
+	@apply from-blue-500;
+}
+.standard-from-cyan-medium {
+	@apply from-cyan-500;
+}
+.standard-from-teal-medium {
+	@apply from-teal-500;
+}
+.standard-from-green-medium {
+	@apply from-green-500;
+}
+.standard-from-lime-medium {
+	@apply from-lime-500;
+}
+.standard-from-yellow-medium {
+	@apply from-yellow-500;
+}
+.standard-from-orange-medium {
+	@apply from-orange-500;
+}
+
+.standard-to-dark-medium {
+	@apply to-gray-500;
+}
+.standard-to-gray-medium {
+	@apply to-gray-500;
+}
+.standard-to-red-medium {
+	@apply to-red-500;
+}
+.standard-to-pink-medium {
+	@apply to-pink-500;
+}
+.standard-to-grape-lmedium {
+	@apply to-purple-500;
+}
+.standard-to-violet-medium {
+	@apply to-indigo-500;
+}
+.standard-to-indigo-medium {
+	@apply to-indigo-500;
+}
+.standard-to-blue-medium {
+	@apply to-blue-500;
+}
+.standard-to-cyan-medium {
+	@apply to-cyan-500;
+}
+.standard-to-teal-medium {
+	@apply to-teal-500;
+}
+.standard-to-green-medium {
+	@apply to-green-500;
+}
+.standard-to-lime-medium {
+	@apply to-lime-500;
+}
+.standard-to-yellow-medium {
+	@apply to-yellow-500;
+}
+.standard-to-orange-medium {
+	@apply to-orange-500;
 }

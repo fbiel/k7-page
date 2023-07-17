@@ -5,10 +5,14 @@ import {
 	getReferences,
 	queryArticles
 } from '$lib/utils/queryCms.server';
+import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const lang = params.lang ?? 'de';
+	if (lang !== 'de' && lang !== 'en') {
+		throw error(404, 'Language does not exist');
+	}
 	try {
 		return {
 			lang,

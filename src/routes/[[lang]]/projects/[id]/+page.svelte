@@ -7,7 +7,7 @@
 	export let data: PageData;
 </script>
 
-<div class="max-w-5xl mx-auto mt-10">
+<div class="mx-auto mt-10">
 	{#await data?.lazy?.post then post}
 		{#if post}
 			<Article article={post} lang={$page.data.lang} />
