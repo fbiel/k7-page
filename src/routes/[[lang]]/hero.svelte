@@ -1,15 +1,19 @@
 <script lang="ts">
-	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 	import { t } from '$lib/stores/i18n';
+	import { imageFlip } from '$lib/utils/imageFlip';
+	import type { SourceSet } from '$lib/utils/media';
 	export let jobCount = 0;
+	// export let duration = 700;
+	// export let interval = 45000;
 
-	let media = [
-		`${PUBLIC_IMAGE_SERVER}/uploads/simon_kadula_8gr6b_Ob_QLOI_unsplash_0639f0da6c.jpg`,
-		`${PUBLIC_IMAGE_SERVER}/uploads/mech_mind_1tr_Hd2s_CKV_4_unsplash_54b519235e.jpg`,
-		`${PUBLIC_IMAGE_SERVER}/uploads/large_lenny_kuhne_j_HZ_70n_Rk7_Ns_unsplash_8a0f93f95e.jpg`
-	];
-	let current = media[2];
+	export let current: SourceSet | undefined = undefined;
 </script>
+
+<!-- <svelte:head>
+	{#each media as image}
+		<link rel="prefetch" as="image" href={image} />
+	{/each}
+</svelte:head> -->
 
 <div class="relative isolate overflow-hidden bg-transparent">
 	<svg
@@ -57,7 +61,7 @@
 						<span
 							class="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600"
 						>
-							<span>{jobCount} Jobs verfügbar!</span>
+							<span>{jobCount} {jobCount === 1 ? $t.home.oneJob : $t.home.moreJobs}</span>
 							<svg
 								class="h-5 w-5 text-gray-400"
 								viewBox="0 0 20 20"
@@ -98,13 +102,21 @@
 				<div
 					class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
 				>
-					<img
-						src={current}
-						alt="App screenshot"
-						width="2432"
-						height="1442"
-						class="w-[76rem] rounded-md shadow-2xl ring-1 ring-gray-900/10"
-					/>
+					<!-- use:imageFlip={{
+								images: media,
+								duration,
+								interval,
+								resize: false
+							}} -->
+					{#if current}
+						<img
+							src={current.src}
+							srcset={current.srcset}
+							alt={current.alt}
+							sizes={current.sizes}
+							class="w-[76rem] aspect-[16/9] rounded-md shadow-2xl ring-1 ring-gray-900/10"
+						/>
+					{/if}
 				</div>
 			</div>
 		</div>

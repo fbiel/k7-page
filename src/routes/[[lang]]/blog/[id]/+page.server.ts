@@ -3,14 +3,14 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const blogId = params.id;
+	const post = await getArticleEntry(fetch, 'blogs', blogId, params.lang ?? 'de');
 	try {
 		return {
-			lazy: {
-				post: getArticleEntry(fetch, 'blogs', blogId, params.lang ?? 'de')
-			}
+			post,
+			blogId
 		};
 	} catch (error) {
 		console.error(error);
-		return { lazy: { post: null } };
+		return { post: null };
 	}
 };

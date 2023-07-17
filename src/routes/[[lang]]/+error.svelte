@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { error } from '@sveltejs/kit';
+	import { t } from '$lib/stores/i18n';
 </script>
 
 <div class="p-32 flex flex-col justify-center">
@@ -11,14 +11,14 @@
 			alt="K7-Konzept Karlsruhe GmbH company logo"
 		/>
 		<p class="text-brand-600 text-lg font-semibold">404</p>
-		<h1>Seite nicht gefunden.</h1>
+		<h1>{$t.error404.title}</h1>
 
-		<p class="text-gray-600 font-light">
-			Sorry, wir konnten nicht finden wonach du gesucht hast.<br />
+		<p class="text-gray-600 my-5 font-light">
+			{$t.error404.description}
 		</p>
 		{#if $page.error?.message}
 			<div class="text-red-600 my-12 text-lg">{$page.error?.message}</div>
 		{/if}
-		<a href="/">Zur Startseite →</a>
+		<a href={$t.link}>Zur Startseite →</a>
 	</div>
 </div>

@@ -1,5 +1,9 @@
+import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 import type { ListArticleResponseItem } from './queryCms.server';
 
+export const ldStringify = (ld: unknown) => {
+	return `<script type="application/ld+json">${JSON.stringify(ld)}</script>`;
+};
 export const companyLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
@@ -55,12 +59,27 @@ export const createBreadcrumbLd = (type: string, title: string, id: string) => {
 	};
 };
 
-export const createArticleLd = (type: string, id: string, entry: ListArticleResponseItem) => {
+export const createArticleLd = (
+	type: string,
+	id: string | undefined | null,
+	entry: ListArticleResponseItem | undefined | null
+) => {
 	const cover =
-		import.meta.env.VITE_CMS +
+		PUBLIC_IMAGE_SERVER +
 		(entry?.cover?.data?.attributes?.formats?.small.url ?? entry?.cover?.data.attributes?.url);
+
+	if (!id || !entry)
+		return {
+			mainEntityOfPage: {
+				'@type': 'WebPage',
+				'@id': `https://k-7.eu/${type}/${id}`
+			},
+			publisher: companyLd,
+			copyRightHolder: companyLd
+		};
+
 	const thumbnail =
-		import.meta.env.VITE_CMS +
+		PUBLIC_IMAGE_SERVER +
 		(entry?.cover?.data?.attributes?.formats?.thumbnail.url ?? entry?.cover?.data.attributes?.url);
 	return {
 		'@context': 'https://schema.org',

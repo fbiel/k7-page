@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
+	import { t } from '$lib/stores/i18n';
 	import type { ListReferencesResponse } from '$lib/utils/queryCms.server';
 	import { stringify } from 'postcss';
 	import { flip } from 'svelte/animate';
@@ -29,7 +30,7 @@
 />
 
 <div class="container mx-auto max-w-5xl hidden lg:block">
-	<h4 class="text-center my-5 text-sm text-slate-700/60 italic">Unsere Kunden:</h4>
+	<h4 class="text-center my-5 text-sm text-slate-700/60 italic">{$t.ourClients}:</h4>
 	<ul class="flex justify-around list-none items-center">
 		{#each swappingList as reference (reference.companyName)}
 			<li
@@ -38,11 +39,13 @@
 				out:fade={{ duration: duration * 0.5, easing: quintOut }}
 				class="border border-neutral-300 bg-gray-200/70 w-32 h-32 rounded-lg p-4 flex shadow-neutral-300 shadow-sm"
 			>
-				<img
-					class="ref-image w-24 m-auto brightness-50"
-					src={PUBLIC_IMAGE_SERVER + reference.logo?.data.attributes?.url}
-					alt={reference.logo?.data.attributes?.alternativeText}
-				/>
+				<a href={reference.link} class="m-auto">
+					<img
+						class="ref-image w-24 brightness-50"
+						src={PUBLIC_IMAGE_SERVER + reference.logo?.data.attributes?.url}
+						alt={reference.logo?.data.attributes?.alternativeText}
+					/>
+				</a>
 			</li>
 		{/each}
 	</ul>

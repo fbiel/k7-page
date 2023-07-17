@@ -7,49 +7,27 @@
 	import ServiceSection from './service-section.svelte';
 	export let data: PageData;
 
-	import { setLang, t } from '$lib/stores/i18n';
-	if (data.lang === 'en') {
-		setLang('en');
-	}
-	if (!data.lang || data.lang === 'de') {
-		setLang('de');
-	}
+	import { createSourceset } from '$lib/utils/media';
 </script>
 
-{#await data?.lazy.jobs}
+{#if data?.jobs && data.slideShow}
+	<Hero jobCount={data.jobs?.length ?? 0} current={data.randomCover} />
+{:else}
 	<Hero />
-{:then jobs}
-	<Hero jobCount={jobs?.length ?? 0} />
-{:catch}
-	<Hero />
-{/await}
+{/if}
 <div class="flex flex-col gap-24">
-	{#await data?.lazy?.references then references}
-		{#if references}
-			<References {references} />
-		{/if}
-	{:catch error}
-		Leider kam es zu einem Fehler beim Laden der Referenzen!
-	{/await}
+	{#if data?.references}
+		<References references={data.references} />
+	{/if}
 
-	{#await data?.lazy?.departments then departments}
-		{#if departments}
-			<ServiceSection services={departments} />
-		{/if}
-	{:catch error}
-		Leider kam es zu einem Fehler beim Laden unserer Leistungen!
-	{/await}
+	{#if data?.departments}
+		<ServiceSection services={data.departments} />
+	{/if}
 
-	{#await data?.lazy?.articles then articles}
-		{#if articles}
-			<BlogSection posts={articles.data} />
-		{/if}
-	{:catch error}
-		Leider kam es zu einem Fehler beim Laden unserer Leistungen!
-	{/await}
-	{#await data?.lazy?.details then detail}
-		{#if detail}
-			<ContactSection detail={detail.data.attributes} />
-		{/if}
-	{/await}
+	{#if data?.articles}
+		<BlogSection posts={data.articles.data} />
+	{/if}
+	{#if data?.details}
+		<ContactSection detail={data.details.data.attributes} />
+	{/if}
 </div>

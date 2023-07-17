@@ -8,8 +8,12 @@
 	export let data: PageData;
 </script>
 
-{#await data.lazy?.posts then posts}
-	<div class="bg-transparent">
+<svelte:head>
+	<title>K7: {$t.projects.projects}</title>
+</svelte:head>
+{#if data?.posts}
+	{@const posts = data.posts}
+	<div class="bg-transparent py-8">
 		<div class="mx-auto max-w-7xl px-6 lg:px-8">
 			<div class="mx-auto max-w-2xl text-center">
 				<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -28,7 +32,7 @@
 						<div class="relative w-full">
 							<img
 								src={PUBLIC_IMAGE_SERVER + post.cover?.data?.attributes?.formats?.medium?.url}
-								alt={post.cover?.data?.attributes?.alternativeText}
+								alt={post.cover?.data?.attributes?.alternativeText ?? post.title}
 								class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
 							/>
 							<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -43,39 +47,38 @@
 									})}
 								</time>
 								<a
-									href={`projects/${post.title}`}
+									href={`projects/${item.id}`}
 									class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
 								>
 									{post.departments?.data?.map((d) => d.attributes.name).join(', ') ?? ''}
 								</a>
 							</div>
-							<div class="group relative">
+							<a href={`projects/${item.id}`} class="group relative">
 								<h3
-									class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+									class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 group-hover:underline"
 								>
-									<a href={`projects/${item.id}`}>
-										<span class="absolute inset-0" />
-										{post.title}
-									</a>
+									<span class="absolute inset-0" />
+									{post.title}
 								</h3>
 								<p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
-							</div>
+							</a>
 							<div class="relative mt-8 flex items-center gap-x-4">
 								<img
 									src={PUBLIC_IMAGE_SERVER +
 										post.author?.data?.attributes?.thumbnail?.data?.attributes?.formats?.thumbnail
 											?.url}
-									alt={post.cover?.data?.attributes?.alternativeText}
+									alt={post.cover?.data?.attributes?.alternativeText ??
+										'Profile picture of ' + post.author?.data?.attributes?.name}
 									class="h-10 w-10 rounded-full bg-gray-100"
 								/>
 								<div class="text-sm leading-6">
-									<p class="font-semibold text-gray-900">
-										<a href={`team/${post.author?.data?.id}`}>
+									<p class="font-semibold text-gray-900 !mb-0">
+										<a href={`${$t.link}team`}>
 											<span class="absolute inset-0" />
 											{post.author?.data?.attributes?.name}
 										</a>
 									</p>
-									<p class="text-gray-600">{post.author?.data.attributes.position}</p>
+									<p class="text-gray-600 !mt-0">{post.author?.data.attributes.position}</p>
 								</div>
 							</div>
 						</div>
@@ -83,8 +86,9 @@
 				{/each}
 			</div>
 			{#if posts?.meta}
+				<div class="mt-16" />
 				<Pagination meta={posts?.meta} href={$page.url.href} />
 			{/if}
 		</div>
 	</div>
-{/await}
+{/if}

@@ -8,39 +8,33 @@
 	import IconHeartbeat from '$lib/icons/icon-heartbeat.svelte';
 	let features = [
 		{
-			name: 'Flexible Arbeitszeiten',
-			description:
-				'Wir bieten flexible Arbeitszeiten mit Gleitzeit und Überstundenabbau, damit du deine Arbeit und dein Privatleben in Einklang bringen kannst.',
+			name: $t.jobs.features.flexibleWorkingHours.name,
+			description: $t.jobs.features.flexibleWorkingHours.description,
 			icon: IconClockRecord
 		},
 		{
-			name: 'Homeoffice',
-			description:
-				'Jeder Mitarbeiter erhält einen Laptop. Wir haben unsere Infrastruktur so optimiert, dass du von überall aus arbeiten kannst.',
+			name: $t.jobs.features.homeoffice.name,
+			description: $t.jobs.features.homeoffice.description,
 			icon: IconHomeHeart
 		},
 		{
-			name: 'Weiterbildung',
-			description:
-				'Jeder unserer Mitarbeiter kennt sich in Disziplinen außerhalb seines Fachgebiets aus. Wir unterstützen dich bei der Weiterbildung.',
+			name: $t.jobs.features.training.name,
+			description: $t.jobs.features.training.description,
 			icon: IconSchool
 		},
 		{
-			name: 'Zentrale Lage',
-			description:
-				'Unser Büro liegt zentral in Karlsruhe in der Nähe des ZKM und ist gut mit den öffentlichen Verkehrsmitteln erreichbar.',
+			name: $t.jobs.features.centralLocation.name,
+			description: $t.jobs.features.centralLocation.description,
 			icon: IconTrack
 		},
 		{
-			name: 'Obst und Getränke',
-			description:
-				'Alle Mitarbeiter erhalten kostenlos Obst und Wasser, Kaffee sowie verschiedene Kaltgetränke.',
+			name: $t.jobs.features.fruitAndBeverages.name,
+			description: $t.jobs.features.fruitAndBeverages.description,
 			icon: IconCherry
 		},
 		{
-			name: 'Ergonomische Arbeitsplätze',
-			description:
-				'Jeder Arbeitsplatz ist mit 2 Monitoren und einem höhenverstellbaren Schreibtisch ausgestattet.',
+			name: $t.jobs.features.ergonomicWorkplace.name,
+			description: $t.jobs.features.ergonomicWorkplace.description,
 			icon: IconHeartbeat
 		}
 	];
@@ -48,13 +42,9 @@
 
 <slot />
 <div class="container max-w-5xl mx-auto py-8 px-5">
-	<h3>Wir bieten dir</h3>
+	<h3>{$t.jobs.weOffer}</h3>
 	<p class="relative mt-6 text-md leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-		Unser Team besteht aus Menschen unterschiedlicher Hintergründe, Expertisen und Perspektiven. Wir
-		schätzen Vielfalt und glauben daran, dass Innovation durch den Austausch verschiedener Ideen und
-		Sichtweisen entsteht. Bei uns findest du eine offene, dynamische Arbeitsumgebung, in der du
-		deine Ideen einbringen und gemeinsam mit einem engagierten Team an spannenden Projekten arbeiten
-		kannst.
+		{$t.jobs.diversity}
 	</p>
 	<div class="px-6 lg:px-8 py-12">
 		<dl

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
+	import { t } from '$lib/stores/i18n';
 	import type { ListArticleResponseItem } from '$lib/utils/queryCms.server';
 
 	export let posts: { attributes: ListArticleResponseItem; id: number }[] = [];
@@ -8,10 +9,11 @@
 <div class="bg-transparent">
 	<div class="mx-auto max-w-5xl px-6 lg:px-8">
 		<div class="mx-auto max-w-2xl text-center">
-			<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Aus dem Blog</h2>
+			<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+				{$t.blog.fromTheblog}
+			</h2>
 			<p class="mt-2 text-lg leading-8 text-gray-600">
-				Profitieren Sie von unserem Wissen und unserer Erfahrung. Wir teilen unsere Erkenntnisse und
-				Erfahrungen in unserem Blog.
+				{$t.blog.benefit}
 			</p>
 		</div>
 		<div
@@ -38,7 +40,7 @@
 								})}
 							</time>
 							<a
-								href={`blog/${post.title}`}
+								href={`${$t.link}blog/${post.title}`}
 								class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
 							>
 								{post.departments?.data?.map((d) => d.attributes.name).join(', ') ?? ''}

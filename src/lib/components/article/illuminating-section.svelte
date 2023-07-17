@@ -15,8 +15,8 @@
 
 <IntersectionObserver let:intersecting top={-200} onIntersectingChanged={() => restart()}>
 	<!-- <div class="bg-black h-96 w-full transition-colors delay-500" class:bg-red-600={intersecting} /> -->
-	<div class="flex flex-col my-8 py-20 bg-gradient-to-tr from-stone-800 to-cyan-950 w-screen">
-		<div class="flex flex-row gap-5 justify-start max-w-5xl mx-auto">
+	<div class="flex flex-col my-8 py-20 bg-gradient-to-tr from-stone-800 to-cyan-950 w-full">
+		<div class="flex flex-row gap-5 justify-start max-w-3xl mx-auto">
 			<div class="iconContainer" class:intersecting>
 				<div class="icon">
 					{@html fragment.icon}
@@ -29,7 +29,7 @@
 					class="flex flex-col textBlock -mt-2"
 					class:intersecting
 				>
-					<h2 class="topic">adsfadsf: {fragment.topic}</h2>
+					<h2 class="topic">{fragment.topic}</h2>
 					<p>
 						<span
 							class={`text-2xl bg-clip-text text-transparent bg-gradient-to-r standard-from-${fragment.gradientColor}-medium standard-to-${fragment.color}-medium`}

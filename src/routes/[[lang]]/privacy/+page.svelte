@@ -1,3 +1,10 @@
+<script>
+	import { t } from '$lib/stores/i18n';
+</script>
+
+<svelte:head>
+	<title>K7: {$t.gdpr}</title>
+</svelte:head>
 <div class="my-10 container mx-auto max-w-5xl prose prose-slate">
 	<h1>Datenschutz&shy;erkl&auml;rung</h1>
 	<h2>1. Datenschutz auf einen Blick</h2>

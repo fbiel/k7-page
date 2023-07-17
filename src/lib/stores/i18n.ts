@@ -1,6 +1,27 @@
 import { writable } from 'svelte/store';
 
 export const de = {
+	link: '/',
+	language: 'de',
+	pagination: {
+		previous: 'Zurück',
+		next: 'Weiter',
+		results: (from: number, to: number, total: number) =>
+			`Zeige ${from} bis ${to} von ${total} Ergebnissen`
+	},
+	error404: {
+		title: 'Seite nicht gefunden',
+		description: 'Sorry, wir konnten nicht finden wonach du gesucht hast.'
+	},
+	blog: {
+		back: 'Zurück zum Blog',
+		publishedAt: 'Veröffentlicht am:',
+		updatedAt: 'Letzte Aktualisierung:',
+		fromTheblog: 'Aus dem Blog',
+		benefit:
+			'Profitieren Sie von unserem Wissen und unserer Erfahrung. Wir teilen unsere Erkenntnisse und Erfahrungen in unserem Blog.'
+	},
+
 	article: {
 		back: 'Zurück zu allen Einträgen',
 		publishedAt: 'Veröffentlicht am:',
@@ -24,27 +45,83 @@ export const de = {
 	by: 'von',
 	company: 'K7-Konzept Karlsruhe',
 	home: {
-		claim: 'Verlässliche Qualität, maßgeschneiderte Lösungen',
+		claim: 'Maßgeschneiderte Lösungen, verlässliche Qualität',
 		claim2: ' - Ihr Experte für industriellen Fortschritt.',
 		description:
 			'K7-Konzept Karlsruhe ist ein junges Unternehmen, das sich auf Sondermaschinenbau sowie die Entwicklung von Software und Hardware für industrielle Anwendungen spezialisiert hat.',
-		contactUs: 'Kontakt aufnehmen'
+		contactUs: 'Kontakt aufnehmen',
+		oneJob: 'Job verfügbar',
+		moreJobs: 'Jobs verfügbar'
 	},
 	services: {
 		services: 'Leistungen',
 		ourServices: 'Unsere Leistungen',
-		text: 'Wir bieten Ihnen ein breites Spektrum an Dienstleistungen an. Von der Konstruktion über die Softwareentwicklung bis hin zur Planung und Simulation.'
+
+		text: 'Wir bieten Ihnen ein breites Spektrum an Dienstleistungen an. Von der Konstruktion über die Softwareentwicklung bis hin zur Planung und Simulation.',
+		oneHand: 'Alles aus einer Hand',
+		knowHow: 'Kleine Teams, viel Know-How',
+		smallTeams:
+			'Wir halten unsere Projektteams möglichst klein, um die Kommunikation und die Zusammenarbeit zu vereinfachen. Das ist möglich, weil unsere Mitarbeiter:innen über ein breites Spektrum an Fähigkeiten verfügen. So können wir die meisten Aufgaben inhouse erledigen und sind nicht auf externe Dienstleister angewiesen.'
 	},
 	news: 'Neuigkeiten',
 	jobs: {
 		noJobsAvailable: 'Aktuell haben wir keine offenen Stellenausschreibungen.',
-		career: 'Karriere'
+		career: 'Karriere',
+		futureTogether: 'Gemeinsam die Zukunft gestalten',
+		proud:
+			'Wir sind stolz darauf, ein junges und vielfältiges Team zu sein. Als Arbeitgeber sind wir fest davon überzeugt, dass der Erfolg eines Unternehmens untrennbar mit dem Erfolg seiner Mitarbeiter verbunden ist.',
+		aboutPeople:
+			'Bei K7 investieren wir nicht nur in Technologie und Projekte, sondern vor allem in unsere talentierten Mitarbeiter. Wir unterstützen dich dabei, deine Fähigkeiten weiterzuentwickeln, neue Herausforderungen anzunehmen und persönlich zu wachsen. Durch regelmäßige Schulungen, individuelles Coaching und Mentoring fördern wir deine berufliche Entwicklung und helfen dir, deine Karriereziele zu erreichen.',
+		openPositions: 'Offene Stellenanzeigen',
+		claim:
+			'Wenn du Teil eines Unternehmens sein möchtest, das dir nicht nur einen Job bietet, sondern auch echte Möglichkeiten zur persönlichen und beruflichen Entwicklung, dann bewirb dich jetzt bei K7. Gemeinsam können wir Großes erreichen und die Zukunft des Sondermaschinenbaus und industrieller Technologien gestalten. Wir freuen uns darauf, von dir zu hören!',
+		error:
+			'Beim Laden der Stellenanzeigen ist ein Fehler aufgetreten. Bitte versuche es später nochmal.',
+		weOffer: 'Wir bieten',
+		diversity:
+			'Unser Team besteht aus Menschen unterschiedlicher Hintergründe, Expertisen und Perspektiven. Wir schätzen Vielfalt und glauben daran, dass Innovation durch den Austausch verschiedener Ideen und Sichtweisen entsteht. Bei uns findest du eine offene, dynamische Arbeitsumgebung, in der du deine Ideen einbringen und gemeinsam mit einem engagierten Team an spannenden Projekten arbeiten kannst.',
+		features: {
+			flexibleWorkingHours: {
+				name: 'Flexible Arbeitszeiten',
+				description:
+					'Wir bieten flexible Arbeitszeiten mit Gleitzeit und Überstundenabbau, damit du deine Arbeit und dein Privatleben in Einklang bringen kannst.'
+			},
+			homeoffice: {
+				name: 'Homeoffice',
+				description:
+					'Jeder Mitarbeiter erhält einen Laptop. Wir haben unsere Infrastruktur so optimiert, dass du von überall aus arbeiten kannst.'
+			},
+			training: {
+				name: 'Weiterbildung',
+				description:
+					'Jeder unserer Mitarbeiter kennt sich in Disziplinen außerhalb seines Fachgebiets aus. Wir unterstützen dich bei der Weiterbildung.'
+			},
+			centralLocation: {
+				name: 'Zentrale Lage',
+				description:
+					'Unser Büro liegt zentral in Karlsruhe in der Nähe des ZKM und ist gut mit den öffentlichen Verkehrsmitteln erreichbar.'
+			},
+			fruitAndBeverages: {
+				name: 'Obst und Getränke',
+				description:
+					'Alle Mitarbeiter erhalten kostenlos Obst und Wasser, Kaffee sowie verschiedene Kaltgetränke.'
+			},
+			ergonomicWorkplace: {
+				name: 'Ergonomischer Arbeitsplatz',
+				description:
+					'Wir bieten ergonomische Arbeitsplätze mit höhenverstellbaren Schreibtischen und ergonomischen Stühlen.'
+			}
+		}
 	},
 	team: {
 		missing:
 			'Sorry, bei der Vorstellung unseres Teams sind wir noch nicht ganz so weit. Wir arbeiten aber mit Hochdruck daran. Schau doch in den nächsten Tagen nochmal vorbei!',
 		team: 'Unser Team',
-		teamDescription: ''
+		meatLeadership: 'Triff unser Führungsteam',
+		teamDescription:
+			'Unser Führungsteam besteht aus talentierten und leidenschaftlichen Menschen, die sich dafür einsetzen, das bestmögliche Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.',
+		yourPicture: 'Du möchtest dein Bild auch hier sehen?',
+		apply: 'Dann bewirb dich jetzt!'
 	},
 	aboutUs: 'Über uns',
 	imprint: 'Impressum',
@@ -79,6 +156,7 @@ export const de = {
 		nameNecessary: 'Name ist erforderlich',
 		betterWriteSomething: 'Sie müssen schon was schreiben',
 		talkAboutProject: 'Lassen Sie uns über Ihr Projekt reden!',
+		weHelp: 'Wir helfen Unternehmen bei der Umsetzung Ihrer Projekte.',
 		whatIsItAbout: "Worum geht's denn?",
 		invalidEmail: 'Ungültige Email',
 		sendUsAMessage: 'Schreiben Sie uns eine Nachricht',
@@ -125,7 +203,7 @@ export const de = {
 		projectSelection:
 			'Hier handelt es sich nur um eine Auswahl von Projekten - leider können wir nicht alle Projekte veröffentlichen.',
 		lookingFor:
-			'ie suchen nach einem Spezialisten für eine bestimmte Technologie oder Fähigkeit? Hier finden Sie eine Auswahl der Technologien und Fähigkeiten, die wir in unserem Team haben.',
+			'Sie suchen nach einem Spezialisten für eine bestimmte Technologie oder Fähigkeit? Hier finden Sie eine Auswahl der Technologien und Fähigkeiten, die wir in unserem Team haben.',
 		skills: 'Technologien und Fähigkeiten',
 		errorLoadingTitle: 'Fehler beim Laden der Abteilung',
 		errorLoadingMessage:
@@ -155,6 +233,26 @@ export const de = {
 export type TranslationFile = typeof de;
 
 export const en: TranslationFile = {
+	link: '/en/',
+	language: 'en',
+	pagination: {
+		previous: 'Previous',
+		next: 'Next',
+		results: (from: number, to: number, total: number) =>
+			`Showing ${from} to ${to} of ${total} results`
+	},
+	error404: {
+		title: 'Page not found',
+		description: 'The page you are looking for does not exist.'
+	},
+	blog: {
+		back: 'Back to all entries',
+		publishedAt: 'Published on:',
+		updatedAt: 'Last update:',
+		fromTheblog: 'From the blog',
+		benefit:
+			'Profit from our knowledge and experience. We share our insights and experiences in our blog.'
+	},
 	aboutUs: 'About us',
 	article: {
 		back: 'Back to all entries',
@@ -178,10 +276,11 @@ export const en: TranslationFile = {
 	company: 'K7-Konzept Karlsruhe',
 	community: 'Community',
 	contact: {
-		adress: 'address',
+		adress: 'Address',
 		betterWriteSomething: 'You should at least write something',
+		weHelp: 'We help companies making their projects reality.',
 		email: 'E-mail',
-		hours: 'working hours',
+		hours: 'Wsorking hours',
 		talkAboutProject: 'Let’s talk about your project',
 		name: 'First name',
 		surname: 'Last name',
@@ -201,7 +300,7 @@ export const en: TranslationFile = {
 		yourName: 'Your name',
 		gdpr: 'I accept the privacy policy'
 	},
-	copied: 'copied',
+	copied: 'Copied',
 	copy: 'To the clipboard',
 	department: {
 		allServices: 'All services',
@@ -227,7 +326,9 @@ export const en: TranslationFile = {
 		claim2: ' - Ihr Experte für industriellen Fortschritt.',
 		contactUs: 'Get in touch',
 		description:
-			'K7-concept Karlsruhe is a young company specializing in the construction of special machines and the development of software and hardware for industrial applications.'
+			'K7-concept Karlsruhe is a young company specializing in the construction of special machines and the development of software and hardware for industrial applications.',
+		oneJob: 'job available',
+		moreJobs: 'jobs available'
 	},
 	imprint: 'Imprint',
 	imprintPage: {
@@ -241,7 +342,50 @@ export const en: TranslationFile = {
 	},
 	jobs: {
 		career: 'Career',
-		noJobsAvailable: 'We currently have no vacancies.'
+		noJobsAvailable: 'We currently have no vacancies.',
+		openPositions: 'Open positions',
+		futureTogether: 'Shape the future together with us',
+		proud:
+			'We are proud to be a young and diverse team. As an employer, we firmly believe that the success of a company is inextricably linked to the success of its employees.',
+		aboutPeople:
+			'At K7, we invest not only in technology and projects, but above all in our talented employees. We support you in developing your skills, taking on new challenges and growing personally. Through regular training, individual coaching and mentoring, we promote your professional development and help you achieve your career goals.',
+		claim:
+			'If you want to be part of a company that not only offers you a job, but also real opportunities for personal and professional development, then apply now at K7. Together we can achieve great things and shape the future of special machine construction and industrial technologies. We look forward to hearing from you!',
+		error: 'An error occurred while loading the job advertisements. Please try again later.',
+		weOffer: 'What we offer',
+		diversity:
+			'Our team consists of people from different backgrounds, expertise and perspectives. We appreciate diversity and believe that innovation arises from the exchange of different ideas and perspectives. Here you will find an open, dynamic working environment where you can contribute your ideas and work together with a dedicated team on exciting projects.',
+		features: {
+			flexibleWorkingHours: {
+				name: 'Flexible Working hours',
+				description:
+					'We offer flexible working hours with flexitime and overtime reduction so that you can balance your work and private life.'
+			},
+			homeoffice: {
+				name: 'Remote work',
+				description:
+					'Each employee receives a laptop. We have optimized our infrastructure so that you can work from anywhere.'
+			},
+			training: {
+				name: 'Training',
+				description:
+					'Each of our employees is familiar with disciplines outside their field of expertise. We support you in further education.'
+			},
+			centralLocation: {
+				name: 'Central location',
+				description:
+					'Our office is centrally located in Karlsruhe near the ZKM and is easily accessible by public transport.'
+			},
+			fruitAndBeverages: {
+				name: 'Fruit and beverages',
+				description: 'All employees receive free fruit and water, coffee and various cold drinks.'
+			},
+			ergonomicWorkplace: {
+				name: 'Ergonomic workplace',
+				description:
+					'We offer ergonomic workplaces with height-adjustable desks and ergonomic chairs.'
+			}
+		}
 	},
 	news: 'News',
 	newsPage: {
@@ -272,12 +416,21 @@ export const en: TranslationFile = {
 	services: {
 		ourServices: 'Our services',
 		services: 'Services',
-		text: 'We offer you a wide range of services. \nFrom design and software development to planning and simulation.'
+		text: 'We offer you a wide range of services. \nFrom design and software development to planning and simulation.',
+		oneHand: 'Everything from one source',
+		knowHow: 'Small teams, a lot of know-how',
+		smallTeams:
+			'We keep our project teams as small as possible in order to simplify communication and collaboration. \nThis is possible because our employees have a wide range of skills. \nThis allows us to do most of the tasks in-house and are not dependent on external service providers.'
 	},
 	team: {
 		missing:
 			'Sorry, we are not quite there yet when it comes to introducing our team. \nBut we are working on it. \nCheck back in the next few days!',
-		team: 'team'
+		team: 'Team',
+		meatLeadership: 'Meet our leadership team',
+		teamDescription:
+			'Our leadership team consists of talented and passionate people who are committed to creating the best possible experience for our customers and our employees.',
+		yourPicture: 'Would you like to see your picture here too?',
+		apply: 'Then apply now!'
 	},
 	wwa: {
 		customerObsessed: 'Customer obsessed',
@@ -301,4 +454,6 @@ export const en: TranslationFile = {
 };
 
 export const t = writable<TranslationFile>(de);
-export const setLang = (lang: 'de' | 'en') => t.set(lang === 'de' ? de : en);
+export const setLang = (lang: 'de' | 'en') => {
+	t.set(lang === 'de' ? de : en);
+};

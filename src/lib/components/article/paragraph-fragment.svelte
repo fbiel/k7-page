@@ -3,8 +3,9 @@
 	export let paragraph: ContentFragmentsParagraph;
 </script>
 
-<div />
-<h2 class:!gradient={paragraph.highlight} class="max-w-5xl px-6 mx-auto">{paragraph.title}</h2>
-<div class="prose max-w-5xl px-6 mx-auto text-lg my-8">
-	{@html paragraph.content}
+<div class="flex flex-col mx-auto max-w-3xl px-6">
+	<h2 class:!gradient={paragraph.highlight}>{paragraph.title}</h2>
+	<div class="text-lg my-8 prose">
+		{@html paragraph.content}
+	</div>
 </div>

@@ -4,12 +4,12 @@
  * @author Rose Pritchard
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
 	color: #ccc;
 	background: none;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	font-size: 1em;
+	font-size: 0.75em;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -25,25 +25,24 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
 	padding: 1em;
-	margin: .5em 0;
+	margin: 0.5em 0;
 	overflow: auto;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
 	background: #2d2d2d;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
+:not(pre) > code[class*='language-'] {
+	padding: 0.1em;
+	border-radius: 0.3em;
 	white-space: normal;
 }
 

@@ -7,10 +7,7 @@
 	export let data: PageData;
 </script>
 
-<div class="mx-auto mt-10">
-	{#await data?.lazy?.post then post}
-		{#if post}
-			<Article article={post} lang={$page.data.lang} />
-		{/if}
-	{/await}
-</div>
+<div class="mt-8" />
+{#if data?.post}
+	<Article article={data.post} id={data.blogId} />
+{/if}

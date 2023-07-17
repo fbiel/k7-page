@@ -8,9 +8,7 @@
 		fragment.image?.data?.attributes?.url;
 </script>
 
-<img
-	src={url}
-	alt={fragment.image?.data.attributes?.alternativeText}
-	class="w-full max-w-5xl mx-auto px-6"
-/>
-<p class="!mt-0 text-xs max-w-5xl mx-auto">{fragment.caption}</p>
+<div class="flex flex-col gap-1 px-6 max-w-3xl mx-auto">
+	<img src={url} alt={fragment.image?.data.attributes?.alternativeText} class="w-full" />
+	<p class="!mt-0 text-xs">{fragment.caption}</p>
+</div>

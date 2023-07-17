@@ -2,19 +2,26 @@
 	import { page } from '$app/stores';
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 	import Pagination from '$lib/components/pagination.svelte';
+	import { t } from '$lib/stores/i18n';
+
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
 
-{#await data.lazy?.posts then posts}
-	<div class="bg-transparent">
+<svelte:head>
+	<title>K7: Blog</title>
+</svelte:head>
+{#if data?.posts}
+	{@const posts = data.posts}
+	<div class="bg-transparent py-8">
 		<div class="mx-auto max-w-7xl px-6 lg:px-8">
 			<div class="mx-auto max-w-2xl text-center">
-				<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Aus dem Blog</h2>
+				<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+					{$t.blog.fromTheblog}
+				</h2>
 				<p class="mt-2 text-lg leading-8 text-gray-600">
-					Profitieren Sie von unserem Wissen und unserer Erfahrung. Wir teilen unsere Erkenntnisse
-					und Erfahrungen in unserem Blog.
+					{$t.blog.benefit}
 				</p>
 			</div>
 			<div
@@ -47,17 +54,15 @@
 									{post.departments?.data?.map((d) => d.attributes.name).join(', ') ?? ''}
 								</a>
 							</div>
-							<div class="group relative">
+							<a href={`blog/${item.id}`} class="group relative">
 								<h3
-									class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+									class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 group-hover:underline"
 								>
-									<a href={`blog/${item.id}`}>
-										<span class="absolute inset-0" />
-										{post.title}
-									</a>
+									<span class="absolute inset-0" />
+									{post.title}
 								</h3>
 								<p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
-							</div>
+							</a>
 							<div class="relative mt-8 flex items-center gap-x-4">
 								<img
 									src={PUBLIC_IMAGE_SERVER +
@@ -86,4 +91,4 @@
 			{/if}
 		</div>
 	</div>
-{/await}
+{/if}

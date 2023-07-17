@@ -8,8 +8,12 @@
 	export let data: PageData;
 </script>
 
+<svelte:head>
+	<title>K7: {data.department?.attributes.name ?? $page.params.department}</title>
+</svelte:head>
+
 {#if data.department}
-	<div class="mx-auto max-w-5xl py-16 px-4 sm:py-24 lg:grid lg:grid-cols-2 lg:gap-x-8">
+	<div class="mx-auto max-w-5xl py-8 px-4 lg:grid lg:grid-cols-2 lg:gap-x-8">
 		<div class="lg:max-w-lg lg:self-end my-auto">
 			<nav aria-label="Breadcrumb">
 				<ol role="list" class="flex items-center space-x-2 list-none">
@@ -32,9 +36,7 @@
 					<li class="list-none">
 						<div class="flex items-center text-sm">
 							<a
-								href={`/${$page.params.lang ? $page.params.lang + '/' : ''}services/${
-									data.department.attributes.route
-								}`}
+								href={`/${$t.link}services/${data.department.attributes.route}`}
 								class="font-medium text-gray-500 hover:text-gray-900"
 								>{data.department.attributes.name}</a
 							>
@@ -42,7 +44,7 @@
 					</li>
 				</ol>
 			</nav>
-			<div class="mt-4">
+			<div>
 				<h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 					{data.department.attributes.name}
 				</h1>

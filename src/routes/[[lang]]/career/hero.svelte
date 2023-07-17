@@ -1,22 +1,17 @@
 <script>
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
+	import { t } from '$lib/stores/i18n';
 </script>
 
 <div class="mx-auto max-w-5xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
 	<div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
 		<div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-			<h1 class="mt-10 gradient">Gemeinsam die Zukunft gestalten</h1>
+			<h1 class="mt-10 gradient">{$t.jobs.futureTogether}</h1>
 			<p class="relative mt-6 text-md leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-				Wir sind stolz darauf, ein junges und vielfältiges Team zu sein. Als Arbeitgeber sind wir
-				fest davon überzeugt, dass der Erfolg eines Unternehmens untrennbar mit dem Erfolg seiner
-				Mitarbeiter verbunden ist.
+				{$t.jobs.proud}
 			</p>
 			<p class="relative mt-6 text-md leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-				Bei K7 investieren wir nicht nur in Technologie und Projekte, sondern vor allem in unsere
-				talentierten Mitarbeiter. Wir unterstützen dich dabei, deine Fähigkeiten weiterzuentwickeln,
-				neue Herausforderungen anzunehmen und persönlich zu wachsen. Durch regelmäßige Schulungen,
-				individuelles Coaching und Mentoring fördern wir deine berufliche Entwicklung und helfen
-				dir, deine Karriereziele zu erreichen.
+				{$t.jobs.aboutPeople}
 			</p>
 		</div>
 		<div class="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">

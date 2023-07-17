@@ -2,14 +2,13 @@ import { getDepartments, getJobs, getReferences, queryArticles } from '$lib/util
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
+	const jobs = await getJobs(fetch);
 	try {
 		return {
-			lazy: {
-				jobs: getJobs(fetch)
-			}
+			jobs
 		};
 	} catch (error) {
 		console.error(error);
-		return null;
+		return { jobs: null };
 	}
 };

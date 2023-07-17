@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
+	import { t } from '$lib/stores/i18n';
+	import { createSourceset } from '$lib/utils/media';
 	import type { DepartmentResponseItem } from '$lib/utils/queryCms.server';
 
 	export let services: DepartmentResponseItem[] | undefined;
@@ -8,15 +10,12 @@
 <div class="py-24 from-brand-700 to-cyan-950 bg-gradient-to-tr">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div class="mx-auto max-w-2xl lg:text-center">
-			<h2 class="text-base font-semibold leading-7 text-sky-200">Alles aus einer Hand</h2>
+			<h2 class="text-base font-semibold leading-7 text-sky-200">{$t.services.oneHand}</h2>
 			<p class="mt-2 text-3xl font-bold tracking-tight text-sky-300 sm:text-4xl">
-				Kleine Teams, viel Know-How
+				{$t.services.knowHow}
 			</p>
 			<p class="text-lg mt-6 leading-8 text-slate-200">
-				Wir halten unsere Projektteams möglichst klein, um die Kommunikation und die Zusammenarbeit
-				zu vereinfachen. Das ist möglich, weil unsere Mitarbeiter:innen über ein breites Spektrum an
-				Fähigkeiten verfügen. So können wir die meisten Aufgaben inhouse erledigen und sind nicht
-				auf externe Dienstleister angewiesen.
+				{$t.services.smallTeams}
 			</p>
 		</div>
 		{#if services && services.length > 0}
@@ -25,12 +24,15 @@
 					class="grid max-w-xl grid-cols-1 gap-x-16 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
 				>
 					{#each services as feature}
+						{@const sourceset = createSourceset(feature.attributes?.icon?.data?.attributes)}
 						<div class="relative pl-16">
 							<dt class="text-base font-semibold leading-7 text-slate-100">
 								<div class="absolute left-0 top-0 flex">
 									<img
-										src={PUBLIC_IMAGE_SERVER + feature.attributes?.icon?.data?.attributes?.url}
-										alt={feature.attributes?.icon?.data?.attributes?.alternativeText}
+										src={sourceset.src}
+										alt={sourceset.alt}
+										srcset={sourceset.srcset}
+										sizes={sourceset.sizes}
 										class="h-12 w-12 items-center justify-center rounded-lg"
 									/>
 								</div>

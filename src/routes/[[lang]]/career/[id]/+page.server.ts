@@ -3,14 +3,13 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const jobId = params.id;
+	const job = await getJob(fetch, jobId);
 	try {
 		return {
-			lazy: {
-				job: getJob(fetch, jobId)
-			}
+			job
 		};
 	} catch (error) {
 		console.error(error);
-		return { lazy: { job: null } };
+		return { job: null };
 	}
 };

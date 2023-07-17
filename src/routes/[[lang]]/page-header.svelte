@@ -3,6 +3,7 @@
 	import IconBrandGithub from '$lib/icons/icon-brand-github.svelte';
 	import IconBrandLinkedin from '$lib/icons/icon-brand-linkedin.svelte';
 	import { page } from '$app/stores';
+	import IconLanguage from '$lib/icons/icon-language.svelte';
 	export let menuOpen = false;
 
 	export let navBarItems = [
@@ -19,15 +20,19 @@
 			label: $t.services.services
 		}
 	];
+	$: currentLinkWithDifferentLanguage = $page.url.pathname.startsWith('/en/')
+		? $page.url.toString().replace('/en/', '/')
+		: $page.url.toString().replace($page.url.origin, `${$page.url.origin}/en`);
 </script>
 
 <header class="bg-transparent">
 	<nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
 		<div class="flex lg:flex-1">
-			<a href={$page.data.lang === 'de' ? '/' : '/en'} class="-m-1.5 px-1.5">
+			<a href={$t.link} class="-m-1.5 px-1.5">
 				<span class="sr-only">{$t.company}</span>
 				<img
-					class="h-10 w-auto"
+					height="40"
+					width="178"
 					src="https://cms.k-7.eu/uploads/logo_transparent_7774819042.svg"
 					alt=""
 				/>
@@ -59,7 +64,7 @@
 		<div class="hidden lg:flex lg:gap-x-12">
 			{#each navBarItems as navBarItem}
 				<a
-					href={$page.data.lang === 'en' ? '/en' : '/' + navBarItem.href}
+					href={$t.link + navBarItem.href}
 					class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700"
 				>
 					{navBarItem.label}
@@ -68,24 +73,29 @@
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 			<div class="flex gap-3 stroke-[1.5] stroke-black">
-				<div class="w-6 h-6"><IconBrandGithub /></div>
-
-				<div class="w-6 h-6"><IconBrandLinkedin /></div>
+				<a href={currentLinkWithDifferentLanguage} data-sveltekit-reload
+					><div class="w-6 h-6"><IconLanguage /></div></a
+				>
+				<a href="https://github.com/konzept7/"><div class="w-6 h-6"><IconBrandGithub /></div></a>
+				<a href="https://www.linkedin.com/company/k-7/"
+					><div class="w-6 h-6"><IconBrandLinkedin /></div></a
+				>
 			</div>
 		</div>
 	</nav>
 	<!-- Mobile menu, show/hide based on menu open state. -->
 	<div class="lg:hidden" role="dialog" aria-modal="true" class:hidden={!menuOpen}>
 		<!-- Background backdrop, show/hide based on slide-over state. -->
-		<div class="fixed inset-0 z-10" />
+		<div class="fixed inset-0 z-20" />
 		<div
-			class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+			class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
 		>
 			<div class="flex items-center justify-between">
-				<a href={$page.data.lang === 'de' ? '/' : '/en'} class="-m-1.5 p-1.5">
+				<a href={$page.data.lang === 'de' ? '/' : '/en'} class="-m-1.5 px-1.5">
 					<span class="sr-only">{$t.company}</span>
 					<img
-						class="h-8 w-auto"
+						height="40"
+						width="178"
 						src="https://cms.k-7.eu/uploads/logo_transparent_7774819042.svg"
 						alt=""
 					/>
@@ -113,7 +123,7 @@
 					<div class="space-y-2 py-6">
 						{#each navBarItems as navBarItem}
 							<a
-								href={$page.data.lang === 'de' ? '/' : '/en/' + navBarItem.href}
+								href={$t.link + navBarItem.href}
 								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 							>
 								{navBarItem.label}

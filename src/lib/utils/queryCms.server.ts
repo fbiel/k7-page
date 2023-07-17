@@ -1,9 +1,10 @@
 import { PRIVATE_CMS_BEARER } from '$env/static/private';
-import { PUBLIC_CMS } from '$env/static/public';
+import { PUBLIC_CMS, PUBLIC_IMAGE_SERVER } from '$env/static/public';
 import { marked } from 'marked';
 import pkg from 'prismjs';
 const { languages, highlight } = pkg;
 import loadLanguages from 'prismjs/components/';
+import type { MediaItem, MediaItemAttributes } from './media';
 
 //import loadLanguages from 'prismjs/components';
 export const headers = {
@@ -81,43 +82,6 @@ export interface AuthorResponseItem {
 export interface ListAuthorsResponse {
 	data: AuthorResponseItem[];
 	meta: Meta;
-}
-
-export interface MediaItemFormat {
-	name: string;
-	hash: string;
-	ext: string;
-	mime: string;
-	path: string;
-	width: number;
-	height: number;
-	size: number;
-	url: string;
-}
-type MediaItemFormats = {
-	thumbnail: MediaItemFormat;
-	small: MediaItemFormat;
-	medium: MediaItemFormat;
-	large: MediaItemFormat;
-};
-export interface MediaItem {
-	data: {
-		id?: number;
-		attributes?: {
-			name?: string;
-			alternativeText?: string;
-			caption?: string;
-			width?: number;
-			height?: number;
-			hash?: string;
-			ext?: string;
-			mime?: string;
-			size?: number;
-			url?: string;
-			previewUrl?: string;
-			formats?: MediaItemFormats;
-		};
-	};
 }
 
 export interface ContentFragment {
@@ -310,6 +274,8 @@ export interface ListJobsResponseItem {
 	Aufgaben: string;
 	Profil: string; // rich text
 	Sonstiges: BodyItem;
+	Standort: string;
+	Ansprechpartner: string;
 }
 export interface ListJobsResponse {
 	data: {
@@ -412,7 +378,6 @@ export const getArticleEntry = async (
 		headers
 	});
 	const response = (await request.json()) as { data: { attributes: ListArticleResponseItem } };
-	console.log('article response+\n' + JSON.stringify(response.data.attributes.content), 2);
 	if (response.data?.attributes?.content)
 		response.data.attributes.content = response.data?.attributes?.content?.map((c) =>
 			parseMarkDown(c)
@@ -563,7 +528,6 @@ export const getDepartments = async (
 		});
 		const response = (await request.json()) as DepartmentListResponse;
 		response.data = response.data.filter((department) => department.attributes.hidden !== true);
-		console.log('GET deparment response', response);
 		return response.data;
 	} catch (error) {
 		return [] as DepartmentResponseItem[];
@@ -581,7 +545,6 @@ export const getJobs = async (
 			headers
 		});
 		const response = (await request.json()) as ListJobsResponse;
-		console.log('GET jobs response', response);
 		return response.data;
 	} catch (error) {
 		return [];
@@ -609,11 +572,41 @@ export const getJob = async (
 		if (response.data.attributes.Aufgaben && response.data.attributes.Aufgaben.trim().length > 0) {
 			response.data.attributes.Aufgaben = marked(response.data.attributes.Aufgaben);
 		}
-		console.log('GET job response', response);
 		return response;
 	} catch (error) {
 		console.error('error loading job', error);
 		return null;
+	}
+};
+
+export interface ListSlideShowResponse {
+	data: {
+		attributes: {
+			images: {
+				data: {
+					id: number;
+					attributes: MediaItemAttributes;
+				}[];
+			};
+		};
+	};
+}
+
+export const getSlideShow = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>
+) => {
+	const queryUrl = `${PUBLIC_CMS}/api/home-slide-show?populate[0]=images`;
+	console.log('querying cms for slide show', queryUrl);
+	try {
+		const request = await customFetch(queryUrl, {
+			method: 'GET',
+			headers
+		});
+		const response = (await request.json()) as ListSlideShowResponse;
+		console.log('slide show response', response);
+		return response.data.attributes.images.data;
+	} catch (error) {
+		return [];
 	}
 };
 
@@ -633,7 +626,6 @@ const parseMarkDown = (body: BodyItem) => {
 		p.code = languages[lang]
 			? highlight(p.code ?? '', languages[lang], p.lang ?? 'javascript')
 			: p.code;
-		console.log(p.code);
 	}
 	return body;
 };
