@@ -329,7 +329,6 @@ export const queryArticles = async (
 	let queryUrl = `${PUBLIC_CMS}/api/${queryType}?locale=${locale}&sort[0]=updatedAt&pagination[pageSize]=${limit}&pagination[page]=${page}&populate[0]=${populate.join(
 		'%2C'
 	)}`;
-	console.log('querying articles', queryUrl);
 	try {
 		if (populate.includes('author')) {
 			queryUrl += '&populate[1]=author.thumbnail';
@@ -498,7 +497,6 @@ export const getReferences = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>
 ) => {
 	const queryUrl = `${PUBLIC_CMS}/api/references?populate[0]=logo`;
-	console.log('querying cms for references', queryUrl);
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',
@@ -520,7 +518,6 @@ export const getDepartments = async (
 ) => {
 	const populateParams = populate.length > 0 ? `&populate=${populate.join('%2C')}` : '';
 	const queryUrl = `${PUBLIC_CMS}/api/departments?locale=${locale}${populateParams}`;
-	console.log('querying cms for departments', queryUrl);
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',
@@ -538,7 +535,6 @@ export const getJobs = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>
 ) => {
 	const queryUrl = `${PUBLIC_CMS}/api/job-ads?populate[0]=Beispielbild`;
-	console.log('querying cms for jobs', queryUrl);
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',
@@ -556,7 +552,6 @@ export const getJob = async (
 	id: string
 ) => {
 	const queryUrl = `${PUBLIC_CMS}/api/job-ads/${id}?populate[0]=Beispielbild,Ansprechpartner`;
-	console.log('querying cms for job with id ' + id, queryUrl);
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',
@@ -596,14 +591,12 @@ export const getSlideShow = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>
 ) => {
 	const queryUrl = `${PUBLIC_CMS}/api/home-slide-show?populate[0]=images`;
-	console.log('querying cms for slide show', queryUrl);
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',
 			headers
 		});
 		const response = (await request.json()) as ListSlideShowResponse;
-		console.log('slide show response', response);
 		return response.data.attributes.images.data;
 	} catch (error) {
 		return [];

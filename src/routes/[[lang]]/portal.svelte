@@ -3,6 +3,7 @@
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 	import IconBrandGithub from '$lib/icons/icon-brand-github.svelte';
 	import IconBrandLinkedin from '$lib/icons/icon-brand-linkedin.svelte';
+	import IconDownload from '$lib/icons/icon-download.svelte';
 	import { t } from '$lib/stores/i18n';
 
 	import type { CompanyDetailAttributes } from '$lib/utils/queryCms.server';
@@ -12,7 +13,7 @@
 
 <div id="portal-container">
 	<div
-		class="flex pb-40 lg:pb-20 flex-col gap-5 lg:gap-0 lg:flex-row justify-between my-10 mx-8 border-t border-slate-400/25 pt-10"
+		class="flex pb-48 lg:pb-24 flex-col gap-5 lg:gap-0 lg:flex-row justify-between my-10 mx-8 border-t border-slate-400/25 pt-10"
 	>
 		<div class="flex flex-col justify-start items-start">
 			<img
@@ -42,10 +43,16 @@
 				<a href={$t.link + 'imprint'} class="text-sm text-slate-700">{$t.imprint}</a>
 				<a href="privacy" class="text-sm text-slate-700">{$t.gdpr}</a>
 			</div>
-			<div class="flex flex-col gap-3">
+			<div class="flex flex-col gap-3 whitespace-nowrap">
 				<div class="text-slate-900 font-semibold text-lg">
 					{$t.community}
 				</div>
+				<a href={$t.link + 'downloads'} class="flex lfex-row gap-2">
+					<div class="w-5 h-5 stroke-slate-800 stroke-[1.5]">
+						<IconDownload />
+					</div>
+					<div class="text-sm text-slate-700">Downloads</div>
+				</a>
 				<a href="https://github.com/konzept7/" class="flex flex-row gap-2">
 					<div class="w-5 h-5 stroke-slate-800 stroke-[1.5]">
 						<IconBrandGithub />

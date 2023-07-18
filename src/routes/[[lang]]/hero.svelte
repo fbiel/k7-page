@@ -114,7 +114,7 @@
 							srcset={current.srcset}
 							alt={current.alt}
 							sizes={current.sizes}
-							class="w-[76rem] aspect-[16/9] rounded-md shadow-2xl ring-1 ring-gray-900/10"
+							class="w-[76rem] object-cover aspect-[16/9] rounded-md shadow-2xl ring-1 ring-gray-900/10"
 						/>
 					{/if}
 				</div>

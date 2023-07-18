@@ -1,5 +1,4 @@
 import {
-	getCompanyDetail,
 	getDepartments,
 	getJobs,
 	getReferences,
@@ -31,13 +30,6 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 			jobs,
 			slideShow,
 			randomCover
-			// lazy: {
-			// 	references: getReferences(fetch),
-			// 	departments: getDepartments(fetch, ['cover', 'icon'], lang),
-			// 	articles: queryArticles(fetch, 'blogs', ['author', 'cover'], lang, undefined, 1),
-			// 	jobs: getJobs(fetch),
-			// 	details: getCompanyDetail(fetch, lang)
-			// }
 		};
 	} catch (error) {
 		console.error(error);
@@ -49,5 +41,12 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 			jobs: null,
 			details: null
 		};
+	}
+};
+/** @type {import('./$types').Actions} */
+export const actions = {
+	default: async ({ request }) => {
+		const data = await request.formData();
+		console.log('sent form data', data);
 	}
 };

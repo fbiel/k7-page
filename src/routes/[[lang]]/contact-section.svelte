@@ -6,23 +6,15 @@
 	import type { CompanyDetailAttributes } from '$lib/utils/queryCms.server';
 
 	export let detail: CompanyDetailAttributes;
+
+	let reployTo = '';
+	let fromName = '';
+	let subject = '';
+	let message = '';
+	let gdprAccepted = false;
 </script>
 
 {#if detail}
-	<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 	<div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
 		<div class="mx-auto max-w-xl lg:max-w-5xl">
 			<h2 class="text-4xl font-bold tracking-tight text-gray-900">{$t.contact.talkAboutProject}</h2>
@@ -33,28 +25,30 @@
 				<form action="#" method="POST" class="lg:flex-auto">
 					<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 						<div>
-							<label for="name" class="block text-sm font-semibold leading-6 text-gray-900"
+							<label for="fromName" class="block text-sm font-semibold leading-6 text-gray-900"
 								>{$t.contact.yourName}</label
 							>
 							<div class="mt-2.5">
 								<input
 									type="text"
-									name="name"
-									id="name"
+									name="fromName"
+									bind:value={fromName}
+									id="fromName"
 									autocomplete="name"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
 							</div>
 						</div>
 						<div>
-							<label for="email" class="block text-sm font-semibold leading-6 text-gray-900"
+							<label for="replyTo" class="block text-sm font-semibold leading-6 text-gray-900"
 								>{$t.contact.yourEmail}</label
 							>
 							<div class="mt-2.5">
 								<input
 									type="text"
-									name="email"
-									id="email"
+									name="replyTo"
+									bind:value={reployTo}
+									id="replyTo"
 									autocomplete="email"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -68,6 +62,7 @@
 								<input
 									id="subject"
 									name="subject"
+									bind:value={subject}
 									type="text"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -81,6 +76,7 @@
 								<textarea
 									id="message"
 									name="message"
+									bind:value={message}
 									rows="4"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -91,6 +87,7 @@
 								<input
 									type="checkbox"
 									name="privacy"
+									bind:checked={gdprAccepted}
 									id="privacy"
 									class="h-4 w-4 rounded border-gray-300 text-brand-400 focus:ring-brand-400"
 								/>
@@ -102,8 +99,9 @@
 					</div>
 					<div class="mt-10">
 						<button
+							disabled={!gdprAccepted}
 							type="submit"
-							class="block w-full rounded-md bg-brand-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
+							class="block w-full rounded-md disabled:bg-brand-200 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
 							>{$t.contact.sendUsAMessage}</button
 						>
 					</div>
