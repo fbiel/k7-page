@@ -20,8 +20,8 @@
 			label: $t.services.services
 		}
 	];
-	$: currentLinkWithDifferentLanguage = $page.url.pathname.startsWith('/en/')
-		? $page.url.toString().replace('/en/', '/')
+	$: currentLinkWithDifferentLanguage = $page.url.pathname.startsWith('/en')
+		? $page.url.toString().replace('/en', '')
 		: $page.url.toString().replace($page.url.origin, `${$page.url.origin}/en`);
 </script>
 

@@ -30,7 +30,7 @@
 	{/if}
 
 	{#if data?.articles}
-		<BlogSection posts={data.articles.data} />
+		<BlogSection posts={data.articles} />
 	{/if}
 	{#if data?.details}
 		<ContactSection {form} detail={data.details.data.attributes} />

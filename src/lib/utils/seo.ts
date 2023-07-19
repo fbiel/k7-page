@@ -27,7 +27,7 @@ export const companyLd = {
 			'@type': 'OpeningHoursSpecification',
 			dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
 			opens: '08:00',
-			closes: '18:00'
+			closes: '17:00'
 		}
 	},
 	duns: '344448617',
@@ -35,10 +35,10 @@ export const companyLd = {
 	legalName: 'K7-Konzept Karlsruhe GmbH',
 	url: 'https://k-7.eu',
 	knowsLanguage: 'de,en',
-	slogan: 'K7 - Weil wir Technik lieben'
+	slogan: 'K7 - Maßgeschneiderte Lösungen, verlässliche Qualität'
 };
 
-export const createBreadcrumbLd = (type: string, title: string, id: string) => {
+export const createBreadcrumbLd = (type: string, title: string, slug: string) => {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
@@ -53,7 +53,7 @@ export const createBreadcrumbLd = (type: string, title: string, id: string) => {
 				'@type': 'ListItem',
 				position: 2,
 				name: title,
-				item: `https://k-7.eu/${type}/${id}`
+				item: `https://k-7.eu/${type}/${slug}`
 			}
 		]
 	};
@@ -72,7 +72,7 @@ export const createArticleLd = (
 		return {
 			mainEntityOfPage: {
 				'@type': 'WebPage',
-				'@id': `https://k-7.eu/${type}/${id}`
+				'@id': `https://k-7.eu/${type}/${entry?.slug ?? id}`
 			},
 			publisher: companyLd,
 			copyRightHolder: companyLd
@@ -86,7 +86,7 @@ export const createArticleLd = (
 		'@type': 'Article',
 		mainEntityOfPage: {
 			'@type': 'WebPage',
-			'@id': `https://k-7.eu/${type}/${id}`
+			'@id': `https://k-7.eu/${type}/${entry?.slug ?? id}`
 		},
 		headline: entry.title,
 		image: cover,

@@ -574,7 +574,7 @@ export const getJob = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
 	id: string
 ) => {
-	const queryUrl = `${PUBLIC_CMS}/api/job-ads/${id}?populate[0]=Beispielbild,Ansprechpartner`;
+	const queryUrl = `${PUBLIC_CMS}/api/job-ads/${id}?populate[0]=Beispielbild`;
 	try {
 		const request = await customFetch(queryUrl, {
 			method: 'GET',

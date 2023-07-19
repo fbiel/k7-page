@@ -16,7 +16,7 @@
 </script>
 
 {#if detail}
-	<div id="contact-section" class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+	<div id="contact-section" class="relative isolate bg-white px-6 pt-16 pb-24 lg:px-8">
 		<div class="mx-auto max-w-xl lg:max-w-5xl">
 			<h2 class="text-4xl font-bold tracking-tight text-gray-900 !mb-0">
 				{$t.contact.talkAboutProject}
