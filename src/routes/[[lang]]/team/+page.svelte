@@ -42,6 +42,9 @@
 						</div>
 					</li>
 				{/each}
+				<li class="text-sm text-gray-600 list-none">
+					*{$t.team.notAllMembers}
+				</li>
 			{/if}
 		</ul>
 		<p>

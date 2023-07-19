@@ -141,11 +141,12 @@ export const de = {
 			'Sorry, bei der Vorstellung unseres Teams sind wir noch nicht ganz so weit. Wir arbeiten aber mit Hochdruck daran. Schau doch in den nächsten Tagen nochmal vorbei!',
 		team: 'Unser Team',
 		meatLeadership: 'Triff unser Team',
-		// Unser Führungsteam besteht aus talentierten und leidenschaftlichen Menschen, die sich dafür einsetzen, das bestmögliche Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.
 		teamDescription:
 			'Wir setzen uns dafür ein, das bestmöglichste Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.',
 		yourPicture: 'Du möchtest dein Bild auch hier sehen?',
-		apply: 'Dann bewirb dich jetzt!'
+		apply: 'Dann bewirb dich jetzt!',
+		notAllMembers:
+			'Hier sind natürlich nicht alle Mitarbeiter aufgeführt, nicht jeder möchte im Internet auftauchen.'
 	},
 	aboutUs: 'Über uns',
 	imprint: 'Impressum',
@@ -483,7 +484,9 @@ export const en: TranslationFile = {
 		teamDescription:
 			'Our leadership team consists of talented and passionate people who are committed to creating the best possible experience for our customers and our employees.',
 		yourPicture: 'Would you like to see your picture here too?',
-		apply: 'Then apply now!'
+		apply: 'Then apply now!',
+		notAllMembers:
+			'Here are of course not all employees listed, not everyone wants to appear on the Internet.'
 	},
 	wwa: {
 		customerObsessed: 'Customer obsessed',

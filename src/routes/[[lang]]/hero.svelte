@@ -80,7 +80,7 @@
 			</p>
 			<div class="mt-10 flex items-center gap-x-6">
 				<a
-					href="/contact"
+					href="/#contact-section"
 					class="rounded-md bg-brand-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
 					>{$t.home.contactUs}</a
 				>
@@ -96,12 +96,6 @@
 				<div
 					class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
 				>
-					<!-- use:imageFlip={{
-								images: media,
-								duration,
-								interval,
-								resize: false
-							}} -->
 					{#if current}
 						<img
 							src={current.src}

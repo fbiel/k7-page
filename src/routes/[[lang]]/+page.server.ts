@@ -5,13 +5,14 @@ import {
 	getSlideShow,
 	queryArticles
 } from '$lib/utils/queryCms.server';
-import { error, type Action, fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { createSourceset } from '$lib/utils/media';
 import { PRIVATE_MAIL_URL } from '$env/static/private';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const lang = params.lang ?? 'de';
+
 	if (lang !== 'de' && lang !== 'en') {
 		throw error(404, 'Language does not exist');
 	}

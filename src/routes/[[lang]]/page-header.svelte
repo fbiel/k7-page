@@ -123,6 +123,7 @@
 					<div class="space-y-2 py-6">
 						{#each navBarItems as navBarItem}
 							<a
+								on:click={() => (menuOpen = false)}
 								href={$t.link + navBarItem.href}
 								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 							>
@@ -130,21 +131,25 @@
 							</a>
 						{/each}
 						<a
+							on:click={() => (menuOpen = false)}
 							href={$t.link + 'career'}
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 							>{$t.jobs.career}</a
 						>
 						<a
+							on:click={() => (menuOpen = false)}
 							href={$t.link + 'team'}
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 							>{$t.team.team}</a
 						>
 						<a
+							on:click={() => (menuOpen = false)}
 							href={$t.link + 'imprint'}
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 							>{$t.imprint}</a
 						>
 						<a
+							on:click={() => (menuOpen = false)}
 							href="privacy"
 							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 							>{$t.gdpr}</a
