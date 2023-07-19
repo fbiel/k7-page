@@ -240,6 +240,7 @@ export interface ListArticleResponseItem {
 	locale: string;
 	status?: Status;
 	hours?: number;
+	slug: string;
 	article_collection?: { data: ArticleCollectionItem };
 	content?: BodyItem[];
 }
@@ -276,6 +277,8 @@ export interface ListJobsResponseItem {
 	Sonstiges: BodyItem;
 	Standort: string;
 	Ansprechpartner: string;
+	createdAt: string;
+	updatedAt: string;
 }
 export interface ListJobsResponse {
 	data: {
@@ -365,7 +368,7 @@ export const queryArticles = async (
 	}
 };
 
-export const getArticleEntry = async (
+export const getArticleEntryById = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
 	queryType: CollectionQueryType,
 	id: string,
@@ -381,7 +384,27 @@ export const getArticleEntry = async (
 		response.data.attributes.content = response.data?.attributes?.content?.map((c) =>
 			parseMarkDown(c)
 		);
-	return response.data?.attributes;
+	return response.data?.attributes ?? null;
+};
+export const getArticleEntryBySlug = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	queryType: CollectionQueryType,
+	slug: string,
+	locale = 'de'
+) => {
+	const queryUrl = `${PUBLIC_CMS}/api/${queryType}?locale=${locale}&filters[slug][$eqi]=${slug}&populate[0]=author,cover,departments,technologies,content,article_collection&populate[1]=content.image,author.thumbnail,article_collection.blogs,content.image&populate[2]=content.image.image`;
+	const request = await customFetch(queryUrl, {
+		method: 'GET',
+		headers
+	});
+	const response = (await request.json()) as ListArticleResponse;
+	if (response.data.length !== 0) {
+		const article = response.data[0];
+		if (article.attributes?.content)
+			article.attributes.content = article.attributes?.content?.map((c) => parseMarkDown(c));
+		return article.attributes;
+	}
+	return null;
 };
 
 export const getProject = async (
@@ -389,7 +412,7 @@ export const getProject = async (
 	id: string,
 	locale = 'de'
 ) => {
-	return await getArticleEntry(customFetch, 'projects', id, locale);
+	return await getArticleEntryById(customFetch, 'projects', id, locale);
 };
 
 export const getBlog = async (
@@ -397,7 +420,7 @@ export const getBlog = async (
 	id: string,
 	locale = 'de'
 ) => {
-	return await getArticleEntry(customFetch, 'blogs', id, locale);
+	return await getArticleEntryById(customFetch, 'blogs', id, locale);
 };
 
 export const getDepartment = async (

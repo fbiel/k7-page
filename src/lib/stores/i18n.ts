@@ -3,6 +3,28 @@ import { writable } from 'svelte/store';
 export const de = {
 	link: '/',
 	language: 'de',
+	meta: {
+		home: 'Dies ist die Firmenhomepage von K7-Konzept Karlsruhe. Wir sind ein junges Unternehmen, das sich auf Sondermaschinenbau sowie die Entwicklung von Software und Hardware für industrielle Anwendungen spezialisiert hat.',
+		blog: 'Hier finden Sie alle Neuigkeiten aus dem Unternehmensblog von K7-Konzept Karlsruhe. Wir veröffentlichen regelmäßig Artikel zu den Themen Sondermaschinenbau, Softwareentwicklung und Hardwareentwicklung.',
+		blogEntry: 'Der hier beschriebene Artikel wurde von K7-Konzept Karlsruhe veröffentlicht.',
+		career:
+			'Hier finden Sie alle offenen Stellenanzeigen von K7-Konzept Karlsruhe. Wir sind immer auf der Suche nach talentierten und leidenschaftlichen Menschen, die unser Team verstärken.',
+		downloads:
+			'Hier finden Sie alle Downloads von K7-Konzept Karlsruhe. Wir stellen Ihnen Dokumente, Corporate Design und Logos zur Verfügung.',
+		imprint:
+			'Das rechtlich verbindliche Impressum von K7-Konzept Karlsruhe. Hier finden Sie alle Informationen zum Unternehmen, den Kontaktdaten und den rechtlichen Hinweisen.',
+		privacy:
+			'Die Datenschutzerklärung von K7-Konzept Karlsruhe. Hier finden Sie alle Informationen zum Datenschutz und der Verarbeitung von personenbezogenen Daten.',
+		projects:
+			'Hier finden Sie eine Auswahl unserer Projekte. Leider können wir nicht alle Projekte veröffentlichen. Wenn Sie mehr über unsere Projekte erfahren möchten, kontaktieren Sie uns gerne.',
+		projectEntry:
+			'Das hier beschriebene Projekt wurde von K7-Konzept Karlsruhe realisiert. Hier finden Sie alle Informationen zum Projekt, den verwendeten Technologien und den beteiligten Personen.',
+		services:
+			'Hier finden Sie eine Auswahl der Technologien und Fähigkeiten, die wir in unserem Team haben. Sie suchen nach einem Spezialisten für eine bestimmte Technologie oder Fähigkeit? Dann sind Sie hier genau richtig.',
+		serviceEntry:
+			'Die hier beschriebene Dienstleistung wird von K7-Konzept Karlsruhe angeboten. Hier finden Sie alle Informationen zur Dienstleistung, den verwendeten Technologien und den beteiligten Personen.',
+		team: 'Hier finden Sie unser Team. Wir sind ein junges und vielfältiges Team aus Ingenieur:innen, die sich auf Sondermaschinenbau sowie die Entwicklung von Software und Hardware für industrielle Anwendungen spezialisiert haben.'
+	},
 	pagination: {
 		previous: 'Zurück',
 		next: 'Weiter',
@@ -240,6 +262,28 @@ export const en: TranslationFile = {
 		next: 'Next',
 		results: (from: number, to: number, total: number) =>
 			`Showing ${from} to ${to} of ${total} results`
+	},
+	meta: {
+		home: 'This is the company homepage of K7-Konzept Karlsruhe. We are a young company specializing in special machine construction and the development of software and hardware for industrial applications.',
+		blog: 'Here you will find all the latest news from the K7-Konzept Karlsruhe company blog. We regularly publish articles on special machine construction, software development and hardware development.',
+		blogEntry: 'The article described here was published by K7-Konzept Karlsruhe.',
+		career:
+			'Here you will find all the job advertisements from K7-Konzept Karlsruhe. We are always looking for talented and passionate people to join our team.',
+		downloads:
+			'Here you will find all downloads from K7-Konzept Karlsruhe. We provide you with documents, corporate design and logos.',
+		imprint:
+			'The legally binding imprint of K7-Konzept Karlsruhe. Here you will find all information about the company, the contact details and the legal notices.',
+		privacy:
+			'The privacy policy of K7-Konzept Karlsruhe. Here you will find all information about data protection and the processing of personal data.',
+		projects:
+			'Here you will find a selection of our projects. Unfortunately we cannot publish all projects. If you would like to learn more about our projects, please contact us.',
+		projectEntry:
+			'The project described here was realized by K7-Konzept Karlsruhe. Here you will find all information about the project, the technologies used and the people involved.',
+		services:
+			'Here you will find a selection of the technologies and skills we have in our team. Are you looking for a specialist in a specific technology or skill? Then you are exactly right here.',
+		serviceEntry:
+			'The service described here is offered by K7-Konzept Karlsruhe. Here you will find all information about the service, the technologies used and the people involved.',
+		team: 'Here you will find our team. We are a young and diverse team of engineers specializing in special machine construction and the development of software and hardware for industrial applications.'
 	},
 	error404: {
 		title: 'Page not found',

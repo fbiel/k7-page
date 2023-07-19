@@ -16,24 +16,16 @@
 	<div class="mx-auto max-w-5xl py-8 px-4 lg:grid lg:grid-cols-2 lg:gap-x-8">
 		<div class="lg:max-w-lg lg:self-end my-auto">
 			<nav aria-label="Breadcrumb">
-				<ol role="list" class="flex items-center space-x-2 list-none">
-					<li class="list-none !ml-0 !pl-0">
+				<ol role="list" class="flex items-center space-x-8 list-none divide-x divide-slate-300">
+					<li class="list-none">
 						<div class="flex items-center text-sm">
 							<a
 								href={`/${$page.params.lang ? $page.params.lang + '/' : ''}services`}
 								class="font-medium text-gray-500 hover:text-gray-900">{$t.services.services}</a
 							>
-							<svg
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								aria-hidden="true"
-								class="ml-2 h-5 w-5 flex-shrink-0 text-gray-300"
-							>
-								<path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
-							</svg>
 						</div>
 					</li>
-					<li class="list-none">
+					<li class="list-none !ml-3 !pl-3">
 						<div class="flex items-center text-sm">
 							<a
 								href={`/${$t.link}services/${data.department.attributes.route}`}

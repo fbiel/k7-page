@@ -39,7 +39,7 @@
 			<span class="my-4 block text-sm font-semibold text-gray-900"
 				>Aktuell sind keine Downloads verfügbar</span
 			>
-			<span class="my-4 block text-sm text-gray-600/70">
+			<span class="my-4 block text-sm text-gray-600">
 				In Kürze werden werden wir hier wieder Medien zur Verfügung stellen.
 			</span>
 		</div>
