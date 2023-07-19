@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Article from '$lib/components/article/article.svelte';
+	import { t } from '$lib/stores/i18n';
 	import { createArticleLd, ldStringify } from '$lib/utils/seo';
 
 	import type { PageData } from './$types';
@@ -11,7 +12,7 @@
 <div class="mt-8" />
 <svelte:head>
 	<title>{data?.post?.title}</title>
-	<meta name="description" content={data?.post?.description} />
+	<meta name="description" content={$t.meta.projectEntry + ': ' + data?.post?.description} />
 	{@html ld}
 </svelte:head>
 {#if data?.post}

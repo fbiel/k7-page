@@ -9,12 +9,6 @@
 	export let current: SourceSet | undefined = undefined;
 </script>
 
-<!-- <svelte:head>
-	{#each media as image}
-		<link rel="prefetch" as="image" href={image} />
-	{/each}
-</svelte:head> -->
-
 <div class="relative isolate overflow-hidden bg-transparent">
 	<svg
 		class="absolute inset-0 -z-10 h-full w-full stroke-gray-300 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"

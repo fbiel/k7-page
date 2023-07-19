@@ -1,7 +1,16 @@
 <script lang="ts">
+	import { t } from '$lib/stores/i18n';
 	import type { PageData } from './$types';
 	export let data: PageData;
 </script>
+
+<svelte:head>
+	<title>K7: {data?.job?.data.attributes?.Titel ?? $t.jobs.openPositions}</title>
+	<meta
+		name="description"
+		content={data?.job?.data.attributes?.Einleitung ?? $t.jobs.openPositions}
+	/>
+</svelte:head>
 
 {#if data?.job}
 	{@const j = data?.job}

@@ -4,6 +4,7 @@
 
 <svelte:head>
 	<title>K7: {$t.gdpr}</title>
+	<meta name="description" content={$t.meta.privacy} />
 </svelte:head>
 <div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
 	<h1 class="gradient">Datenschutz&shy;erkl&auml;rung</h1>

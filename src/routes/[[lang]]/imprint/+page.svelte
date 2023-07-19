@@ -5,6 +5,7 @@
 
 <svelte:head>
 	<title>K7: {$t.imprint}</title>
+	<meta name="description" content={$t.meta.imprint} />
 </svelte:head>
 <div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
 	<h1 class="gradient">{$t.imprint}</h1>

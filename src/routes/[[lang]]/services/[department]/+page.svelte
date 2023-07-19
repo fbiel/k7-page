@@ -10,6 +10,10 @@
 
 <svelte:head>
 	<title>K7: {data.department?.attributes.name ?? $page.params.department}</title>
+	<meta
+		name="description"
+		content={$t.meta.serviceEntry + ' ' + data?.department?.attributes?.catchphrase}
+	/>
 </svelte:head>
 
 {#if data.department}

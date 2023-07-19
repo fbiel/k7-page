@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/stores/i18n';
 	import type { ActionData, PageData } from './$types';
 	import BlogSection from './blog-section.svelte';
 	import ContactSection from './contact-section.svelte';
@@ -8,6 +9,11 @@
 	export let data: PageData;
 	export let form: ActionData;
 </script>
+
+<svelte:head>
+	<title>K7-Konzept Karlsruhe GmbH</title>
+	<meta name="description" content={$t.meta.home} />
+</svelte:head>
 
 {#if data?.jobs && data.slideShow}
 	<Hero jobCount={data.jobs?.length ?? 0} current={data.randomCover} />

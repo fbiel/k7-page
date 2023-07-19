@@ -10,6 +10,7 @@
 
 <svelte:head>
 	<title>K7: {$t.services.services}</title>
+	<meta name="description" content={$t.meta.services} />
 </svelte:head>
 <div class="py-8">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">

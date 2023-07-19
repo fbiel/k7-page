@@ -7,6 +7,7 @@
 
 <svelte:head>
 	<title>K7: {$t.jobs.career}</title>
+	<meta name="description" content={$t.meta.career} />
 </svelte:head>
 <div class="overflow-hidden">
 	<Hero />

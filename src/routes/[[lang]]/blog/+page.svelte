@@ -12,6 +12,7 @@
 
 <svelte:head>
 	<title>K7: Blog</title>
+	<meta name="description" content={$t.meta.blog} />
 </svelte:head>
 {#if data?.posts}
 	{@const posts = data.posts}
