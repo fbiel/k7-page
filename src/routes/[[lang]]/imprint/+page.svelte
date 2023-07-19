@@ -6,8 +6,8 @@
 <svelte:head>
 	<title>K7: {$t.imprint}</title>
 </svelte:head>
-<div class="my-10 container mx-auto max-w-5xl prose prose-slate">
-	<h1>{$t.imprint}</h1>
+<div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
+	<h1 class="gradient">{$t.imprint}</h1>
 	<h2>{$t.contact.adress}</h2>
 	<div class="flex flex-row justify-start items-center gap-5">
 		<div class="w-6 h-6 stroke-black stroke-[1.5]">

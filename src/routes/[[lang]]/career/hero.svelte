@@ -3,7 +3,7 @@
 	import { t } from '$lib/stores/i18n';
 </script>
 
-<div class="mx-auto max-w-5xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
+<div class="mx-auto max-w-5xl px-6 pb-32 sm:pt-32 lg:px-8 lg:pt-32">
 	<div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
 		<div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
 			<h1 class="mt-10 gradient">{$t.jobs.futureTogether}</h1>

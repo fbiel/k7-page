@@ -4,7 +4,7 @@ import { marked } from 'marked';
 import pkg from 'prismjs';
 const { languages, highlight } = pkg;
 import loadLanguages from 'prismjs/components/';
-import type { MediaItem, MediaItemAttributes } from './media';
+import type { MediaItem, MediaItemAttributes, MediaItemFormat } from './media';
 
 //import loadLanguages from 'prismjs/components';
 export const headers = {
@@ -600,6 +600,38 @@ export const getSlideShow = async (
 		return response.data.attributes.images.data;
 	} catch (error) {
 		return [];
+	}
+};
+
+interface ListDownloadsResponse {
+	data: {
+		id: number;
+		attributes: {
+			name: string;
+			description: string;
+			downloadable: boolean;
+			createdAt: string;
+			updatedAt: string;
+			files: { data: { id?: number; attributes?: MediaItemAttributes }[] };
+		};
+	}[];
+	meta: Meta;
+}
+
+export const getDownloads = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>
+) => {
+	const queryUrl = `${PUBLIC_CMS}/api/downloads?populate[0]=files`;
+	try {
+		const request = await customFetch(queryUrl, {
+			method: 'GET',
+			headers
+		});
+		const response = (await request.json()) as ListDownloadsResponse;
+		return response;
+	} catch (error) {
+		console.error('error loading downloads', error);
+		return null;
 	}
 };
 

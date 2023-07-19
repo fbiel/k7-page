@@ -5,8 +5,8 @@
 <svelte:head>
 	<title>K7: {$t.gdpr}</title>
 </svelte:head>
-<div class="my-10 container mx-auto max-w-5xl prose prose-slate">
-	<h1>Datenschutz&shy;erkl&auml;rung</h1>
+<div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
+	<h1 class="gradient">Datenschutz&shy;erkl&auml;rung</h1>
 	<h2>1. Datenschutz auf einen Blick</h2>
 	<h3>Allgemeine Hinweise</h3>
 	<p>

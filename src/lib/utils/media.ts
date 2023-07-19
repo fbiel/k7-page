@@ -30,6 +30,8 @@ export interface MediaItemAttributes {
 	url?: string;
 	previewUrl?: string;
 	formats?: MediaItemFormats;
+	createdAt: string;
+	updatedAt: string;
 }
 export interface MediaItem {
 	data: {

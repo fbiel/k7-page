@@ -129,6 +129,26 @@
 								{navBarItem.label}
 							</a>
 						{/each}
+						<a
+							href={$t.link + 'career'}
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>{$t.jobs.career}</a
+						>
+						<a
+							href={$t.link + 'team'}
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>{$t.team.team}</a
+						>
+						<a
+							href={$t.link + 'imprint'}
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>{$t.imprint}</a
+						>
+						<a
+							href="privacy"
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							>{$t.gdpr}</a
+						>
 					</div>
 				</div>
 			</div>

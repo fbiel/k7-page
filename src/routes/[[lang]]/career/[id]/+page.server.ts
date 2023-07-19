@@ -3,8 +3,8 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const jobId = params.id;
-	const job = await getJob(fetch, jobId);
 	try {
+		const job = await getJob(fetch, jobId);
 		return {
 			job
 		};
