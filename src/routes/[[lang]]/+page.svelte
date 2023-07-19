@@ -1,13 +1,12 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import BlogSection from './blog-section.svelte';
 	import ContactSection from './contact-section.svelte';
 	import Hero from './hero.svelte';
 	import References from './references.svelte';
 	import ServiceSection from './service-section.svelte';
 	export let data: PageData;
-
-	import { createSourceset } from '$lib/utils/media';
+	export let form: ActionData;
 </script>
 
 {#if data?.jobs && data.slideShow}
@@ -28,6 +27,6 @@
 		<BlogSection posts={data.articles.data} />
 	{/if}
 	{#if data?.details}
-		<ContactSection detail={data.details.data.attributes} />
+		<ContactSection {form} detail={data.details.data.attributes} />
 	{/if}
 </div>

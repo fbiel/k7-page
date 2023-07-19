@@ -5,9 +5,10 @@ import {
 	getSlideShow,
 	queryArticles
 } from '$lib/utils/queryCms.server';
-import { error } from '@sveltejs/kit';
+import { error, type Action, fail } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { createSourceset } from '$lib/utils/media';
+import { PRIVATE_MAIL_URL } from '$env/static/private';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const lang = params.lang ?? 'de';
@@ -43,10 +44,52 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		};
 	}
 };
-/** @type {import('./$types').Actions} */
+
 export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData();
-		console.log('sent form data', data);
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		const contactFormData = Object.fromEntries(data);
+
+		const requestData = {
+			to: ['info@k-7.eu'],
+			subject: 'K7-Kontaktformular: ' + contactFormData.subject,
+			message: `Hallo,\n\n ${contactFormData.fromName} (${contactFormData.replyTo}) hat über das Kontaktformular der K7-Website folgende Nachricht gesendet:\n\n${contactFormData.message}`,
+			from: contactFormData.replyTo
+		};
+
+		if (!contactFormData.replyTo) {
+			return fail(400, { replyTo: contactFormData.replyTo, missing: true });
+		}
+		if (!contactFormData.fromName) {
+			return fail(400, { fromName: contactFormData.fromName, missing: true });
+		}
+		if (!contactFormData.subject) {
+			return fail(400, { subject: contactFormData.subject, missing: true });
+		}
+		if (!contactFormData.message) {
+			return fail(400, { message: contactFormData.message, missing: true });
+		}
+		if (!contactFormData.privacy) {
+			return fail(400, { privacy: contactFormData.privacy, missing: true });
+		}
+
+		console.log('raw', requestData);
+		const requestOptions: RequestInit = {
+			method: 'POST',
+			redirect: 'follow',
+			headers: headers,
+			body: JSON.stringify(requestData)
+		};
+		try {
+			const response = await fetch(PRIVATE_MAIL_URL, requestOptions);
+			const result = await response.text();
+			console.log('sending contact form data result', result);
+			return { success: true };
+		} catch (error) {
+			console.error('error sending contact form data', error);
+			return fail(500, { error: error });
+		}
 	}
 };

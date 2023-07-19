@@ -183,8 +183,10 @@ export const de = {
 		invalidEmail: 'Ungültige Email',
 		sendUsAMessage: 'Schreiben Sie uns eine Nachricht',
 		information: 'Informationen',
-		thanksForMessage: 'Danke für Ihre Nachricht',
-		replySoon: 'Wir werden uns schnellstmöglich bei Ihnen melden!',
+		thanksForMessage: 'Danke für Ihre Nachricht!',
+		replySoon: 'Wir werden uns schnellstmöglich bei Ihnen melden.',
+		error: 'Das hat nicht geklappt!',
+		missing: 'Leider fehlen noch ein paar Angaben.',
 		yourName: 'Ihr Name',
 		name: 'Vorname',
 		surname: 'Nachname',
@@ -197,7 +199,8 @@ export const de = {
 		phone: 'Telefon',
 		adress: 'Adresse',
 		hours: 'Arbeitszeiten',
-		gdpr: 'Ich akzeptiere die Datenschutzerklärung'
+		gdpr: 'Ich akzeptiere die Datenschutzerklärung',
+		gdprMissing: 'Bitte akzeptieren Sie die Datenschutzerklärung.'
 	},
 	header: {
 		changeLanguage: 'Sprache festlegen'
@@ -326,6 +329,8 @@ export const en: TranslationFile = {
 		email: 'E-mail',
 		hours: 'Wsorking hours',
 		talkAboutProject: 'Let’s talk about your project',
+		error: 'That didn’t work!',
+		missing: 'Unfortunately, some information is still missing.',
 		name: 'First name',
 		surname: 'Last name',
 		information: 'Information',
@@ -342,7 +347,8 @@ export const en: TranslationFile = {
 		yourEmail: 'Your email',
 		yourMessage: 'Your message',
 		yourName: 'Your name',
-		gdpr: 'I accept the privacy policy'
+		gdpr: 'I accept the privacy policy',
+		gdprMissing: 'Please accept the privacy policy.'
 	},
 	copied: 'Copied',
 	copy: 'To the clipboard',

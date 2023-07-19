@@ -1,28 +1,81 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import IconAt from '$lib/icons/icon-at.svelte';
 	import IconClockBolt from '$lib/icons/icon-clock-bolt.svelte';
+	import IconMailFast from '$lib/icons/icon-mail-fast.svelte';
 	import IconMapPin from '$lib/icons/icon-map-pin.svelte';
+	import IconMoodSadDizzy from '$lib/icons/icon-mood-sad-dizzy.svelte';
 	import { t } from '$lib/stores/i18n';
 	import type { CompanyDetailAttributes } from '$lib/utils/queryCms.server';
+	import { slide } from 'svelte/transition';
+	import type { ActionData } from './$types';
 
 	export let detail: CompanyDetailAttributes;
 
-	let reployTo = '';
-	let fromName = '';
-	let subject = '';
-	let message = '';
-	let gdprAccepted = false;
+	export let form: ActionData;
 </script>
 
 {#if detail}
-	<div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+	<div id="contact-section" class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
 		<div class="mx-auto max-w-xl lg:max-w-5xl">
-			<h2 class="text-4xl font-bold tracking-tight text-gray-900">{$t.contact.talkAboutProject}</h2>
+			<h2 class="text-4xl font-bold tracking-tight text-gray-900 !mb-0">
+				{$t.contact.talkAboutProject}
+			</h2>
 			<p class="mt-2 text-lg leading-8 text-gray-600">
 				{$t.contact.weHelp}
 			</p>
+			{#if form?.missing}
+				<div
+					class="rounded-lg bg-red-50 border border-red-400 p-4"
+					in:slide={{ delay: 0, duration: 300, axis: 'y' }}
+				>
+					<div class="flex items-center gap-5">
+						<div class="flex-shrink-0">
+							<div class="w-6 h-6 stroke-red-800 stroke-2">
+								<IconMoodSadDizzy />
+							</div>
+						</div>
+						<div class="flex flex-col gap-0">
+							<p class="text-base font-semibold text-red-800 !mb-0">{$t.contact.error}</p>
+							<p class="text-red-700 !mt-0">
+								{form?.missing && !(form?.privacy ?? false)
+									? $t.contact.gdprMissing
+									: $t.contact.missing}
+							</p>
+						</div>
+					</div>
+				</div>
+			{/if}
+
+			{#if form?.success}
+				<div
+					class="rounded-lg bg-green-50 border border-emerald-400 p-4"
+					in:slide={{ delay: 0, duration: 300, axis: 'y' }}
+				>
+					<div class="flex items-center gap-5">
+						<div class="flex-shrink-0">
+							<div class="w-6 h-6 stroke-emerald-800 stroke-2">
+								<IconMailFast />
+							</div>
+						</div>
+						<div class="flex flex-col">
+							<p class="text-base font-semibold text-green-800 !mb-0">
+								{$t.contact.thanksForMessage}
+							</p>
+							<p class="text-green-700 !mt-0">{$t.contact.replySoon}</p>
+						</div>
+					</div>
+				</div>
+			{/if}
 			<div class="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
-				<form action="#" method="POST" class="lg:flex-auto">
+				<form
+					use:enhance
+					method="POST"
+					class="lg:flex-auto"
+					data-sveltekit-keepfocus
+					data-sveltekit-noscroll
+					data-sveltekit-replacestate
+				>
 					<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 						<div>
 							<label for="fromName" class="block text-sm font-semibold leading-6 text-gray-900"
@@ -30,10 +83,12 @@
 							>
 							<div class="mt-2.5">
 								<input
+									required
+									minlength="3"
 									type="text"
 									name="fromName"
-									bind:value={fromName}
 									id="fromName"
+									value={form?.fromName ?? ''}
 									autocomplete="name"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -45,10 +100,11 @@
 							>
 							<div class="mt-2.5">
 								<input
+									required
 									type="text"
 									name="replyTo"
-									bind:value={reployTo}
 									id="replyTo"
+									value={form?.replyTo ?? ''}
 									autocomplete="email"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -60,9 +116,11 @@
 							>
 							<div class="mt-2.5">
 								<input
+									required
+									minlength="3"
 									id="subject"
+									value={form?.subject ?? ''}
 									name="subject"
-									bind:value={subject}
 									type="text"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -74,9 +132,11 @@
 							>
 							<div class="mt-2.5">
 								<textarea
+									required
+									minlength="10"
 									id="message"
+									value={form?.message ?? ''}
 									name="message"
-									bind:value={message}
 									rows="4"
 									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
 								/>
@@ -85,21 +145,21 @@
 						<div class="sm:col-span-2">
 							<div class="mt-2.5 flex flex-row items-center gap-3">
 								<input
+									required
 									type="checkbox"
 									name="privacy"
-									bind:checked={gdprAccepted}
+									checked={form?.privacy ?? false}
 									id="privacy"
 									class="h-4 w-4 rounded border-gray-300 text-brand-400 focus:ring-brand-400"
 								/>
 								<label for="privacy" class="block text-sm font-semibold leading-6"
-									><a href="/privacy">{$t.contact.gdpr}</a></label
+									><a href="/privacy" class="hover:underline">{$t.contact.gdpr}</a></label
 								>
 							</div>
 						</div>
 					</div>
 					<div class="mt-10">
 						<button
-							disabled={!gdprAccepted}
 							type="submit"
 							class="block w-full rounded-md disabled:bg-brand-200 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
 							>{$t.contact.sendUsAMessage}</button
