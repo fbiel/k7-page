@@ -3,6 +3,7 @@
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 	import Pagination from '$lib/components/pagination.svelte';
 	import { t } from '$lib/stores/i18n';
+	import { createSourceset } from '$lib/utils/media';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -28,13 +29,24 @@
 			>
 				{#each posts?.data ?? [] as item}
 					{@const post = item.attributes}
+					{@const sourceSet = createSourceset(post.cover?.data?.attributes)}
 					<article class="flex flex-col items-start justify-between">
 						<div class="relative w-full">
-							<img
-								src={PUBLIC_IMAGE_SERVER + post.cover?.data?.attributes?.formats?.medium?.url}
-								alt={post.cover?.data?.attributes?.alternativeText ?? post.title}
-								class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-							/>
+							{#if post.cover?.data?.attributes}
+								<img
+									src={sourceSet.src}
+									alt={sourceSet.alt ?? post.title}
+									srcset={sourceSet.srcset}
+									sizes={sourceSet.sizes}
+									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+								/>
+							{:else}
+								<div
+									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] border-dashed border-2 border-gray-300"
+								>
+									<p>{$t.notFound}</p>
+								</div>
+							{/if}
 							<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
 						</div>
 						<div class="max-w-xl">

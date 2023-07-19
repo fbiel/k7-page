@@ -10,10 +10,10 @@
 	<h1 class="gradient">{$t.imprint}</h1>
 	<h2>{$t.contact.adress}</h2>
 	<div class="flex flex-row justify-start items-center gap-5">
-		<div class="w-6 h-6 stroke-black stroke-[1.5]">
+		<div class="w-6 h-6 stroke-black stroke-[1.5] hidden md:block">
 			<ClipboardText />
 		</div>
-		<div class="flex flex-col gap-0">
+		<div class="flex flex-col gap-0 shrink">
 			<p>
 				K7-Konzept Karlsruhe GmbH
 				<br />Roonstraße 23a
@@ -23,10 +23,10 @@
 	</div>
 	<h2>Register</h2>
 	<div class="flex flex-row justify-start items-center gap-5">
-		<div class="w-6 h-6 stroke-black stroke-[1.5]">
+		<div class="w-6 h-6 stroke-black stroke-[1.5] hidden md:block">
 			<ClipboardText />
 		</div>
-		<div class="flex flex-col gap-0">
+		<div class="flex flex-col gap-0 shrink">
 			<p>
 				Amtsgericht Mannheim<br />
 				HRB 746032<br />

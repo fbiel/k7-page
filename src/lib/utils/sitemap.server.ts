@@ -2,7 +2,6 @@ import { PUBLIC_DOMAIN } from '$env/static/public';
 import type {
 	DepartmentResponseItem,
 	ListArticleResponseItem,
-	ListJobsResponse,
 	ListJobsResponseItem
 } from './queryCms.server';
 
@@ -20,7 +19,7 @@ export type Post = {
 
 export function articleSitemapEntry(post: Post, type: 'blog' | 'projects'): SitemapEntry {
 	return {
-		relativePath: `${type}/${post.id}`,
+		relativePath: `${type}/${post.attributes.slug ?? post.id}`,
 		lastmod: new Date(post.attributes.updatedAt),
 		priority: 0.4,
 		changefreq: 'never'

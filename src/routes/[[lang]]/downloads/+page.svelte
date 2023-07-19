@@ -20,7 +20,7 @@
 	};
 </script>
 
-<div class="my-10 container mx-auto max-w-5xl prose prose-slate">
+<div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
 	<h1 class="gradient">Downloads</h1>
 	<p>
 		Die hier beigestellten Dokumente sind urheberrechtlich geschützt. Die Verwendung ist
@@ -48,9 +48,11 @@
 			<div class="my-4">
 				<h2>{download.attributes.name}</h2>
 				<p>{download.attributes.description}</p>
-				<ul>
+				<ul class="space-y-6 !pl-1 !ml-1">
 					{#each download.attributes?.files.data ?? [] as file}
-						<li class="flex flex-row gap-3 justify-start items-center">
+						<li
+							class="flex flex-col lg:flex-row gap-0 lg:gap-3 justify-start lg:items-center leading-5 lg:leading-6"
+						>
 							<a
 								class="block text-brand-500 hover:underline"
 								href={PUBLIC_CMS + file?.attributes?.url}
@@ -58,7 +60,7 @@
 							>
 								{file?.attributes?.name}
 							</a>
-							<div class="text-gray-500">
+							<div class="text-gray-500 !mt-0 !pt-0">
 								{humanFileSizeFromKilobytes(file?.attributes?.size ?? 0)}
 							</div>
 						</li>

@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 export const de = {
 	link: '/',
 	language: 'de',
+	notFound: 'Nicht gefunden',
 	meta: {
 		home: 'Dies ist die Firmenhomepage von K7-Konzept Karlsruhe. Wir sind ein junges Unternehmen, das sich auf Sondermaschinenbau sowie die Entwicklung von Software und Hardware für industrielle Anwendungen spezialisiert hat.',
 		blog: 'Hier finden Sie alle Neuigkeiten aus dem Unternehmensblog von K7-Konzept Karlsruhe. Wir veröffentlichen regelmäßig Artikel zu den Themen Sondermaschinenbau, Softwareentwicklung und Hardwareentwicklung.',
@@ -139,9 +140,10 @@ export const de = {
 		missing:
 			'Sorry, bei der Vorstellung unseres Teams sind wir noch nicht ganz so weit. Wir arbeiten aber mit Hochdruck daran. Schau doch in den nächsten Tagen nochmal vorbei!',
 		team: 'Unser Team',
-		meatLeadership: 'Triff unser Führungsteam',
+		meatLeadership: 'Triff unser Team',
+		// Unser Führungsteam besteht aus talentierten und leidenschaftlichen Menschen, die sich dafür einsetzen, das bestmögliche Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.
 		teamDescription:
-			'Unser Führungsteam besteht aus talentierten und leidenschaftlichen Menschen, die sich dafür einsetzen, das bestmögliche Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.',
+			'Wir setzen uns dafür ein, das bestmöglichste Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.',
 		yourPicture: 'Du möchtest dein Bild auch hier sehen?',
 		apply: 'Dann bewirb dich jetzt!'
 	},
@@ -260,6 +262,7 @@ export type TranslationFile = typeof de;
 export const en: TranslationFile = {
 	link: '/en/',
 	language: 'en',
+	notFound: 'Not found',
 	pagination: {
 		previous: 'Previous',
 		next: 'Next',

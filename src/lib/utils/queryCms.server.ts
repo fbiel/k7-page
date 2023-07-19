@@ -658,6 +658,35 @@ export const getDownloads = async (
 	}
 };
 
+interface PageTeamResponse {
+	data: {
+		id: number;
+		attributes: {
+			title: string;
+			teamIntroduction: string;
+			body: string;
+		};
+	};
+}
+export const getPageTeam = async (
+	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
+	locale = 'de'
+) => {
+	const queryUrl = `${PUBLIC_CMS}/api/pageteam?locale=${locale}`;
+	try {
+		const request = await customFetch(queryUrl, {
+			method: 'GET',
+			headers
+		});
+		const response = (await request.json()) as PageTeamResponse;
+		response.data.attributes.body = marked(response.data.attributes.body);
+		return response;
+	} catch (error) {
+		console.error('error loading team page', error);
+		return null;
+	}
+};
+
 const parseMarkDown = (body: BodyItem) => {
 	if (body.__component === 'content-fragments.section') {
 		const p = body as ContentFragmentsParagraph;
