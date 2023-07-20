@@ -3,6 +3,7 @@
 	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 	import Fragment from '$lib/components/article/fragment.svelte';
 	import { t } from '$lib/stores/i18n';
+	import { createSourceset } from '$lib/utils/media';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -17,7 +18,8 @@
 </svelte:head>
 
 {#if data.department}
-	<div class="mx-auto max-w-5xl py-8 px-4 lg:grid lg:grid-cols-2 lg:gap-x-8">
+	{@const sourceSet = createSourceset(data.department.attributes.cover.data.attributes)}
+	<div class="mx-auto max-w-5xl py-16 px-4 lg:grid lg:grid-cols-2 lg:gap-x-8">
 		<div class="lg:max-w-lg lg:self-end my-auto">
 			<nav aria-label="Breadcrumb">
 				<ol role="list" class="flex items-center space-x-8 list-none divide-x divide-slate-300">
@@ -57,9 +59,11 @@
 		<div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
 			<div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
 				<img
-					src={PUBLIC_IMAGE_SERVER + data.department.attributes.cover.data.attributes?.url}
-					alt={data.department.attributes.cover.data.attributes?.alternativeText}
-					class="h-full w-full object-cover object-center"
+					src={sourceSet.src}
+					srcset={sourceSet.srcset}
+					alt={sourceSet.alt}
+					sizes={sourceSet.sizes}
+					class="h-full w-full object-cover aspect-[3/2] object-center"
 				/>
 			</div>
 		</div>
