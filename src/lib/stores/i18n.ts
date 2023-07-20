@@ -134,7 +134,17 @@ export const de = {
 				description:
 					'Wir bieten ergonomische Arbeitsplätze mit höhenverstellbaren Schreibtischen und ergonomischen Stühlen.'
 			}
-		}
+		},
+		weAreLookingFor: 'Zur Zeit suchen wir:',
+		mwd: '(m/w/d)',
+		emailTo: 'E-Mail an',
+		contact: 'Anprechpartner',
+		location: 'Standort',
+		earliestStart: 'Verfügbar abt',
+		about: 'Über diesen Job',
+		yourProfile: 'Ihr Profil',
+		yourTasks: 'Ihre Aufgaben',
+		soundsLikeYou: 'Das klingt nach Ihnen? Dann freuen wir uns auf Ihre Bewerbung per E-Mail an'
 	},
 	team: {
 		missing:
@@ -143,8 +153,8 @@ export const de = {
 		meatLeadership: 'Triff unser Team',
 		teamDescription:
 			'Wir setzen uns dafür ein, das bestmöglichste Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.',
-		yourPicture: 'Du möchtest dein Bild auch hier sehen?',
-		apply: 'Dann bewirb dich jetzt!',
+		yourPicture: 'Sie möchten Ihr Bild auch hier sehen?',
+		apply: 'Dann bewerben Sie sich jetzt dich jetzt!',
 		notAllMembers:
 			'Hier sind natürlich nicht alle Mitarbeiter aufgeführt, nicht jeder möchte im Internet auftauchen.'
 	},
@@ -439,7 +449,17 @@ export const en: TranslationFile = {
 				description:
 					'We offer ergonomic workplaces with height-adjustable desks and ergonomic chairs.'
 			}
-		}
+		},
+		weAreLookingFor: 'We are currently looking for:',
+		mwd: '(m/f/d)',
+		emailTo: 'E-mail to',
+		contact: 'Contact',
+		location: 'Location',
+		earliestStart: 'Earliest start',
+		about: 'About this job',
+		yourProfile: 'Your profile',
+		yourTasks: 'Your tasks',
+		soundsLikeYou: 'Sounds like you? Then we look forward to your application by e-mail to'
 	},
 	news: 'News',
 	newsPage: {

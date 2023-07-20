@@ -12,20 +12,22 @@
 </script>
 
 <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-	<div class="flex flex-1 justify-between sm:hidden">
-		<a
-			href={`${href}${pageKeyword}=${meta.pagination.page === 1 ? 1 : meta.pagination.page - 1}`}
-			class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-			>Previous</a
-		>
-		<a
-			href={`${href}${pageKeyword}=${
-				meta.pagination.page === totalPages ? meta.pagination.page : meta.pagination.page + 1
-			}`}
-			class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-			>Next</a
-		>
-	</div>
+	{#if totalPages > 1}
+		<div class="flex flex-1 justify-between sm:hidden">
+			<a
+				href={`${href}?${pageKeyword}=${meta.pagination.page === 1 ? 1 : meta.pagination.page - 1}`}
+				class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+				>{$t.pagination.previous}</a
+			>
+			<a
+				href={`${href}?${pageKeyword}=${
+					meta.pagination.page === totalPages ? meta.pagination.page : meta.pagination.page + 1
+				}`}
+				class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+				>{$t.pagination.next}</a
+			>
+		</div>
+	{/if}
 	<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
 		<div>
 			<p class="text-sm text-gray-700">
@@ -45,17 +47,15 @@
 			<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 				{#if meta.pagination.page > 1}
 					<a
-						href={`${href}${pageKeyword}=${meta.pagination.page - 1}`}
+						href={`${href}?${pageKeyword}=${meta.pagination.page - 1}`}
 						class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 					>
-						<span class="sr-only">Previous</span>
+						<span class="sr-only">{$t.pagination.previous}</span>
 						<div class="w-5 h-5 stroke-black stroke-2">
 							<ChevronLeft />
 						</div>
 					</a>
 				{/if}
-				<!-- Current: "z-10 bg-brand-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" -->
-				<!-- generate links for available pages -->
 				{#each Array.from({ length: totalPages ?? 0 }, (_, i) => i + 1).filter((i) => i === 1 || i === totalPages || Math.abs(i - meta.pagination.page) <= 2) as page}
 					{#if page === meta.pagination.page}
 						<a
@@ -73,7 +73,7 @@
 						>
 					{:else}
 						<a
-							href={`${href}${pageKeyword}=${page}`}
+							href={`${href}?${pageKeyword}=${page}`}
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 							>{page}</a
 						>
@@ -81,10 +81,10 @@
 				{/each}
 				{#if totalPages > 1 && meta.pagination.page !== totalPages}
 					<a
-						href={`${href}${pageKeyword}=${meta.pagination.page + 1}`}
+						href={`${href}?${pageKeyword}=${meta.pagination.page + 1}`}
 						class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 					>
-						<span class="sr-only">Next</span>
+						<span class="sr-only">{$t.pagination.next}</span>
 						<div class="w-5 h-5 stroke-black stroke-2">
 							<ChevronRight />
 						</div>
