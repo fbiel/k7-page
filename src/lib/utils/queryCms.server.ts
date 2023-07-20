@@ -329,7 +329,7 @@ export const queryArticles = async (
 	page = 1,
 	limit = 9
 ) => {
-	let queryUrl = `${PUBLIC_CMS}/api/${queryType}?locale=${locale}&sort[0]=updatedAt&pagination[pageSize]=${limit}&pagination[page]=${page}&populate[0]=${populate.join(
+	let queryUrl = `${PUBLIC_CMS}/api/${queryType}?locale=${locale}&sort:desc[0]=updatedAt&pagination[pageSize]=${limit}&pagination[page]=${page}&populate[0]=${populate.join(
 		'%2C'
 	)}`;
 	try {

@@ -25,8 +25,8 @@
 				>
 					{#each services as feature}
 						{@const sourceset = createSourceset(feature.attributes?.icon?.data?.attributes)}
-						<div class="relative pl-16">
-							<dt class="text-base font-semibold leading-7 text-slate-100">
+						<a href={`${$t.link}services/${feature.attributes.route}`} class="relative pl-16 group">
+							<dt class="text-base font-semibold leading-7 text-slate-100 group-hover:underline">
 								<div class="absolute left-0 top-0 flex">
 									<img
 										src={sourceset.src}
@@ -41,7 +41,7 @@
 							<dd class="mt-2 text-base leading-7 text-slate-300">
 								{feature.attributes?.catchphrase}
 							</dd>
-						</div>
+						</a>
 					{/each}
 				</dl>
 			</div>
