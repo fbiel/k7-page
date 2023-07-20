@@ -33,7 +33,7 @@
 				{#each posts?.data ?? [] as item}
 					{@const post = item.attributes}
 					{@const sourceSet = createSourceset(post.cover?.data?.attributes)}
-					<article class="flex flex-col items-start justify-between">
+					<article class="flex flex-col items-start justify-start">
 						<div class="relative w-full">
 							{#if post.cover?.data?.attributes}
 								<img
@@ -61,16 +61,10 @@
 										day: 'numeric'
 									})}
 								</time>
-								<a
-									href={`${type}/${item.attributes.slug ?? item.id}`}
-									class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-								>
-									{post.departments?.data?.map((d) => d.attributes.name).join(', ') ?? ''}
-								</a>
 							</div>
 							<a href={`${type}/${item.attributes.slug ?? item.id}`} class="group relative">
 								<h3
-									class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 group-hover:underline"
+									class="mt-3 text-lg line-clamp-2 font-semibold leading-6 text-gray-900 group-hover:text-gray-600 group-hover:underline"
 								>
 									<span class="absolute inset-0" />
 									{post.title}
@@ -88,14 +82,25 @@
 									class="h-10 w-10 rounded-full bg-gray-100"
 								/>
 								<div class="text-sm leading-6">
-									<p class="font-semibold text-gray-900">
+									<p class="font-semibold text-gray-900 !mb-0 leading-5">
 										<a href={`team/${post.author?.data?.id}`}>
 											<span class="absolute inset-0" />
 											{post.author?.data?.attributes?.name}
 										</a>
 									</p>
-									<p class="text-gray-600">{post.author?.data.attributes.position}</p>
+									<p class="text-gray-600 !mt-0 leading-5">
+										{post.author?.data.attributes.position}
+									</p>
 								</div>
+							</div>
+							<div class="flex flex-row flex-wrap gap-1 mt-3 w-full">
+								{#each post.departments?.data ?? [] as department}
+									<a
+										href={`${$t.link}services/${department.attributes.route}`}
+										class="rounded-md bg-brand-100/50 !px-2 !py-1 text-xs text-brand-600 border-brand-200/50
+										transition-colors border hover:bg-brand-100">{department.attributes.name}</a
+									>
+								{/each}
 							</div>
 						</div>
 					</article>

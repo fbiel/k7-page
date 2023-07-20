@@ -20,13 +20,13 @@
 		</div>
 		{#if services && services.length > 0}
 			<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-				<dl
+				<div
 					class="grid max-w-xl grid-cols-1 gap-x-16 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
 				>
 					{#each services as feature}
 						{@const sourceset = createSourceset(feature.attributes?.icon?.data?.attributes)}
 						<a href={`${$t.link}services/${feature.attributes.route}`} class="relative pl-16 group">
-							<dt class="text-base font-semibold leading-7 text-slate-100 group-hover:underline">
+							<div class="text-base font-semibold leading-7 text-slate-100 group-hover:underline">
 								<div class="absolute left-0 top-0 flex">
 									<img
 										src={sourceset.src}
@@ -37,13 +37,13 @@
 									/>
 								</div>
 								{feature.attributes?.name}
-							</dt>
-							<dd class="mt-2 text-base leading-7 text-slate-300">
+							</div>
+							<div class="mt-2 text-base leading-7 text-slate-300">
 								{feature.attributes?.catchphrase}
-							</dd>
+							</div>
 						</a>
 					{/each}
-				</dl>
+				</div>
 			</div>
 		{/if}
 	</div>

@@ -19,7 +19,14 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 
 	const references = await getReferences(fetch);
 	const departments = await getDepartments(fetch, ['cover', 'icon'], lang);
-	const articles = await queryArticles(fetch, 'blogs', ['author', 'cover'], lang, undefined, 1);
+	const articles = await queryArticles(
+		fetch,
+		'blogs',
+		['author', 'cover', 'departments'],
+		lang,
+		undefined,
+		1
+	);
 	const jobs = await getJobs(fetch);
 	const slideShow = await getSlideShow(fetch);
 	const covers = slideShow.map((i) => createSourceset(i.attributes));
