@@ -101,7 +101,7 @@ export const createArticleLd = (
 		description: entry.description,
 		copyRightHolder: companyLd,
 		keywords: entry.tags,
-		thumnailUrl: thumbnail,
+		thumbnailUrl: thumbnail,
 		inLanguage: entry.locale
 	};
 };

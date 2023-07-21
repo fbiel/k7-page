@@ -150,9 +150,9 @@
 									name="privacy"
 									checked={form?.privacy ?? false}
 									id="privacy"
-									class="h-4 w-4 rounded border-gray-300 text-brand-400 focus:ring-brand-400"
+									class="h-5 w-5 rounded border-gray-300 text-brand-400 focus:ring-brand-400"
 								/>
-								<label for="privacy" class="block text-sm font-semibold leading-6"
+								<label for="privacy" class="ml-3 block text-sm font-semibold leading-6"
 									><a href="/privacy" class="hover:underline">{$t.contact.gdpr}</a></label
 								>
 							</div>
