@@ -96,7 +96,7 @@
 							<div class="flex flex-row flex-wrap gap-1 mt-3 w-full">
 								{#each post.departments?.data ?? [] as department}
 									<a
-										href={`${$t.link}services/${department.attributes.route}`}
+										href={`${$t.link}services/${department.attributes.route ?? ''}`}
 										class="rounded-md bg-brand-100/50 !px-2 !py-1 text-xs text-brand-600 border-brand-200/50
 										transition-colors border hover:bg-brand-100">{department.attributes.name}</a
 									>
