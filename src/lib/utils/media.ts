@@ -47,8 +47,8 @@ export interface SourceSet {
 	alt: string;
 }
 
-export function createSourceset(attr: MediaItemAttributes | undefined | null): SourceSet {
-	if (!attr?.url) throw new Error('media item has no attributes');
+export function createSourceset(attr: MediaItemAttributes | undefined | null): SourceSet | null {
+	if (!attr?.url) return null;
 	const src = PUBLIC_IMAGE_SERVER + attr.url;
 	const sizes = '(max-width: 900px) 90vw, (max-width:1100px) 70vw, 40vw';
 	const alt = attr.alternativeText || '';

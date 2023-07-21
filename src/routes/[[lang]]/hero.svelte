@@ -1,12 +1,9 @@
 <script lang="ts">
 	import { t } from '$lib/stores/i18n';
-	import { imageFlip } from '$lib/utils/imageFlip';
 	import type { SourceSet } from '$lib/utils/media';
 	export let jobCount = 0;
-	// export let duration = 700;
-	// export let interval = 45000;
 
-	export let current: SourceSet | undefined = undefined;
+	export let current: SourceSet | undefined | null = undefined;
 </script>
 
 <div class="relative isolate overflow-hidden bg-transparent">
@@ -101,7 +98,7 @@
 							src={current.src}
 							srcset={current.srcset}
 							alt={current.alt}
-							sizes={current.sizes}
+							sizes="(max-width: 1023px) 100vw, 50vw"
 							class="w-[76rem] object-cover aspect-[16/9] rounded-md shadow-2xl ring-1 ring-gray-900/10"
 						/>
 					{/if}

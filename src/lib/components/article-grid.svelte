@@ -7,6 +7,7 @@
 
 	import type { ListArticleResponse } from '$lib/utils/queryCms.server';
 	import { t } from '$lib/stores/i18n';
+	import AuthorChip from './article/author-chip.svelte';
 
 	export let posts: ListArticleResponse;
 	export let type: 'blog' | 'projects';
@@ -37,10 +38,10 @@
 						<div class="relative w-full">
 							{#if post.cover?.data?.attributes}
 								<img
-									src={sourceSet.src}
-									alt={sourceSet.alt ?? post.title}
-									srcset={sourceSet.srcset}
-									sizes={sourceSet.sizes}
+									src={sourceSet?.src}
+									alt={sourceSet?.alt ?? post.title}
+									srcset={sourceSet?.srcset}
+									sizes={sourceSet?.sizes}
 									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
 								/>
 							{:else}
@@ -74,24 +75,9 @@
 								</p>
 							</a>
 							<div class="relative mt-8 flex items-center gap-x-4">
-								<img
-									src={PUBLIC_IMAGE_SERVER +
-										post.author?.data?.attributes?.thumbnail?.data?.attributes?.formats?.thumbnail
-											?.url}
-									alt={post.cover?.data?.attributes?.alternativeText}
-									class="h-10 w-10 rounded-full bg-gray-100"
-								/>
-								<div class="text-sm leading-6">
-									<p class="font-semibold text-gray-900 !mb-0 leading-5">
-										<a href={`team/${post.author?.data?.id}`}>
-											<span class="absolute inset-0" />
-											{post.author?.data?.attributes?.name}
-										</a>
-									</p>
-									<p class="text-gray-600 !mt-0 leading-5">
-										{post.author?.data.attributes.position}
-									</p>
-								</div>
+								{#if post.author}
+									<AuthorChip author={post.author?.data} />
+								{/if}
 							</div>
 							<div class="flex flex-row flex-wrap gap-1 mt-3 w-full">
 								{#each post.departments?.data ?? [] as department}
