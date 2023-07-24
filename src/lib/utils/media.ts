@@ -45,6 +45,7 @@ export interface SourceSet {
 	srcset: string;
 	sizes: string;
 	alt: string;
+	formats?: MediaItemFormats;
 }
 
 export function createSourceset(attr: MediaItemAttributes | undefined | null): SourceSet | null {
@@ -58,5 +59,6 @@ export function createSourceset(attr: MediaItemAttributes | undefined | null): S
 	const set = Object.values(attr.formats).map((format) => {
 		return `${PUBLIC_IMAGE_SERVER}${format.url} ${format.width}w`;
 	});
-	return { src, srcset: set.join(', '), sizes, alt };
+
+	return { src, srcset: set.join(', '), sizes, alt, formats: attr.formats };
 }

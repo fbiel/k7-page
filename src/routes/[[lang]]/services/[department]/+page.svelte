@@ -19,12 +19,12 @@
 
 {#if data.department}
 	{@const sourceSet = createSourceset(data.department.attributes.cover.data.attributes)}
-	<div class="mx-auto py-16 px-4 lg:gap-x-8">
-		<div class="max-w-5xl mx-auto">
+	<div class="mx-auto py-16 lg:gap-x-8">
+		<div class=" px-6 max-w-5xl mx-auto">
 			<nav aria-label="Breadcrumb">
 				<ol role="list" class="flex items-center space-x-8 list-none divide-x divide-slate-300">
 					<li class="list-none">
-						<div class="flex items-center text-sm">
+						<div class="flex items-center text-sm !-ml-3">
 							<a
 								href={`/${$page.params.lang ? $page.params.lang + '/' : ''}services`}
 								class="font-medium text-gray-500 hover:text-gray-900">{$t.services.services}</a
@@ -56,93 +56,31 @@
 				</div>
 			</section>
 		</div>
-		{#if sourceSet}
-			<div class="mt-12 mb-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-				<div
-					class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2"
-				>
-					<img
-						alt={sourceSet.alt}
-						width="3744"
-						height="5616"
-						decoding="async"
-						data-nimg="1"
-						class="absolute inset-0 h-full w-full object-cover"
-						style="color:transparent"
-						sizes={sourceSet.sizes}
-						srcset={sourceSet.srcset}
-						src={sourceSet.src}
-					/>
-				</div>
-				<div
-					class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl -rotate-2"
-				>
-					<img
-						alt=""
-						loading="lazy"
-						width="3936"
-						height="2624"
-						decoding="async"
-						data-nimg="1"
-						class="absolute inset-0 h-full w-full object-cover"
-						style="color:transparent"
-						sizes="(min-width: 640px) 18rem, 11rem"
-						srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=3840&amp;q=75 3840w"
-						src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-2.3c6c01cf.jpg&amp;w=3840&amp;q=75"
-					/>
-				</div>
-				<div
-					class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2"
-				>
-					<img
-						alt=""
-						loading="lazy"
-						width="5760"
-						height="3840"
-						decoding="async"
-						data-nimg="1"
-						class="absolute inset-0 h-full w-full object-cover"
-						style="color:transparent"
-						sizes="(min-width: 640px) 18rem, 11rem"
-						srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=3840&amp;q=75 3840w"
-						src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-3.454151b1.jpg&amp;w=3840&amp;q=75"
-					/>
-				</div>
-				<div
-					class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2"
-				>
-					<img
-						alt=""
-						loading="lazy"
-						width="2400"
-						height="3000"
-						decoding="async"
-						data-nimg="1"
-						class="absolute inset-0 h-full w-full object-cover"
-						style="color:transparent"
-						sizes="(min-width: 640px) 18rem, 11rem"
-						srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=3840&amp;q=75 3840w"
-						src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-4.5c6d0ed6.jpg&amp;w=3840&amp;q=75"
-					/>
-				</div>
-				<div
-					class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl -rotate-2"
-				>
-					<img
-						alt=""
-						loading="lazy"
-						width="4240"
-						height="2384"
-						decoding="async"
-						data-nimg="1"
-						class="absolute inset-0 h-full w-full object-cover"
-						style="color:transparent"
-						sizes="(min-width: 640px) 18rem, 11rem"
-						srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=16&amp;q=75 16w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=32&amp;q=75 32w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=48&amp;q=75 48w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=64&amp;q=75 64w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=96&amp;q=75 96w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=128&amp;q=75 128w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=256&amp;q=75 256w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=384&amp;q=75 384w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=640&amp;q=75 640w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=750&amp;q=75 750w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=828&amp;q=75 828w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=3840&amp;q=75 3840w"
-						src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage-5.6c6f2784.jpg&amp;w=3840&amp;q=75"
-					/>
-				</div>
-			</div>
+		{#if data.department?.attributes?.carouselImages?.data}
+			{@const carouselImages = data.department.attributes.carouselImages.data.map((image) => {
+				return createSourceset(image.attributes);
+			})}
+			<ul
+				class="mt-12 mb-4 flex -mx-4 justify-center gap-5 overflow-hidden py-4 sm:gap-8 list-none"
+			>
+				{#each carouselImages as image}
+					<li
+						class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800
+					sm:w-72 sm:rounded-2xl even:rotate-2 odd:-rotate-2 list-none"
+					>
+						<img
+							alt={image?.alt}
+							loading="lazy"
+							decoding="async"
+							data-nimg="1"
+							class="absolute inset-0 h-full w-full object-cover"
+							style="color:transparent"
+							width="100%"
+							src={image?.formats ? PUBLIC_IMAGE_SERVER + image.formats.small.url : image?.src}
+						/>
+					</li>
+				{/each}
+			</ul>
 
 			<!-- <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
 				<div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
@@ -160,4 +98,114 @@
 	{#each data.department.attributes.body ?? [] as component}
 		<Fragment wide {component} />
 	{/each}
+	<div class="relative py-16">
+		<div class="absolute inset-x-0 top-0 hidden h-1/2 bg-gray-50 lg:block" aria-hidden="true" />
+		<div class="mx-auto max-w-5xl bg-brand-600 lg:bg-transparent lg:px-8">
+			<div class="lg:grid lg:grid-cols-12">
+				<div
+					class="relative z-10 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:bg-transparent lg:py-16"
+				>
+					<div class="absolute inset-x-0 h-1/2 bg-gray-50 lg:hidden" aria-hidden="true" />
+					<div class="mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:p-0">
+						<div class="aspect-h-6 aspect-w-10 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-w-1">
+							<img
+								class="rounded-3xl object-cover object-center shadow-2xl"
+								src={PUBLIC_IMAGE_SERVER + '/uploads/medium_project_a9ff9dece0.webp'}
+								alt=""
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="relative bg-brand-600 lg:col-span-10 lg:col-start-3 lg:row-start-1 lg:grid lg:grid-cols-10 lg:items-center lg:rounded-3xl"
+				>
+					<div
+						class="absolute inset-0 hidden overflow-hidden rounded-3xl lg:block"
+						aria-hidden="true"
+					>
+						<svg
+							class="absolute bottom-full left-full -translate-x-2/3 translate-y-1/3 transform xl:bottom-auto xl:top-0 xl:translate-y-0"
+							width="404"
+							height="384"
+							fill="none"
+							viewBox="0 0 404 384"
+							aria-hidden="true"
+						>
+							<defs>
+								<pattern
+									id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+									x="0"
+									y="0"
+									width="20"
+									height="20"
+									patternUnits="userSpaceOnUse"
+								>
+									<rect
+										x="0"
+										y="0"
+										width="4"
+										height="4"
+										class="text-brand-500"
+										fill="currentColor"
+									/>
+								</pattern>
+							</defs>
+							<rect width="404" height="384" fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
+						</svg>
+						<svg
+							class="absolute top-full -translate-x-1/3 -translate-y-1/3 transform xl:-translate-y-1/2"
+							width="404"
+							height="384"
+							fill="none"
+							viewBox="0 0 404 384"
+							aria-hidden="true"
+						>
+							<defs>
+								<pattern
+									id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+									x="0"
+									y="0"
+									width="20"
+									height="20"
+									patternUnits="userSpaceOnUse"
+								>
+									<rect
+										x="0"
+										y="0"
+										width="4"
+										height="4"
+										class="text-brand-500"
+										fill="currentColor"
+									/>
+								</pattern>
+							</defs>
+							<rect width="404" height="384" fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
+						</svg>
+					</div>
+					<div
+						class="relative mx-auto max-w-md space-y-6 lg:my-16 px-6 py-12 sm:max-w-3xl sm:py-16 lg:col-span-6 lg:col-start-4 lg:max-w-none lg:p-0"
+					>
+						<h2 class="text-3xl font-bold tracking-tight text-white" id="join-heading">
+							{$t.department.talkAboutProject}
+						</h2>
+						<p class="text-lg text-white">
+							{$t.department.interesting}
+						</p>
+						<div class="flex flex-col pt-6 pb-8">
+							<p class="border-l-4 border-white/40 font-semibold text-white pl-3 mb-2">
+								Goodspaces Karlsruhe
+							</p>
+							<p class="text-white/80 !my-0">Roonstraße 23a</p>
+							<p class="text-white/80 !my-0">76137 Karlsruhe</p>
+						</div>
+						<a
+							class="block w-full rounded-md border border-transparent bg-white px-5 py-3 text-center text-base font-medium text-brand-700 shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
+							href="/#contact-section">{$t.department.writeMessage}</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {/if}

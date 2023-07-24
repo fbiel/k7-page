@@ -12,7 +12,7 @@
 	class:py-24={highlighted}
 	class:from-brand-700={highlighted}
 	class:to-cyan-950={highlighted}
-	class:bg-gradient-to-tr={highlighted}
+	class:bg-gradient-to-r={highlighted}
 	class:w-full={highlighted}
 	class:max-w-5xl={wide && !highlighted}
 	class="flex flex-col mx-auto px-6"
