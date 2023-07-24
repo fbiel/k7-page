@@ -39,10 +39,10 @@
 							<div class="text-base font-semibold leading-7 text-slate-600">
 								<div class="absolute left-0 top-0 flex">
 									<img
-										src={sourceset.src}
-										alt={sourceset.alt}
-										srcset={sourceset.srcset}
-										sizes={sourceset.sizes}
+										src={sourceset?.src}
+										alt={sourceset?.alt}
+										srcset={sourceset?.srcset}
+										sizes={sourceset?.sizes}
 										class="h-12 w-12 items-center justify-center rounded-lg"
 									/>
 								</div>

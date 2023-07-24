@@ -8,18 +8,19 @@
 	import QuoteFragment from './quote-fragment.svelte';
 
 	export let component: BodyItem;
+	export let wide = false;
 </script>
 
 {#if component.__component === 'content-fragments.section' || component.__component === 'content-fragments.paragraph'}
-	<ParagraphFragment paragraph={component} />
+	<ParagraphFragment {wide} paragraph={component} />
 {:else if component.__component === 'content-fragments.image'}
-	<ImageFragment fragment={component} />
+	<ImageFragment {wide} fragment={component} />
 {:else if component.__component === 'content-fragments.image-paragraph'}
-	<ImageParagraphFragment fragment={component} />
+	<ImageParagraphFragment {wide} fragment={component} />
 {:else if component.__component === 'content-fragments.quote'}
-	<QuoteFragment fragment={component} />
+	<QuoteFragment {wide} fragment={component} />
 {:else if component.__component === 'content-fragments.codeblock'}
-	<CodeblockFragment fragment={component} />
+	<CodeblockFragment {wide} fragment={component} />
 {:else if component.__component === 'content-fragments.illuminating-section'}
 	<IlluminatingSection fragment={component} />
 {/if}

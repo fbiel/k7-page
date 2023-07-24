@@ -207,6 +207,12 @@ export interface DepartmentResponseItem {
 		createdBy: { data?: { id?: number; attributes?: object } };
 		updatedBy: { data?: { id?: number; attributes?: object } };
 		locale: string;
+		carouselImages: {
+			data: {
+				id?: number;
+				attributes?: MediaItemAttributes;
+			}[];
+		};
 	};
 }
 
@@ -480,7 +486,7 @@ export const getDepartmentByRoute = async (
 	route: string,
 	locale = 'de'
 ) => {
-	const queryUrl = `${PUBLIC_CMS}/api/departments?locale=${locale}&populate[0]=cover,skills,icon,projects&populate[1]=skills.technologies,skills.icon,projects.author,projects.cover,projects.departments&populate[2]=body.image,projects.author.thumbnail,body.items&filters[route][$eqi]=${route}`;
+	const queryUrl = `${PUBLIC_CMS}/api/departments?locale=${locale}&populate[0]=carouselImages,cover,skills,icon,projects&populate[1]=skills.technologies,skills.icon,projects.author,projects.cover,projects.departments&populate[2]=body.image,projects.author.thumbnail,body.items&filters[route][$eqi]=${route}`;
 	const request = await customFetch(queryUrl, {
 		method: 'GET',
 		headers

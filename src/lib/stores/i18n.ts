@@ -154,7 +154,7 @@ export const de = {
 		teamDescription:
 			'Wir setzen uns dafür ein, das bestmöglichste Erlebnis für unsere Kunden und unsere Mitarbeiter zu schaffen.',
 		yourPicture: 'Sie möchten Ihr Bild auch hier sehen?',
-		apply: 'Dann bewerben Sie sich jetzt dich jetzt!',
+		apply: 'Dann bewerben Sie sich jetzt!',
 		notAllMembers:
 			'Hier sind natürlich nicht alle Mitarbeiter aufgeführt, nicht jeder möchte im Internet auftauchen.'
 	},
@@ -245,7 +245,11 @@ export const de = {
 		skills: 'Technologien und Fähigkeiten',
 		errorLoadingTitle: 'Fehler beim Laden der Abteilung',
 		errorLoadingMessage:
-			'Beim Laden der Abteilung ist ein Fehler aufgetreten. Bitte versuche es später nochmal.'
+			'Beim Laden der Abteilung ist ein Fehler aufgetreten. Bitte versuche es später nochmal.',
+		talkAboutProject: 'Erzählen Sie uns von Ihrem Projekt',
+		interesting:
+			'Das klingt interessant für Sie? Dann schreiben Sie uns doch eine Nachricht an info@k-7.eu. Oder besuchen Sie uns in unserem Büro in Karlsruhe.',
+		writeMessage: 'Nachricht schreiben'
 	},
 	imprintPage: {
 		responsible: 'Inhaltlich verantwortlich',
@@ -375,7 +379,13 @@ export const en: TranslationFile = {
 			'Are you looking for a specialist in a specific technology or skill? \nHere is a selection of the technologies and skills we have in our team.',
 		projectSelection:
 			'This is just a selection of projects - unfortunately we cannot publish all projects.',
-		skills: 'technologies and skills'
+		skills: 'technologies and skills',
+		//'Erzählen Sie uns von Ihrem Projekt',
+		talkAboutProject: 'Tell us about your project',
+		//interesting: 'Das klingt interessant für Sie? Dann Schreiben Sie uns eine Nachricht an info@k-7.eu. Oder besuchen Sie uns in unserem Büro in Karlsruhe.',
+		interesting:
+			'That sounds interesting to you? Then write us a message to info@k-7.eu. Or visit us in our office in Karlsruhe.',
+		writeMessage: 'Write message'
 	},
 	didYouKnow: 'Did you know?',
 	disclaimer:

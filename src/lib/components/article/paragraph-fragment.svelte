@@ -1,11 +1,30 @@
 <script lang="ts">
 	import type { ContentFragmentsParagraph } from '$lib/utils/queryCms.server';
 	export let paragraph: ContentFragmentsParagraph;
+	export let wide = false;
+
+	const highlighted = paragraph.highlight ?? false;
 </script>
 
-<div class="flex flex-col mx-auto max-w-3xl px-6">
-	<h2 class:!gradient={paragraph.highlight}>{paragraph.title}</h2>
-	<div class="text-lg my-8 prose">
+<!-- py-24 from-brand-700 to-cyan-950 bg-gradient-to-tr -->
+<div
+	class:max-w-3xl={!wide && !highlighted}
+	class:py-24={highlighted}
+	class:from-brand-700={highlighted}
+	class:to-cyan-950={highlighted}
+	class:bg-gradient-to-r={highlighted}
+	class:w-full={highlighted}
+	class:max-w-5xl={wide && !highlighted}
+	class="flex flex-col mx-auto px-6"
+>
+	<h2 class:white={highlighted} class="max-w-5xl mx-auto">{paragraph.title}</h2>
+	<div class:white={highlighted} class="text-xl my-8 max-w-5xl mx-auto !leading-7">
 		{@html paragraph.content}
 	</div>
 </div>
+
+<style>
+	.white {
+		color: white !important;
+	}
+</style>
