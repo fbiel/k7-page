@@ -12,7 +12,10 @@
 	const sourceSet = createSourceset(fragment?.image?.data?.attributes);
 </script>
 
-<div class:max-w-5xl={wide} class="flex flex-col gap-1 px-6 max-w-3xl mx-auto prose">
+<div class:max-w-5xl={wide} class="flex flex-col gap-1 px-6 max-w-3xl mx-auto prose py-12">
+	{#if fragment.title}
+		<h2 class="max-w-5xl mx-auto">{fragment.title}</h2>
+	{/if}
 	{#if sourceSet}
 		<img
 			src={sourceSet.src}
