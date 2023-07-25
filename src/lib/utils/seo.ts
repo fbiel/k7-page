@@ -1,4 +1,4 @@
-import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
+import { PUBLIC_DOMAIN, PUBLIC_IMAGE_SERVER } from '$env/static/public';
 import type { ListArticleResponseItem } from './queryCms.server';
 
 export const ldStringify = (ld: unknown) => {
@@ -33,7 +33,7 @@ export const companyLd = {
 	duns: '344448617',
 	foundingDate: '2022-12-01',
 	legalName: 'K7-Konzept Karlsruhe GmbH',
-	url: 'https://k-7.eu',
+	url: PUBLIC_DOMAIN,
 	knowsLanguage: 'de,en',
 	slogan: 'K7 - Maßgeschneiderte Lösungen, verlässliche Qualität'
 };
@@ -47,13 +47,13 @@ export const createBreadcrumbLd = (type: string, title: string, slug: string) =>
 				'@type': 'ListItem',
 				position: 1,
 				name: type,
-				item: `https://k-7.eu/${type}`
+				item: `${PUBLIC_DOMAIN}/${type}`
 			},
 			{
 				'@type': 'ListItem',
 				position: 2,
 				name: title,
-				item: `https://k-7.eu/${type}/${slug}`
+				item: `${PUBLIC_DOMAIN}/${type}/${slug}`
 			}
 		]
 	};
@@ -72,7 +72,7 @@ export const createArticleLd = (
 		return {
 			mainEntityOfPage: {
 				'@type': 'WebPage',
-				'@id': `https://k-7.eu/${type}/${entry?.slug ?? id}`
+				'@id': `${PUBLIC_DOMAIN}/${type}/${entry?.slug ?? id}`
 			},
 			publisher: companyLd,
 			copyRightHolder: companyLd
@@ -86,7 +86,7 @@ export const createArticleLd = (
 		'@type': 'Article',
 		mainEntityOfPage: {
 			'@type': 'WebPage',
-			'@id': `https://k-7.eu/${type}/${entry?.slug ?? id}`
+			'@id': `${PUBLIC_DOMAIN}/${type}/${entry?.slug ?? id}`
 		},
 		headline: entry.title,
 		image: cover,
