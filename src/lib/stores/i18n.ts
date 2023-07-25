@@ -247,8 +247,8 @@ export const de = {
 		errorLoadingMessage:
 			'Beim Laden der Abteilung ist ein Fehler aufgetreten. Bitte versuche es später nochmal.',
 		talkAboutProject: 'Erzählen Sie uns von Ihrem Projekt',
-		interesting:
-			'Das klingt interessant für Sie? Dann schreiben Sie uns doch eine Nachricht an info@k-7.eu. Oder besuchen Sie uns in unserem Büro in Karlsruhe.',
+		interesting: 'Das klingt interessant für Sie? Dann schreiben Sie uns doch eine Nachricht an',
+		visitUs: 'Oder besuchen Sie uns in unserem Büro in Karlsruhe.',
 		writeMessage: 'Nachricht schreiben'
 	},
 	imprintPage: {
@@ -383,8 +383,8 @@ export const en: TranslationFile = {
 		//'Erzählen Sie uns von Ihrem Projekt',
 		talkAboutProject: 'Tell us about your project',
 		//interesting: 'Das klingt interessant für Sie? Dann Schreiben Sie uns eine Nachricht an info@k-7.eu. Oder besuchen Sie uns in unserem Büro in Karlsruhe.',
-		interesting:
-			'That sounds interesting to you? Then write us a message to info@k-7.eu. Or visit us in our office in Karlsruhe.',
+		interesting: 'That sounds interesting to you? Then write us a message to.',
+		visitUs: 'Or visit us in our office in Karlsruhe.',
 		writeMessage: 'Write message'
 	},
 	didYouKnow: 'Did you know?',

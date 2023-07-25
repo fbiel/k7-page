@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/stores/i18n';
+	import { onMount } from 'svelte';
 	import type { ActionData, PageData } from './$types';
 	import BlogSection from './blog-section.svelte';
 	import ContactSection from './contact-section.svelte';

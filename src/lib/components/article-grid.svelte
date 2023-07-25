@@ -35,7 +35,7 @@
 					{@const post = item.attributes}
 					{@const sourceSet = createSourceset(post.cover?.data?.attributes)}
 					<article class="flex flex-col items-start justify-start">
-						<div class="relative w-full">
+						<a href={`${type}/${item.attributes.slug ?? item.id}`} class="relative w-full">
 							{#if post.cover?.data?.attributes}
 								<img
 									src={sourceSet?.src}
@@ -52,7 +52,7 @@
 								</div>
 							{/if}
 							<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-						</div>
+						</a>
 						<div class="max-w-xl">
 							<div class="mt-8 flex items-center gap-x-4 text-sm">
 								<time dateTime={post.publishedAt ?? post.createdAt} class="text-gray-500">
