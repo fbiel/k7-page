@@ -54,7 +54,7 @@
 							<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
 						</div>
 						<div class="max-w-xl">
-							<div class="mt-8 flex items-center gap-x-4 text-xs">
+							<div class="mt-8 flex items-center gap-x-4 text-sm">
 								<time dateTime={post.publishedAt ?? post.createdAt} class="text-gray-500">
 									{new Date(post.publishedAt ?? post.createdAt).toLocaleDateString('de-DE', {
 										year: 'numeric',

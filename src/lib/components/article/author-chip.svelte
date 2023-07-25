@@ -14,13 +14,13 @@
 		alt={'Profile picture of ' + author?.attributes?.name}
 		class="h-10 w-10 lg:h-14 lg:w-14 rounded-full bg-gray-100"
 	/>
-	<div class="text-sm lg:text-base leading-6">
+	<div class="lg:text-base leading-6">
 		<p class="font-semibold text-gray-900 !mb-0 leading-5">
-			<a href={`${$t.link}team`}>
+			<a href={`${$t.link}team`} class="text-xs">
 				<span class="absolute inset-0" />
 				{author?.attributes?.name}
 			</a>
 		</p>
-		<p class="text-gray-600 !mt-0 leading-5">{author?.attributes.position}</p>
+		<p class="text-gray-600 !mt-0 text-xs leading-5">{author?.attributes.position}</p>
 	</div>
 </div>
