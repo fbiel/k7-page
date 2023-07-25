@@ -171,37 +171,41 @@
 						<div
 							class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-transparentlg:w-1/2"
 						/>
-						<dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
-							<div class="flex gap-x-4 items-center">
-								<dt class="flex-none">
+						<div class="mt-10 space-y-4 text-base leading-7 text-gray-600">
+							<a
+								target="_blank"
+								href="https://maps.apple.com/?q=Roonstrasse+23a+76137+Karlsruhe+Germany"
+								class="flex gap-x-4 items-center"
+							>
+								<div class="flex-none">
 									<span class="sr-only">{$t.contact.adress}</span>
 									<div class="w-6 h-6 stroke-gray-400 stroke-[1.5]">
 										<IconMapPin />
 									</div>
-								</dt>
-								<dd>{detail.street} {detail.housenumber}<br />{detail.city}, {detail.zip}</dd>
-							</div>
-							<div class="flex gap-x-4 items-center">
-								<dt class="flex-none">
+								</div>
+								<div>{detail.street} {detail.housenumber}<br />{detail.zip} {detail.city}</div>
+							</a>
+							<a href={`mailto:${detail.email}`} class="flex gap-x-4 items-center">
+								<div class="flex-none">
 									<span class="sr-only">{$t.contact.email}</span>
 									<div class="w-6 h-6 stroke-gray-400 stroke-[1.5]">
 										<IconAt />
 									</div>
-								</dt>
-								<dd><a href={`mailto:${detail.email}`}>{detail.email}</a></dd>
-							</div>
+								</div>
+								<div>{detail.email}</div>
+							</a>
 							<div class="flex gap-x-4 items-center">
-								<dt class="flex-none">
+								<div class="flex-none">
 									<span class="sr-only">{$t.contact.hours}</span>
 									<div class="w-6 h-6 stroke-gray-400 stroke-[1.5]">
 										<IconClockBolt />
 									</div>
-								</dt>
-								<dd>
+								</div>
+								<div>
 									{detail.opening_from?.substring(0, 5)} - {detail.opening_to?.substring(0, 5)}
-								</dd>
+								</div>
 							</div>
-						</dl>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -76,8 +76,10 @@
 				<a href={currentLinkWithDifferentLanguage} data-sveltekit-reload
 					><div class="w-6 h-6"><IconLanguage /></div></a
 				>
-				<a href="https://github.com/konzept7/"><div class="w-6 h-6"><IconBrandGithub /></div></a>
-				<a href="https://www.linkedin.com/company/k-7/"
+				<a href="https://github.com/konzept7/" target="_blank"
+					><div class="w-6 h-6"><IconBrandGithub /></div></a
+				>
+				<a href="https://www.linkedin.com/company/k-7/" target="_blank"
 					><div class="w-6 h-6"><IconBrandLinkedin /></div></a
 				>
 			</div>
