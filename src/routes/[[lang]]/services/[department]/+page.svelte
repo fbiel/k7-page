@@ -20,7 +20,7 @@
 {#if data.department}
 	{@const sourceSet = createSourceset(data.department.attributes.cover.data.attributes)}
 	<div class="mx-auto py-16 lg:gap-x-8">
-		<div class=" px-6 max-w-5xl mx-auto">
+		<div class="px-6 max-w-5xl mx-auto">
 			<nav aria-label="Breadcrumb">
 				<ol role="list" class="flex items-center space-x-8 list-none divide-x divide-slate-300">
 					<li class="list-none">
@@ -51,7 +51,9 @@
 				<h2 id="information-heading" class="sr-only">Product information</h2>
 				<div class="flex items-center">
 					<div class="mt-4 space-y-6">
-						<p class="text-base text-gray-500">{data.department.attributes.catchphrase}</p>
+						<p class="text-xl italic text-gray-700">
+							{data.department.attributes.catchphrase}
+						</p>
 					</div>
 				</div>
 			</section>
@@ -65,60 +67,50 @@
 			>
 				{#each carouselImages as image}
 					<li
-						class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800
+						class="relative aspect-[9/10] w-44 flex-none overflow-hidden bg-gray-50 rounded-xl
 					sm:w-72 sm:rounded-2xl even:rotate-2 odd:-rotate-2 list-none"
 					>
 						<img
 							alt={image?.alt}
 							loading="lazy"
 							decoding="async"
-							data-nimg="1"
 							class="absolute inset-0 h-full w-full object-cover"
 							style="color:transparent"
 							width="100%"
-							src={image?.formats ? PUBLIC_IMAGE_SERVER + image.formats.small.url : image?.src}
+							src={image?.formats?.small
+								? PUBLIC_IMAGE_SERVER + image.formats.small.url
+								: image?.src}
 						/>
 					</li>
 				{/each}
 			</ul>
-
-			<!-- <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-				<div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
-					<img
-						src={sourceSet.src}
-						srcset={sourceSet.srcset}
-						alt={sourceSet.alt}
-						sizes={sourceSet.sizes}
-						class="h-full w-full object-cover aspect-[3/2] object-center"
-					/>
-				</div>
-			</div> -->
 		{/if}
 	</div>
 	{#each data.department.attributes.body ?? [] as component}
 		<Fragment wide {component} />
 	{/each}
 	<div class="relative py-16">
-		<div class="absolute inset-x-0 top-0 hidden h-1/2 bg-gray-50 lg:block" aria-hidden="true" />
-		<div class="mx-auto max-w-5xl bg-brand-600 lg:bg-transparent lg:px-8">
+		<div class="absolute inset-x-0 top-0 hidden h-1/2 lg:block" aria-hidden="true" />
+		<div class="mx-auto max-w-5xl bg-brand-500 lg:bg-transparent lg:px-8">
 			<div class="lg:grid lg:grid-cols-12">
 				<div
 					class="relative z-10 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:bg-transparent lg:py-16"
 				>
-					<div class="absolute inset-x-0 h-1/2 bg-gray-50 lg:hidden" aria-hidden="true" />
+					<div class="absolute inset-x-0 h-1/2 lg:hidden" aria-hidden="true" />
 					<div class="mx-auto max-w-md px-6 sm:max-w-3xl lg:max-w-none lg:p-0">
 						<div class="aspect-h-6 aspect-w-10 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-w-1">
 							<img
-								class="rounded-3xl object-cover object-center shadow-2xl"
+								class="rounded-3xl object-cover object-center shadow-brand-600/50 shadow-md"
 								src={PUBLIC_IMAGE_SERVER + '/uploads/medium_project_a9ff9dece0.webp'}
-								alt=""
+								alt="An office desk with two laptops on the left side, and a paper in the center, two people on the right side pointing at the paper"
 							/>
 						</div>
 					</div>
 				</div>
 
 				<div
-					class="relative bg-brand-600 lg:col-span-10 lg:col-start-3 lg:row-start-1 lg:grid lg:grid-cols-10 lg:items-center lg:rounded-3xl"
+					class="relative lg:bg-gradient-to-br to-brand-700 shadow-md shadow-brand-400
+					 from-brand-500 lg:col-span-10 lg:col-start-3 lg:row-start-1 lg:grid lg:grid-cols-10 lg:items-center lg:rounded-3xl"
 				>
 					<div
 						class="absolute inset-0 hidden overflow-hidden rounded-3xl lg:block"
@@ -146,7 +138,7 @@
 										y="0"
 										width="4"
 										height="4"
-										class="text-brand-500"
+										class="text-brand-400/25"
 										fill="currentColor"
 									/>
 								</pattern>
@@ -175,7 +167,7 @@
 										y="0"
 										width="4"
 										height="4"
-										class="text-brand-500"
+										class="text-brand-400/25"
 										fill="currentColor"
 									/>
 								</pattern>
@@ -196,11 +188,17 @@
 							<p class="border-l-4 border-white/40 font-semibold text-white pl-3 mb-2">
 								Goodspaces Karlsruhe
 							</p>
-							<p class="text-white/80 !my-0">Roonstraße 23a</p>
-							<p class="text-white/80 !my-0">76137 Karlsruhe</p>
+							<p class="text-white/80 !my-0">
+								{$page.data.details?.data?.attributes?.street ?? 'Roonstr.'}
+								{$page.data.details?.data?.attributes?.housenumber ?? '23a'}
+							</p>
+							<p class="text-white/80 !my-0">
+								{$page.data.details?.data?.attributes?.zip ?? '76137'}
+								{$page.data.details?.data?.attributes?.city ?? 'Karlsruhe'}
+							</p>
 						</div>
 						<a
-							class="block w-full rounded-md border border-transparent bg-white px-5 py-3 text-center text-base font-medium text-brand-700 shadow-md hover:bg-gray-50 sm:inline-block sm:w-auto"
+							class="block w-full rounded-md border border-transparent bg-white px-5 py-3 text-center text-base font-medium text-brand-700 shadow-md hover:bg-gray-200 sm:inline-block sm:w-auto"
 							href="/#contact-section">{$t.department.writeMessage}</a
 						>
 					</div>
