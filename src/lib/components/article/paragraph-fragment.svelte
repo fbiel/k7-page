@@ -18,8 +18,12 @@
 	class:max-w-5xl={wide && !highlighted}
 	class="flex flex-col mx-auto px-6"
 >
-	<h2 class:white={highlighted} class="max-w-5xl">{paragraph.title}</h2>
-	<div class:white={highlighted} class="text-xl my-8 max-w-5xl !leading-7">
+	<h2 class:white={highlighted} class:mx-auto={highlighted} class="max-w-5xl">{paragraph.title}</h2>
+	<div
+		class:white={highlighted}
+		class:mx-auto={highlighted}
+		class="text-xl my-8 max-w-5xl !leading-7"
+	>
 		{@html paragraph.content}
 	</div>
 </div>

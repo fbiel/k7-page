@@ -53,13 +53,13 @@
 					</div>
 					<div class="text-sm text-slate-700">Downloads</div>
 				</a>
-				<a href="https://github.com/konzept7/" class="flex flex-row gap-2">
+				<a href="https://github.com/konzept7/" class="flex flex-row gap-2" target="_blank">
 					<div class="w-5 h-5 stroke-slate-800 stroke-[1.5]">
 						<IconBrandGithub />
 					</div>
 					<div class="text-sm text-slate-700">GitHub</div>
 				</a>
-				<a href="https://www.linkedin.com/company/k-7/" class="flex flex-row gap-2">
+				<a href="https://www.linkedin.com/company/k-7/" class="flex flex-row gap-2" target="_blank">
 					<div class="w-5 h-5 stroke-slate-800 stroke-[1.5]">
 						<IconBrandLinkedin />
 					</div>

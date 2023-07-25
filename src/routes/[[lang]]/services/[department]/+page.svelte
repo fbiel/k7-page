@@ -182,20 +182,40 @@
 							{$t.department.talkAboutProject}
 						</h2>
 						<p class="text-lg text-white">
-							{$t.department.interesting}
+							<span>
+								{$t.department.interesting}
+							</span>
+							<a
+								href={`mailto:${$page.data.details?.data?.attributes?.email ?? 'info@k-7.eu'}`}
+								class="font-semibold"
+							>
+								{$page.data.details?.data?.attributes?.email ?? 'info@k-7.eu'}.
+							</a>
+							<span>
+								{$t.department.visitUs}
+							</span>
 						</p>
 						<div class="flex flex-col pt-6 pb-8">
 							<p class="border-l-4 border-white/40 font-semibold text-white pl-3 mb-2">
 								Goodspaces Karlsruhe
 							</p>
-							<p class="text-white/80 !my-0">
-								{$page.data.details?.data?.attributes?.street ?? 'Roonstr.'}
-								{$page.data.details?.data?.attributes?.housenumber ?? '23a'}
-							</p>
-							<p class="text-white/80 !my-0">
-								{$page.data.details?.data?.attributes?.zip ?? '76137'}
-								{$page.data.details?.data?.attributes?.city ?? 'Karlsruhe'}
-							</p>
+							<div class="flex flex-row justify-start">
+								<a
+									class="inline-flex flex-col"
+									target="_blank"
+									href="https://maps.apple.com/?q=Roonstrasse+23a+76137+Karlsruhe+Germany"
+								>
+									<p class="text-white/80 !my-0">
+										{$page.data.details?.data?.attributes?.street ?? 'Roonstr.'}
+										{$page.data.details?.data?.attributes?.housenumber ?? '23a'}
+									</p>
+									<p class="text-white/80 !my-0">
+										{$page.data.details?.data?.attributes?.zip ?? '76137'}
+										{$page.data.details?.data?.attributes?.city ?? 'Karlsruhe'}
+									</p>
+								</a>
+								<div class="grow" />
+							</div>
 						</div>
 						<a
 							class="block w-full rounded-md border border-transparent bg-white px-5 py-3 text-center text-base font-medium text-brand-700 shadow-md hover:bg-gray-200 sm:inline-block sm:w-auto"
