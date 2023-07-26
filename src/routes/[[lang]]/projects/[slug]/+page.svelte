@@ -16,5 +16,5 @@
 	{@html ld}
 </svelte:head>
 {#if data?.post}
-	<Article article={data.post} />
+	<Article article={data.post} id={data.id} />
 {/if}

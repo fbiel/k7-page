@@ -11,7 +11,8 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	if (!post) throw error(404, { message: 'notFound' });
 	try {
 		return {
-			post,
+			post: post.attributes,
+			id: post.id,
 			slug
 		};
 	} catch (error) {

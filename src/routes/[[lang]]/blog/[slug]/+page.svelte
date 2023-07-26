@@ -7,7 +7,9 @@
 
 	export let data: PageData;
 	const articleLd = ldStringify(createArticleLd('blog', data.slug, data.post));
-	const breadcrumbLd = ldStringify(createBreadcrumbLd('blog', data.post?.title ?? '', $page.params.slug));
+	const breadcrumbLd = ldStringify(
+		createBreadcrumbLd('blog', data.post?.title ?? '', $page.params.slug)
+	);
 </script>
 
 <div class="mt-8" />
@@ -17,5 +19,5 @@
 	{@html articleLd}
 </svelte:head>
 {#if data?.post}
-	<Article article={data.post} />
+	<Article article={data.post} id={data.id} />
 {/if}

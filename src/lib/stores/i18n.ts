@@ -63,7 +63,9 @@ export const de = {
 			blogs: 'Hier finden Sie alle Neuigkeiten über K7-Konzept Karlsruhe.'
 		},
 		partOfSeries: 'Dieser Artikel ist Teil der Serie',
-		part: 'Teil'
+		part: 'Teil',
+		moreFollowing:
+			'Weitere Artikel folgen in Kürze. Schauen Sie doch in den nächsten Tagen nochmal vorbei!'
 	},
 	by: 'von',
 	company: 'K7-Konzept Karlsruhe',
@@ -335,7 +337,8 @@ export const en: TranslationFile = {
 		},
 		updatedAt: 'Last update:',
 		partOfSeries: 'This article is part of the series',
-		part: 'Part'
+		part: 'Part',
+		moreFollowing: 'More articles will follow shortly. Check back in the next few days!'
 	},
 	by: 'from',
 	company: 'K7-Konzept Karlsruhe',
