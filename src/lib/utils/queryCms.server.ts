@@ -390,7 +390,7 @@ export const getArticleEntryById = async (
 		response.data.attributes.content = response.data?.attributes?.content?.map((c) =>
 			parseMarkDown(c)
 		);
-	return response.data?.attributes ?? null;
+	return { attributes: response.data?.attributes, id: parseInt(id) } ?? null;
 };
 export const getArticleEntryBySlug = async (
 	customFetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>,
@@ -408,7 +408,7 @@ export const getArticleEntryBySlug = async (
 		const article = response.data[0];
 		if (article.attributes?.content)
 			article.attributes.content = article.attributes?.content?.map((c) => parseMarkDown(c));
-		return article.attributes;
+		return article;
 	}
 	return null;
 };

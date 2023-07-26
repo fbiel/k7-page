@@ -79,11 +79,11 @@
 									<AuthorChip author={post.author?.data} />
 								{/if}
 							</div>
-							<div class="flex flex-row flex-wrap gap-1 mt-3 w-full">
+							<div class="flex flex-row flex-wrap gap-1 mt-3 w-full -ml-1">
 								{#each post.departments?.data ?? [] as department}
 									<a
 										href={`${$t.link}services/${department.attributes.route ?? ''}`}
-										class="rounded-md bg-brand-100/50 !px-2 !py-1 text-xs text-brand-600 border-brand-200/50
+										class="rounded-md bg-brand-100/50 !px-2 !py-1 text-xs text-brand-600 mx-1 mb-2 border-brand-200/50
 										transition-colors border hover:bg-brand-100">{department.attributes.name}</a
 									>
 								{/each}

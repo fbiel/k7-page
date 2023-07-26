@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { PUBLIC_IMAGE_SERVER } from '$env/static/public';
 	import { t } from '$lib/stores/i18n';
 	import type { ListArticleResponseItem } from '$lib/utils/queryCms.server';
 	import Fragment from './fragment.svelte';
@@ -8,6 +7,7 @@
 
 	export let article: ListArticleResponseItem;
 	export let wide = false;
+	export let id: number;
 </script>
 
 <div class:max-w-5xl={wide} class="flex flex-col gap-0 px-6 max-w-3xl mx-auto">
@@ -41,6 +41,28 @@
 		{/if}
 	</p>
 	<h1 class="gradient !text-3xl overflow-clip !pt-0 !mt-0">{article.title}</h1>
+	{#if article.article_collection}
+		{@const collection =
+			article.article_collection?.data?.attributes?.blogs?.data.filter((b) => b.id !== id) ?? []}
+
+		<div class=" mb-8 flex flex-col">
+			<p class="font-light tracking-tight !mb-0 italic">{$t.article.partOfSeries}:</p>
+			<p class="font-semibold !mt-0 text-lg">{article.article_collection.data.attributes.name}</p>
+			{#if collection.length > 0}
+				{#each collection as blog, index}
+					<a
+						href={`${$t.link}blog/${blog.attributes.slug ?? blog.id}`}
+						class="text-brand-500 ml-3 hover:underline !mt-0 !pt-0"
+					>
+						{$t.article.part}
+						{index + 1}: {blog.attributes.title}
+					</a>
+				{/each}
+			{:else}
+				<p class="font-light">{$t.article.moreFollowing}</p>
+			{/if}
+		</div>
+	{/if}
 	<div class="prose w-full mb-5">
 		<p class="mx-auto text-lg">{article.description}</p>
 	</div>
