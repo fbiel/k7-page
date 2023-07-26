@@ -41,7 +41,7 @@
 		{/if}
 	</p>
 	<h1 class="gradient !text-3xl overflow-clip !pt-0 !mt-0">{article.title}</h1>
-	{#if article.article_collection}
+	{#if article.article_collection?.data?.attributes}
 		{@const collection =
 			article.article_collection?.data?.attributes?.blogs?.data.filter((b) => b.id !== id) ?? []}
 
