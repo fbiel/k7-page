@@ -6,6 +6,11 @@
 	import '../app.css';
 	import { companyLd, ldStringify } from '$lib/utils/seo';
 
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+
+	inject({ mode: dev ? 'development' : 'production' });
+
 	const ld = ldStringify(companyLd);
 </script>
 

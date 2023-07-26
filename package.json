@@ -46,6 +46,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource-variable/karla": "^5.0.6",
-		"@fontsource-variable/kufam": "^5.0.5"
+		"@fontsource-variable/kufam": "^5.0.5",
+		"@vercel/analytics": "^1.0.1"
 	}
 }
