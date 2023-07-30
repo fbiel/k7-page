@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="https://cms.k-7.eu/uploads/logo_flat_k7_transparent_f915a584f2.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script>
+			localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+				? document.documentElement.classList.add('dark')
+				: document.documentElement.classList.remove('dark');
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

@@ -15,7 +15,7 @@
 
 <div class="min-h-screen flex flex-col justify-between">
 	<PageHeader />
-	<div class="grow">
+	<div class="grow pt-12">
 		<slot />
 	</div>
 	{#if data.details}

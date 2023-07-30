@@ -37,11 +37,12 @@
 				animate:flip={{ delay: 0, duration }}
 				in:fly={{ x: 100, duration }}
 				out:fade={{ duration: duration * 0.5, easing: quintOut }}
-				class="border border-neutral-300 bg-gray-200/70 w-32 h-32 rounded-lg p-4 flex shadow-neutral-300 shadow-sm"
+				class="border border-neutral-300 dark:border-neutral-600 bg-gray-200/70 dark:shadow-brand-900
+				w-32 h-32 rounded-lg p-4 flex shadow-neutral-300 shadow-sm dark:shadow-lg"
 			>
 				<a href={reference.link} class="m-auto">
 					<img
-						class="ref-image w-24 brightness-50"
+						class="ref-image w-24 brightness-50 dark:contrast-150"
 						src={PUBLIC_IMAGE_SERVER + reference.logo?.data.attributes?.url}
 						alt={reference.logo?.data.attributes?.alternativeText}
 					/>

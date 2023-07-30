@@ -7,10 +7,14 @@
 	<div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
 		<div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
 			<h1 class="mt-10 gradient">{$t.jobs.futureTogether}</h1>
-			<p class="relative mt-6 text-md leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+			<p
+				class="relative mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200 sm:max-w-md lg:max-w-none"
+			>
 				{$t.jobs.proud}
 			</p>
-			<p class="relative mt-6 text-md leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+			<p
+				class="relative mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200 sm:max-w-md lg:max-w-none"
+			>
 				{$t.jobs.aboutPeople}
 			</p>
 		</div>

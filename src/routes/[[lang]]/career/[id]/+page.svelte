@@ -21,33 +21,43 @@
 		</div>
 		<div>
 			<dl class="grid grid-cols-1 sm:grid-cols-2">
-				<div class="jobad-item sm:col-span-1 sm:px-0">
-					<dt class="text-sm leading-5 text-gray-900 font-extralight">{$t.jobs.emailTo}</dt>
+				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
+					<dt class="text-sm leading-5 text-gray-900 dark:text-gray-300 font-extralight">
+						{$t.jobs.emailTo}
+					</dt>
 					<dd>
 						{j?.MailAn ?? 'info@k-7.eu'}
 					</dd>
 				</div>
-				<div class="jobad-item sm:col-span-1 sm:px-0">
-					<dt>{$t.jobs.contact}</dt>
+				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
+					<dt class="text-sm leading-5 text-gray-900 dark:text-gray-300 font-extralight">
+						{$t.jobs.contact}
+					</dt>
 					<dd>
 						{j?.Ansprechpartner ?? 'info@k-7.eu'}
 					</dd>
 				</div>
-				<div class="jobad-item sm:col-span-1 sm:px-0">
-					<dt>{$t.jobs.location}</dt>
+				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
+					<dt class="text-sm leading-5 text-gray-900 dark:text-gray-300 font-extralight">
+						{$t.jobs.location}
+					</dt>
 					<dd>
 						{j?.Standort ?? 'Karlsruhe/Remote'}
 					</dd>
 				</div>
-				<div class="jobad-item sm:col-span-1 sm:px-0">
-					<dt>{$t.jobs.emailTo}</dt>
+				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
+					<dt class="text-sm leading-5 text-gray-900 dark:text-gray-300 font-extralight">
+						{$t.jobs.emailTo}
+					</dt>
 					<dd>
 						{j?.GesuchtAb ? new Date(j?.GesuchtAb).toLocaleDateString('de') : 'sofort'}
 					</dd>
 				</div>
 				{#if j?.Einleitung}
-					<div class="jobad-item sm:col-span-2 sm:px-0">
-						<dt>{$t.jobs.about}</dt>
+					<div class="jobad-item dark:!border-gray-500/50 sm:col-span-2 sm:px-0">
+						<dt class="text-sm leading-5 text-gray-900 dark:text-gray-300 font-extralight">
+							{$t.jobs.about}
+						</dt>
 						<dd>
 							{j?.Einleitung}
 						</dd>
@@ -55,7 +65,7 @@
 				{/if}
 			</dl>
 			<div class="grid grid-cols-1 sm:grid-cols-2">
-				<div class="jobad-item sm:col-span-2 sm:px-0">
+				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-2 sm:px-0">
 					<h2 class="!text-lg underline underline-offset-2 tracking-tighter">
 						{$t.jobs.yourProfile}
 					</h2>
@@ -63,7 +73,7 @@
 						{@html j?.Profil}
 					</div>
 				</div>
-				<div class="jobad-item sm:col-span-2 sm:px-0">
+				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-2 sm:px-0">
 					<h3 class="!text-lg underline underline-offset-2 tracking-tighter">
 						{$t.jobs.yourTasks}
 					</h3>
@@ -83,11 +93,8 @@
 {/if}
 
 <style>
-	dt {
-		@apply text-sm leading-5 text-gray-900 font-extralight;
-	}
 	dd {
-		@apply text-lg leading-6;
+		@apply text-lg leading-6 opacity-75;
 	}
 	.jobad-item {
 		@apply border-t border-gray-100 px-4 py-6;

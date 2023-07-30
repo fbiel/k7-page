@@ -9,10 +9,10 @@
 			src="https://cms.k-7.eu/uploads/logo_flat_k7_transparent_f915a584f2.svg"
 			alt="K7-Konzept Karlsruhe GmbH company logo"
 		/>
-		<p class="text-brand-600 text-lg font-semibold">404</p>
+		<p class="text-brand-600 dark:text-brand-200 text-lg font-semibold">404</p>
 		<h1>{$t.error404.title}</h1>
 
-		<p class="text-red-600 my-5 font-light">
+		<p class="text-red-600 dark:text-red-400 my-5 font-light">
 			{$t.error404.description}
 		</p>
 		<a href={$t.link}>Home →</a>

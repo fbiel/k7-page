@@ -11,19 +11,17 @@
 </script>
 
 <div class:max-w-5xl={wide} class="flex flex-col gap-0 px-6 max-w-3xl mx-auto">
-	{#if article.author}
-		<AuthorChip author={article.author?.data} />
-	{/if}
 	<div class="flex flex-row flex-wrap gap-1 mt-1 mb-5 w-full">
 		{#each article.departments?.data ?? [] as department}
 			<a
 				href={`${$t.link}services/${department.attributes.route ?? ''}`}
 				class="rounded-md bg-brand-100/50 !px-2 !py-1 lg:font-semibold text-xs lg:text-sm text-brand-900 border-brand-200/50
-										transition-colors border hover:bg-brand-100">{department.attributes.name}</a
+										transition-colors border hover:bg-brand-100 dark:bg-brand-900/90
+										 dark:hover:bg-brand-700 dark:text-gray-300">{department.attributes.name}</a
 			>
 		{/each}
 	</div>
-	<p class="text-sm text-gray-600 font-light">
+	<p class="text-sm text-gray-600 font-light dark:text-gray-400">
 		{$t.article.publishedAt}
 		{new Date(article.createdAt).toLocaleDateString($t.language, {
 			year: 'numeric',
@@ -63,13 +61,13 @@
 			{/if}
 		</div>
 	{/if}
-	<div class="prose w-full mb-5">
+	<div class=" mb-5 prose dark:prose-invert !w-full max-w-5xl">
 		<p class="mx-auto text-lg">{article.description}</p>
 	</div>
 	{#if article.cover?.data?.attributes}
 		{@const sourceSet = createSourceset(article.cover.data.attributes)}
 		{#if sourceSet}
-			<div class="flex flex-col gap-1">
+			<div class="flex flex-col gap-1 not-prose">
 				<img
 					src={sourceSet.src}
 					alt={sourceSet.alt}
@@ -78,7 +76,7 @@
 					width="100%"
 					class="w-full rounded-lg lg:rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
 				/>
-				<p class="text-sm text-gray-600 !mt-0 !pt-0">
+				<p class="text-sm text-gray-600 dark:text-gray-300 !mt-0 !pt-0">
 					{article.cover.data.attributes.caption ?? ''}
 				</p>
 			</div>
@@ -89,3 +87,8 @@
 {#each article.content ?? [] as component}
 	<Fragment {wide} {component} />
 {/each}
+<div class:max-w-5xl={wide} class="gap-0 px-6 max-w-3xl mx-auto">
+	{#if article.author}
+		<AuthorChip author={article.author?.data} />
+	{/if}
+</div>

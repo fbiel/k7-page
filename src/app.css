@@ -4,8 +4,8 @@
 
 body {
 	font-family: 'Karla variable', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	/* background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
-	@apply text-slate-900/90;
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	@apply text-slate-900/90 dark:bg-brand-800 dark:text-gray-100;
 }
 h1,
 h2,
@@ -14,7 +14,7 @@ h4,
 h5,
 h6 {
 	font-family: 'Kufam variable', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	@apply text-slate-900/90;
+	@apply text-slate-900/90 dark:text-white;
 }
 h1 {
 	@apply leading-loose text-2xl lg:text-5xl font-bold tracking-tight my-6 sm:text-6xl;
@@ -22,7 +22,18 @@ h1 {
 h1.gradient,
 h2.gradient,
 h3.gradient {
-	@apply font-extrabold tracking-tight py-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-teal-500;
+	@apply font-extrabold tracking-tight py-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-teal-500
+	dark:from-sky-400 dark:to-teal-300;
+}
+ul,
+li {
+	@apply list-disc list-inside leading-8 gap-4 pl-3 font-light text-gray-700 dark:text-gray-300;
+}
+a {
+	@apply dark:text-brand-200;
+}
+.no-ring {
+	@apply focus:ring-0 focus:ring-offset-0;
 }
 h2 {
 	@apply leading-loose text-xl lg:text-3xl font-semibold tracking-tight my-4;
@@ -40,9 +51,139 @@ dd {
 	@apply my-3 font-light;
 }
 
-ul,
-li {
-	@apply list-disc list-inside leading-8 gap-4 pl-3 font-light text-gray-600;
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.hide-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+	@apply text-black dark:text-white !text-xs;
+}
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+	background: #b3d4fc;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	@apply bg-yellow-300 text-black;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+	padding: 1em;
+	margin: 0.5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+	@apply bg-neutral-200 dark:bg-neutral-700;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+	padding: 0.1em;
+	border-radius: 0.3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	@apply text-slate-600 dark:text-slate-400;
+}
+
+.token.punctuation {
+	@apply text-gray-900 dark:text-gray-100;
+}
+
+.token.namespace {
+	@apply opacity-70 dark:opacity-80;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	@apply text-fuchsia-700 dark:text-fuchsia-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	@apply text-emerald-700 dark:text-emerald-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	@apply text-amber-700 dark:text-amber-300;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	@apply text-sky-800 dark:text-sky-400;
+}
+
+.token.function,
+.token.class-name {
+	@apply text-red-700 dark:text-red-400;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	@apply text-orange-700 dark:text-orange-300;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
 }
 
 /*

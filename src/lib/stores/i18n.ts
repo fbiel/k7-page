@@ -50,7 +50,7 @@ export const de = {
 		publishedAt: 'Veröffentlicht am:',
 		updatedAt: 'Letzte Aktualisierung:',
 		projects: 'Projekte',
-		blogs: 'Neuigkeiten',
+		blogs: 'Blog',
 		errorLoading: {
 			projects:
 				'Beim Laden der Projekte ist ein Fehler aufgetreten. Bitte versuche es später nochmal.',
@@ -197,6 +197,7 @@ export const de = {
 		whatIsItAbout: "Worum geht's denn?",
 		invalidEmail: 'Ungültige Email',
 		sendUsAMessage: 'Schreiben Sie uns eine Nachricht',
+		submitMessage: 'Nachricht abschicken',
 		information: 'Informationen',
 		thanksForMessage: 'Danke für Ihre Nachricht!',
 		replySoon: 'Wir werden uns schnellstmöglich bei Ihnen melden.',
@@ -354,6 +355,7 @@ export const en: TranslationFile = {
 		missing: 'Unfortunately, some information is still missing.',
 		name: 'First name',
 		surname: 'Last name',
+		submitMessage: 'Submit message',
 		information: 'Information',
 		invalidEmail: 'Invalid E-mail',
 		nameNecessary: 'Name is required',

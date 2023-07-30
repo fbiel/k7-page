@@ -3,7 +3,8 @@
 	import IconBrandGithub from '$lib/icons/icon-brand-github.svelte';
 	import IconBrandLinkedin from '$lib/icons/icon-brand-linkedin.svelte';
 	import { page } from '$app/stores';
-	import IconLanguage from '$lib/icons/icon-language.svelte';
+	import ThemeSwitch from '$lib/components/theme-switch.svelte';
+	import LanguageSwitch from '$lib/components/language-switch.svelte';
 	export let menuOpen = false;
 
 	export let navBarItems = [
@@ -20,12 +21,9 @@
 			label: $t.services.services
 		}
 	];
-	$: currentLinkWithDifferentLanguage = $page.url.pathname.startsWith('/en')
-		? $page.url.toString().replace('/en', '')
-		: $page.url.toString().replace($page.url.origin, `${$page.url.origin}/en`);
 </script>
 
-<header class="bg-transparent">
+<header class="absolute inset-x-0 top-0 z-50">
 	<nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
 		<div class="flex lg:flex-1">
 			<a href={$t.link} class="-m-1.5 px-1.5">
@@ -33,8 +31,16 @@
 				<img
 					height="40"
 					width="178"
+					class="block dark:hidden"
 					src="https://cms.k-7.eu/uploads/logo_transparent_7774819042.svg"
-					alt=""
+					alt="K7 company logo, a combination of the letter K and the number 7"
+				/>
+				<img
+					height="40"
+					width="178"
+					class="hidden dark:block"
+					src="https://cms.k-7.eu/uploads/logo_flat_white_transparent_30d2d97bb9.svg"
+					alt="K7 company logo, a combination of the letter K and the number 7"
 				/>
 			</a>
 		</div>
@@ -42,7 +48,7 @@
 			<button
 				on:click={() => (menuOpen = true)}
 				type="button"
-				class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+				class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300"
 			>
 				<span class="sr-only">Open main menu</span>
 				<svg
@@ -65,17 +71,16 @@
 			{#each navBarItems as navBarItem}
 				<a
 					href={$t.link + navBarItem.href}
-					class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700"
+					class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 dark:text-gray-200 dark:hover:text-white"
 				>
 					{navBarItem.label}
 				</a>
 			{/each}
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
-			<div class="flex gap-3 stroke-[1.5] stroke-black">
-				<a href={currentLinkWithDifferentLanguage} data-sveltekit-reload
-					><div class="w-6 h-6"><IconLanguage /></div></a
-				>
+			<div class="flex gap-5 stroke-[1.5] stroke-black dark:stroke-white">
+				<ThemeSwitch />
+				<LanguageSwitch />
 				<a href="https://github.com/konzept7/" target="_blank"
 					><div class="w-6 h-6"><IconBrandGithub /></div></a
 				>
@@ -90,16 +95,29 @@
 		<!-- Background backdrop, show/hide based on slide-over state. -->
 		<div class="fixed inset-0 z-20" />
 		<div
-			class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+			class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white
+			dark:bg-brand-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-100/10"
 		>
 			<div class="flex items-center justify-between">
-				<a href={$page.data.lang === 'de' ? '/' : '/en'} class="-m-1.5 px-1.5">
+				<a
+					href={$page.data.lang === 'de' ? '/' : '/en'}
+					class="-m-1.5 px-1.5"
+					on:click={() => (menuOpen = false)}
+				>
 					<span class="sr-only">{$t.company}</span>
 					<img
 						height="40"
 						width="178"
+						class="block dark:hidden"
 						src="https://cms.k-7.eu/uploads/logo_transparent_7774819042.svg"
-						alt=""
+						alt="K7 company logo, a combination of the letter K and the number 7"
+					/>
+					<img
+						height="40"
+						width="178"
+						class="hidden dark:block"
+						src="https://cms.k-7.eu/uploads/logo_flat_white_transparent_30d2d97bb9.svg"
+						alt="K7 company logo, a combination of the letter K and the number 7"
 					/>
 				</a>
 				<button
@@ -127,7 +145,7 @@
 							<a
 								on:click={() => (menuOpen = false)}
 								href={$t.link + navBarItem.href}
-								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+								class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-900"
 							>
 								{navBarItem.label}
 							</a>
@@ -135,25 +153,25 @@
 						<a
 							on:click={() => (menuOpen = false)}
 							href={$t.link + 'career'}
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-900"
 							>{$t.jobs.career}</a
 						>
 						<a
 							on:click={() => (menuOpen = false)}
 							href={$t.link + 'team'}
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-900"
 							>{$t.team.team}</a
 						>
 						<a
 							on:click={() => (menuOpen = false)}
 							href={$t.link + 'imprint'}
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-900"
 							>{$t.imprint}</a
 						>
 						<a
 							on:click={() => (menuOpen = false)}
 							href="privacy"
-							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+							class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-900"
 							>{$t.gdpr}</a
 						>
 					</div>

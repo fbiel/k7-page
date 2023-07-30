@@ -15,11 +15,13 @@
 <div class="py-8">
 	<div class="mx-auto max-w-7xl px-6 lg:px-8">
 		<div class="mx-auto max-w-2xl lg:text-center">
-			<p class="text-base font-semibold leading-7 !text-sky-700">{$t.services.oneHand}</p>
+			<p class="text-base font-semibold leading-7 !text-sky-700 dark:!text-sky-300">
+				{$t.services.oneHand}
+			</p>
 			<h1 class="mt-2 text-3xl font-bold tracking-tigh gradient sm:text-4xl">
 				{$t.services.knowHow}
 			</h1>
-			<p class="text-lg mt-6 leading-8 text-slate-700">
+			<p class="text-lg mt-6 leading-8 text-slate-700 dark:text-gray-100">
 				{$t.services.smallTeams}
 			</p>
 		</div>
@@ -46,11 +48,11 @@
 										class="h-12 w-12 items-center justify-center rounded-lg"
 									/>
 								</div>
-								<div class="group-hover/department:underline">
+								<div class="group-hover/department:underline dark:!text-gray-100">
 									{feature.attributes?.name}
 								</div>
 							</div>
-							<div class="mt-2 text-base leading-7 text-slate-500">
+							<div class="mt-2 text-base leading-7 text-slate-500 dark:!text-gray-200/90">
 								{feature.attributes?.catchphrase}
 							</div>
 						</a>

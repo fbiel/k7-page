@@ -25,7 +25,7 @@
 	<meta name="description" content={$t.meta.downloads} />
 </svelte:head>
 
-<div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
+<div class="my-10 container mx-auto max-w-5xl prose dark:prose-invert prose-slate px-5">
 	<h1 class="gradient">Downloads</h1>
 	<p>
 		Die hier beigestellten Dokumente sind urheberrechtlich geschützt. Die Verwendung ist
