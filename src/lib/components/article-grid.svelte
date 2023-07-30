@@ -22,7 +22,7 @@
 			<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 				{title}
 			</h2>
-			<p class="mt-2 text-lg leading-8 text-gray-600">
+			<p class="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-300">
 				{description}
 			</p>
 		</div>
@@ -42,11 +42,12 @@
 									alt={sourceSet?.alt ?? post.title}
 									srcset={sourceSet?.srcset}
 									sizes={sourceSet?.sizes}
-									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 dark:bg-gray-800 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
 								/>
 							{:else}
 								<div
-									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] border-dashed border-2 border-gray-300"
+									class="aspect-[16/9] w-full rounded-2xl bg-gray-100 dark:bg-gray-800 object-cover sm:aspect-[2/1]
+									 lg:aspect-[3/2] border-dashed border-2 border-gray-300"
 								>
 									<p>{$t.notFound}</p>
 								</div>
@@ -70,7 +71,7 @@
 									<span class="absolute inset-0" />
 									{post.title}
 								</h3>
-								<p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+								<p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
 									{post.description}
 								</p>
 							</a>
@@ -83,7 +84,8 @@
 								{#each post.departments?.data ?? [] as department}
 									<a
 										href={`${$t.link}services/${department.attributes.route ?? ''}`}
-										class="rounded-md bg-brand-100/50 !px-2 !py-1 text-xs text-brand-600 mx-1 mb-2 border-brand-200/50
+										class="rounded-md bg-brand-100/50 dark:bg-brand-900/90
+										 dark:hover:bg-brand-700 dark:text-gray-300 !px-2 !py-1 text-xs text-brand-600 mx-1 mb-2 border-brand-200/50
 										transition-colors border hover:bg-brand-100">{department.attributes.name}</a
 									>
 								{/each}
@@ -95,8 +97,10 @@
 				<div
 					class="relative my-16 block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center"
 				>
-					<span class="my-4 block text-sm font-semibold text-gray-900">{$t.notReady}</span>
-					<span class="my-4 block text-sm text-gray-600">
+					<span class="my-4 block text-sm font-semibold text-gray-900 dark:text-gray-200"
+						>{$t.notReady}</span
+					>
+					<span class="my-4 block text-sm text-gray-600 dark:text-gray-400">
 						{$t.notReadySorry}
 					</span>
 				</div>

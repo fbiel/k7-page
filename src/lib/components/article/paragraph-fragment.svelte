@@ -10,7 +10,7 @@
 <div
 	class:max-w-3xl={!wide && !highlighted}
 	class:py-24={highlighted}
-	class:py-12={!highlighted}
+	class:py-0={!highlighted}
 	class:from-brand-700={highlighted}
 	class:to-cyan-950={highlighted}
 	class:bg-gradient-to-r={highlighted}

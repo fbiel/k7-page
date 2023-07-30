@@ -16,12 +16,12 @@
 </script>
 
 {#if detail}
-	<div id="contact-section" class="relative isolate bg-white px-6 pt-16 pb-24 lg:px-8">
+	<div id="contact" class="relative isolate px-6 pt-16 pb-24 lg:px-8">
 		<div class="mx-auto max-w-xl lg:max-w-5xl">
-			<h2 class="text-4xl font-bold tracking-tight text-gray-900 !mb-0">
+			<h2 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 !mb-0">
 				{$t.contact.talkAboutProject}
 			</h2>
-			<p class="mt-2 text-lg leading-8 text-gray-600">
+			<p class="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-300">
 				{$t.contact.weHelp}
 			</p>
 			{#if form?.missing}
@@ -78,7 +78,9 @@
 				>
 					<div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 						<div>
-							<label for="fromName" class="block text-sm font-semibold leading-6 text-gray-900"
+							<label
+								for="fromName"
+								class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
 								>{$t.contact.yourName}</label
 							>
 							<div class="mt-2.5">
@@ -90,12 +92,16 @@
 									id="fromName"
 									value={form?.fromName ?? ''}
 									autocomplete="name"
-									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
+									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 dark:ring-0 dark:focus:ring-2 ring-gray-300
+									 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6 ring-inset
+									  dark:bg-brand-600 dark:text-white dark:ring-gray-600 dark:focus:ring-brand-200"
 								/>
 							</div>
 						</div>
 						<div>
-							<label for="replyTo" class="block text-sm font-semibold leading-6 text-gray-900"
+							<label
+								for="replyTo"
+								class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
 								>{$t.contact.yourEmail}</label
 							>
 							<div class="mt-2.5">
@@ -106,12 +112,16 @@
 									id="replyTo"
 									value={form?.replyTo ?? ''}
 									autocomplete="email"
-									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
+									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 dark:ring-0 dark:focus:ring-2 ring-gray-300
+									 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6 ring-inset
+									  dark:bg-brand-600 dark:text-white dark:ring-gray-600 dark:focus:ring-brand-200"
 								/>
 							</div>
 						</div>
 						<div class="sm:col-span-2">
-							<label for="subject" class="block text-sm font-semibold leading-6 text-gray-900"
+							<label
+								for="subject"
+								class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
 								>{$t.contact.subject}</label
 							>
 							<div class="mt-2.5">
@@ -122,12 +132,16 @@
 									value={form?.subject ?? ''}
 									name="subject"
 									type="text"
-									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
+									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 dark:ring-0 dark:focus:ring-2 ring-gray-300
+									 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6 ring-inset
+									  dark:bg-brand-600 dark:text-white dark:ring-gray-600 dark:focus:ring-brand-200"
 								/>
 							</div>
 						</div>
 						<div class="sm:col-span-2">
-							<label for="message" class="block text-sm font-semibold leading-6 text-gray-900"
+							<label
+								for="message"
+								class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200"
 								>{$t.contact.yourMessage}</label
 							>
 							<div class="mt-2.5">
@@ -138,22 +152,24 @@
 									value={form?.message ?? ''}
 									name="message"
 									rows="4"
-									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6"
+									class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 dark:ring-0 dark:focus:ring-2 ring-gray-300
+									 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-400 sm:text-sm sm:leading-6 ring-inset
+									  dark:bg-brand-600 dark:text-white dark:ring-gray-600 dark:focus:ring-brand-200"
 								/>
 							</div>
 						</div>
 						<div class="sm:col-span-2">
 							<div class="mt-2.5 flex flex-row items-center gap-3">
 								<input
-									required
 									type="checkbox"
 									name="privacy"
 									checked={form?.privacy ?? false}
 									id="privacy"
-									class="h-5 w-5 rounded border-gray-300 text-brand-400 focus:ring-brand-400"
+									class="h-5 w-5 rounded border-gray-300 text-brand-400 no-ring"
 								/>
 								<label for="privacy" class="ml-3 block text-sm font-semibold leading-6"
-									><a href="/privacy" class="hover:underline">{$t.contact.gdpr}</a></label
+									><a href="/privacy" target="_blank" class="hover:underline">{$t.contact.gdpr}</a
+									></label
 								>
 							</div>
 						</div>
@@ -161,8 +177,9 @@
 					<div class="mt-10">
 						<button
 							type="submit"
-							class="block w-full rounded-md disabled:bg-brand-200 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
-							>{$t.contact.sendUsAMessage}</button
+							class="block w-full rounded-md disabled:bg-brand-200 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:!bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400
+							dark:bg-neutral-100 dark:!text-brand-800 dark:hover:!bg-neutral-300 transition-colors"
+							>{$t.contact.submitMessage}</button
 						>
 					</div>
 				</form>
@@ -171,7 +188,7 @@
 						<div
 							class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-transparentlg:w-1/2"
 						/>
-						<div class="mt-10 space-y-4 text-base leading-7 text-gray-600">
+						<div class="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-gray-400">
 							<a
 								target="_blank"
 								href="https://maps.apple.com/?q=Roonstrasse+23a+76137+Karlsruhe+Germany"

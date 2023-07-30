@@ -15,7 +15,9 @@
 <div class="container max-w-5xl mx-auto pb-8 px-5">
 	<div class="pb-10">
 		<h2>{$t.jobs.openPositions}</h2>
-		<p class="relative mt-6 text-md leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+		<p
+			class="relative mt-6 text-md leading-8 text-gray-600 dark:text-gray-200 sm:max-w-md lg:max-w-none"
+		>
 			{$t.jobs.claim}
 		</p>
 	</div>
@@ -24,8 +26,8 @@
 		<ul role="list" class="px-0 pb-4">
 			{#each jobs as job}
 				<li
-					class="flex my-5 flex-row shadow-md shadow-cyan-900/40
-			from-slate-700 to-cyan-900 bg-gradient-to-tr
+					class="flex my-5 flex-row shadow-md shadow-cyan-900/40 dark:from-brand-600 dark:to-brand-600
+			from-slate-700 to-cyan-900 bg-gradient-to-tr dark:shadow-none dark:border-brand-300/50 dark:border
 			justify-apart items-start gap-x-6 pt-8 pb-3 hover:ring-2 hover:ring-cyan-800 hover:ring-offset-2
 			rounded-xl px-3 md:px-6"
 				>

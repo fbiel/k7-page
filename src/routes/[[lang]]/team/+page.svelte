@@ -35,14 +35,14 @@
 								<h3 class="text-base font-semibold leading-7 tracking-tight">
 									{member.attributes.name}
 								</h3>
-								<p class="text-sm font-semibold leading-6 text-brand-400">
+								<p class="text-sm font-semibold leading-6 text-brand-300 dark:text-brand-200">
 									{member.attributes.position}
 								</p>
 							</div>
 						</div>
 					</li>
 				{/each}
-				<li class="text-sm text-gray-600 list-none">
+				<li class="text-sm text-gray-600 dark:!text-brand-200 list-none">
 					*{$t.team.notAllMembers}
 				</li>
 			{/if}
@@ -52,7 +52,7 @@
 		</p>
 	</div>
 	{#if data.content?.data.attributes?.body}
-		<div class="mt-8 flex flex-col prose mx-auto max-w-xl xl:max-w-5xl">
+		<div class="mt-8 flex flex-col prose dark:prose-invert mx-auto max-w-xl xl:max-w-5xl">
 			<h3>{$t.wwa.subTitle}</h3>
 			{@html data.content.data.attributes.body}
 		</div>

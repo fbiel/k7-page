@@ -112,9 +112,12 @@ export interface ContentFragmentsQuote extends ContentFragment {
 }
 
 export interface ContentFragmentsCodeblock extends ContentFragment {
-	lang?: Language;
-	caption?: string;
-	code?: string;
+	lang: Language;
+	caption: string;
+	code: string;
+}
+export interface ContentFragmentsCodeblockMarked extends ContentFragmentsCodeblock {
+	marked: string;
 }
 export interface ContentFragmentsIlluminatingSection extends ContentFragment {
 	title?: string;
@@ -703,10 +706,10 @@ const parseMarkDown = (body: BodyItem) => {
 		p.content = marked(p.content ?? '');
 	}
 	if (body.__component === 'content-fragments.codeblock') {
-		const p = body as ContentFragmentsCodeblock;
+		const p = body as ContentFragmentsCodeblockMarked;
 		const lang = p.lang ?? 'javascript';
 		loadLanguages([lang]);
-		p.code = languages[lang]
+		p.marked = languages[lang]
 			? highlight(p.code ?? '', languages[lang], p.lang ?? 'javascript')
 			: p.code;
 	}

@@ -1,5 +1,5 @@
-<script>
-	import ClipboardText from '$lib/icons/clipboard-text.svelte';
+<script lang="ts">
+	import CopyButton from '$lib/components/copy-button.svelte';
 	import { t } from '$lib/stores/i18n';
 </script>
 
@@ -7,13 +7,11 @@
 	<title>K7: {$t.imprint}</title>
 	<meta name="description" content={$t.meta.imprint} />
 </svelte:head>
-<div class="my-10 container mx-auto max-w-5xl prose prose-slate px-5">
+<div class="my-10 container mx-auto max-w-5xl prose dark:prose-invert prose-slate px-5">
 	<h1 class="gradient">{$t.imprint}</h1>
 	<h2>{$t.contact.adress}</h2>
 	<div class="flex flex-row justify-start items-center gap-5">
-		<div class="w-6 h-6 stroke-black stroke-[1.5] hidden md:block">
-			<ClipboardText />
-		</div>
+		<CopyButton copyText={'K7-Konzept Karlsruhe GmbH\nRoonstraße 23a\n76137 Karlsruhe'} />
 		<div class="flex flex-col gap-0 shrink">
 			<p>
 				K7-Konzept Karlsruhe GmbH
@@ -24,9 +22,9 @@
 	</div>
 	<h2>Register</h2>
 	<div class="flex flex-row justify-start items-center gap-5">
-		<div class="w-6 h-6 stroke-black stroke-[1.5] hidden md:block">
-			<ClipboardText />
-		</div>
+		<CopyButton
+			copyText="Amtsgericht Mannheim\nHRB 746032\nGeschäftsführung: Jannik Stuart | Norbert Stefan Fischer\nUSt-IdNr.: DE358640588\nDUNS Nummer: 344448617"
+		/>
 		<div class="flex flex-col gap-0 shrink">
 			<p>
 				Amtsgericht Mannheim<br />

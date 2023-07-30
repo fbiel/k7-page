@@ -14,7 +14,10 @@
 </script>
 
 <IntersectionObserver let:intersecting top={-200} onIntersectingChanged={() => restart()}>
-	<div class="flex flex-col py-28 bg-gradient-to-r from-brand-700 to-cyan-950 w-full">
+	<div
+		class="flex flex-col py-28 bg-gradient-to-r from-brand-700 to-cyan-950 w-full
+		 my-8 dark:from-brand-800 dark:to-brand-800"
+	>
 		<div class="flex flex-row gap-5 justify-start max-w-3xl mx-auto">
 			<div class="iconContainer" class:intersecting>
 				<div class="icon">
