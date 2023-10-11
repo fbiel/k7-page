@@ -22,7 +22,7 @@
 	<div
 		class:white={highlighted}
 		class:mx-auto={highlighted}
-		class="text-xl my-8 max-w-5xl !leading-7"
+		class="text-xl my-8 max-w-5xl !leading-8"
 	>
 		{@html paragraph.content}
 	</div>

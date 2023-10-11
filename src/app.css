@@ -54,6 +54,9 @@ dt,
 dd {
 	@apply my-3 font-light;
 }
+strong {
+	@apply font-bold;
+}
 
 .hide-scrollbar::-webkit-scrollbar {
 	display: none;

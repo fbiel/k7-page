@@ -46,6 +46,9 @@
 		<div class=" mb-8 flex flex-col">
 			<p class="font-light tracking-tight !mb-0 italic">{$t.article.partOfSeries}:</p>
 			<p class="font-semibold !mt-0 text-lg">{article.article_collection.data.attributes.name}</p>
+			{#if article.article_collection.data.attributes.description}
+				<p class="my-3">{article.article_collection.data.attributes.description}</p>
+			{/if}
 			{#if collection.length > 0}
 				{#each collection as blog, index}
 					<a
