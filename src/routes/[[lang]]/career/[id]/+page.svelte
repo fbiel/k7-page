@@ -26,7 +26,7 @@
 						{$t.jobs.emailTo}
 					</dt>
 					<dd>
-						{j?.MailAn ?? 'info@k-7.eu'}
+						<a href="mailto:">{j?.MailAn ?? 'info@k-7.eu'}</a>
 					</dd>
 				</div>
 				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
