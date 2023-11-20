@@ -129,7 +129,7 @@ export const de = {
 			fruitAndBeverages: {
 				name: 'Obst und Getränke',
 				description:
-					'Alle Mitarbeiter erhalten kostenlos Obst und Wasser, Kaffee sowie verschiedene Kaltgetränke.'
+					'Alle Mitarbeiter erhalten kostenlos Obst, Wasser und Kaffee. Außerdem stehen verschiedene Kaltgetränke zur Wahl.'
 			},
 			ergonomicWorkplace: {
 				name: 'Ergonomischer Arbeitsplatz',
@@ -457,7 +457,7 @@ export const en: TranslationFile = {
 			},
 			fruitAndBeverages: {
 				name: 'Fruit and beverages',
-				description: 'All employees receive free fruit and water, coffee and various cold drinks.'
+				description: 'All employees receive free fruit, water and coffee. Various cold drinks are also available.'
 			},
 			ergonomicWorkplace: {
 				name: 'Ergonomic workplace',
