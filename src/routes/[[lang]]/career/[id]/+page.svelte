@@ -26,7 +26,7 @@
 						{$t.jobs.emailTo}
 					</dt>
 					<dd>
-						{j?.MailAn ?? 'info@k-7.eu'}
+						<a href="mailto:">{j?.MailAn ?? 'info@k-7.eu'}</a>
 					</dd>
 				</div>
 				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
@@ -47,7 +47,7 @@
 				</div>
 				<div class="jobad-item dark:!border-gray-500/50 sm:col-span-1 sm:px-0">
 					<dt class="text-sm leading-5 text-gray-900 dark:text-gray-300 font-extralight">
-						{$t.jobs.emailTo}
+						{$t.jobs.earliestStart}
 					</dt>
 					<dd>
 						{j?.GesuchtAb ? new Date(j?.GesuchtAb).toLocaleDateString('de') : 'sofort'}
