@@ -4,6 +4,7 @@ export const de = {
 	link: '/',
 	language: 'de',
 	notFound: 'Nicht gefunden',
+	noCookies: 'cookiefrei!',
 	meta: {
 		home: 'Dies ist die Firmenhomepage von K7-Konzept Karlsruhe. Wir sind ein junges Unternehmen, das sich auf Sondermaschinenbau sowie die Entwicklung von Software und Hardware für industrielle Anwendungen spezialisiert hat.',
 		blog: 'Hier finden Sie alle Neuigkeiten aus dem Unternehmensblog von K7-Konzept Karlsruhe. Wir veröffentlichen regelmäßig Artikel zu den Themen Sondermaschinenbau, Softwareentwicklung und Hardwareentwicklung.',
@@ -281,6 +282,7 @@ export const en: TranslationFile = {
 	link: '/en/',
 	language: 'en',
 	notFound: 'Not found',
+	noCookies: 'no cookies!',
 	pagination: {
 		previous: 'Previous',
 		next: 'Next',

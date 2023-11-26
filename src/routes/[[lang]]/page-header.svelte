@@ -79,6 +79,13 @@
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 			<div class="flex gap-5 stroke-[1.5] stroke-black dark:stroke-white">
+				<div class="hidden lg:block">
+					<span
+						class="before:block before:rotate-4 before:absolute before:-inset-1 before:-skew-y-2 before:bg-yellow-300 relative inline-block"
+					>
+						<span class="relative text-black p-1">{$t.noCookies}</span>
+					</span>
+				</div>
 				<ThemeSwitch />
 				<LanguageSwitch />
 				<a href="https://github.com/konzept7/" target="_blank"
